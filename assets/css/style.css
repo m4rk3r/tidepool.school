@@ -1,0 +1,14 @@
+
+body {
+  background: rgb(103, 110, 112);
+}
+
+header {
+  text-align: center;
+}
+
+h1 {
+  color: white;
+  font-family: sans-serif;
+  font-weight: 100;
+}
