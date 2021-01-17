@@ -1,6 +1,10 @@
+html {
+  font-size: 62.5%;
+}
 
 body {
   background: rgb(103, 110, 112);
+  font-size: 1.6rem;
 }
 
 header {
@@ -11,4 +15,67 @@ h1 {
   color: white;
   font-family: sans-serif;
   font-weight: 100;
+  font-size: 2.8rem;
+}
+
+#pools {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  margin-top: 7.5rem;
+}
+
+.pool {
+  position: relative;
+  background-color: blue;
+  min-width: 40rem;
+  width: fit-content;
+  min-height: 38rem;
+  height: fit-content;
+  color: white;
+  font-size: 1.6rem;
+}
+
+.cp {
+  position: absolute;
+  width: 0; height: 0;
+}
+
+.pool-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.week-1 {
+  grid-column: 1;
+}
+.week-1 .pool {
+  clip-path: url(#c1);
+  padding: 10%;
+}
+.week-2 {
+  grid-column: 2;
+  grid-row: 2;
+}
+.week-2 .pool {
+  clip-path: url(#c2);
+  padding: 10%;
+}
+
+.week-3 {
+  grid-column: 1;
+  grid-row: 3;
+}
+.week-3 .pool {
+  clip-path: url(#c1);
+  padding: 10%;
+}
+
+@media (max-width: 900px) {
+  #pools {
+    grid-template-columns: 1fr;
+  }
+  .pool-container {
+    grid-column: 1;
+  }
 }
