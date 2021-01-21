@@ -1,11 +1,15 @@
 const ocean = document.querySelector('#ocean');
 let drawing = false;
 
-var socket = io('http://localhost:4000', { transports: ['websocket']});
-// var socket = io('https://class.duskjacket.com', {
-//     path: '/ws',
-//     transports: ['websocket']
-// });
+var socket;
+if (window.location.hostname.includes('localhost')) {
+ socket = io('http://localhost:4000', { transports: ['websocket']});
+} else {
+  socket = io('https://tidepool.school', {
+      path: '/ws',
+      transports: ['websocket']
+  });
+}
 
 const uid = Math.random().toString(36).substr(2, 9);
 let posX = 0,
