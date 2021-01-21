@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUCD 2026 Core 2: Interaction Lab</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="shortcut icon" type="image/png" href="/assets/img/tidepool.png"/>
+    <script type="text/javascript" src="/assets/js/script.js" defer></script>
+
+    <script type="text/javascript" src="/assets/js/socket.io.js"></script>
+    <script type="text/javascript" defer src="/assets/js/ocean.js?v=1"></script>
+    <script type="text/javascript" defer src="/assets/js/signup.js?v=1"></script>
+  </head>
+  <body>
+    <svg class="cp">
+       <clipPath id="c1" clipPathUnits="objectBoundingBox">
+        <path d="M0.025,0.356c0,0,0-0.412,0.448-0.316
+        	C0.92,0.136,0.939,0.266,0.961,0.356C0.982,0.446,1,0.767,0.845,0.818C0.69,0.87,0.316,1.069,0.211,0.922
+        	C0.107,0.774,0.033,0.606,0.025,0.356z"/>
+       </clipPath>
+    </svg>
+    <svg class="cp">
+       <clipPath id="c2" clipPathUnits="objectBoundingBox">
+        <path d="M0.081,0.274c0,0,0.046,0.037,0.05-0.04
+        	c0.005-0.078,0.058-0.144,0.122-0.131c0,0,0.204,0.054,0.26,0.009c0.056-0.044,0.215-0.08,0.27-0.053
+        	c0.056,0.028,0.182,0.08,0.165,0.253c-0.017,0.173-0.094,0.253-0.097,0.28s0.053,0.09,0.068,0.137
+        	c0.014,0.047,0.04,0.24-0.141,0.219c-0.181-0.021-0.473-0.071-0.56-0.175C0.131,0.669,0.084,0.488,0.081,0.419
+        	C0.077,0.35,0.014,0.243,0.081,0.274z" />
+      </clipPath>
+    </svg>
+    <svg class="cp">
+       <clipPath id="c3" clipPathUnits="objectBoundingBox">
+        <path d="m 0.07222915,0.28266239 c 0,0 -0.0074933,-0.22399378 0.36145377,-0.19846439 0.36894703,0.02552938 0.40457964,0.12125301 0.44247675,0.30522537 0.0378971,0.18397236 0.047545,0.44779635 -0.0844502,0.49629092 C 0.65971422,0.93420887 0.25831366,1.0629632 0.17930269,0.84980536 0.10029173,0.63664746 0.07222915,0.28266239 0.07222915,0.28266239 Z" />
+      </clipPath>
+    </svg>
+    <svg class="cp">
+       <clipPath id="c4" clipPathUnits="objectBoundingBox">
+        <path d="m 0.05284715,0.30176592 c 0,0 -0.01345809,-0.19151037 0.34905934,-0.24552322 0.27963019,-0.04166317 0.32429663,0.0040142 0.36799049,0.11493087 0.0466063,0.11830979 0.11514998,-0.0143678 0.14154721,0.0441821 0.0263972,0.0585499 0.0507641,0.21342159 0.0226951,0.30994201 -0.028069,0.0965204 -0.0369506,0.20761705 -0.10584497,0.30913758 -0.0688944,0.1015205 -0.28878908,0.14764472 -0.39539699,0.1448476 -0.10660792,-0.002797 -0.28440094,-0.0425429 -0.38180542,-0.21989394 -0.04475848,-0.0814948 0.0017552,-0.457623 0.0017552,-0.457623 z" />
+      </clipPath>
+    </svg>
+    <svg class="cp">
+       <clipPath id="c5" clipPathUnits="objectBoundingBox">
+        <path d="m 0.09724187,0.29286789 c 0,0 0.07575489,-0.22639131 0.28793383,-0.2237234 0.21217895,0.0026679 0.56570864,0.09438634 0.56570864,0.31398105 0,0.21959472 0.022269,0.50600505 -0.29882383,0.52179289 C 0.33096766,0.92070627 0.06514835,0.73865461 0.05894995,0.58538723 0.05275154,0.43211985 0.09724187,0.29286789 0.09724187,0.29286789 Z" />
+      </clipPath>
+    </svg>
+    <svg class="cp">
+       <clipPath id="c6" clipPathUnits="objectBoundingBox">
+        <path d="m 0.07035093,0.30021555 c 0,0 0.3266042,-0.48879669 0.72126772,-0.16007493 C 1.1862812,0.46886238 0.84051545,0.844864 0.60419972,0.85677991 0.38568236,0.86780001 0.08793742,0.92801131 0.03063121,0.47592282 0.02597621,0.43910062 0.03080791,0.37135004 0.07035093,0.30021555 Z" />
+      </clipPath>
+    </svg>
+    <header>
+      <h1>PUCD 2026 Core 2: Interaction Lab</h1>
+      <h2>Mark Beasley ~ <a href="mailto:beasleym@newschool.edu">beasleym@newschool.edu</a></h2>
+      Fridays 9a - 11a &middot; <a href="/assets/img/PUCD2026_Core2_InteractionLab.pdf">Syllabus</a>
+    </header>
+
+    <a href="#ocean" class="ocean-link"><~~ ocean</a>
+
+    <section id="pools">
+      <div class="pool-container week-1">
+        <div class="pool">
+          <h3>Week 1: Skills Review</h3>
+          <table>
+            <tr>
+              <td>Sync</td>
+              <td>
+                <ul>
+                  <li>Class Intro</li>
+                  <li><a href="/weeks/week1/assessment.html">Core 1 Skills Assessment</a></li>
+                  <li><mark>Lecture:</mark> <a href="weeks/week1/html-intro.html">HTML Recap</a></li>
+                </ul>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Async</td>
+              <td>
+                <ul>
+                  <li>HTML & CSS Basics</li>
+                  <li>Embedded Content</li>
+                  <li>Glitch</li>
+                </ul>
+              </td>
+            </tr>
+
+            <tr>
+              <td>homework</td>
+              <td>
+                <p>
+                  <a href="/weeks/week1/homework.html">Start a personal profile for our class.</a>
+                </p>
+              </td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+
+      <!--
+      <div class="pool-container week-2">
+        <div class="pool">
+          <h3>Week 2: Embedded Content</h3>
+          <table>
+            <tr>
+              <td>Sync</td>
+              <td>
+                <ul>
+                  <li><mark>Lecture:</mark> CSS Recap</li>
+                  <li>Add class profile to GitHub</li>
+                </ul>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Async</td>
+              <td>
+                <ul>
+                  <li>GitHub & GitHub Pages</li>
+                  <li>Local Web Development Environment</li>
+                </ul>
+              </td>
+            </tr>
+
+            <tr>
+              <td>homework</td>
+              <td>
+                <p>
+                  Make a playlist with a service or method of your choosing (mp3, youtube, spotify, itunes, etc) and embed it within a new page linked from your profile. Style the page with css in a way that compliments your playlist.
+                </p>
+              </td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+
+      <div class="pool-container week-3">
+        <div class="pool">
+          <h3>Week 3: Typography on the Web</h3>
+          <table>
+            <tr>
+              <td>Sync</td>
+              <td>
+                <ul>
+                  <li><mark>Lecture:</mark> Font Resources and Services</li>
+                </ul>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Async</td>
+              <td>
+                <ul>
+                  <li>Typography on the Web</li>
+                </ul>
+              </td>
+            </tr>
+
+            <tr>
+              <td>homework</td>
+              <td>
+                <p>Add typographic treatment to your class profile and playlist page</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="pool-container week-4">
+        <div class="pool">
+          <h3>Week 4: Responsive Design and CSS</h3>
+          <table>
+            <tr>
+              <td>Sync</td>
+              <td>
+                <ul>
+                  <li><mark>Lecture:</mark> Responsive CSS Recap</li>
+                  <li><mark>Workshop:</mark> CSS animation</li>
+                </ul>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Async</td>
+              <td>
+                <ul>
+                  <li>CSS Layout + Style</li>
+                  <li>Responsive Web Design</li>
+                </ul>
+              </td>
+            </tr>
+
+            <tr>
+              <td>homework</td>
+              <td>
+                <mark>Assignment 1:</mark> Wikipedia clone
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="pool-container week-5">
+        <div class="pool">
+          <h3>Week 5: Structure</h3>
+          <table>
+            <tr>
+              <td>Sync</td>
+              <td>
+                <ul>
+                  <li>Review assignment 1</li>
+                  <strong>Small Group</strong>
+                  <li>Technical Meetings: Studio Project 2</li>
+                </ul>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Async</td>
+              <td>
+                <ul>
+                  <li>Creating structure with HTML and CSS</li>
+                </ul>
+              </td>
+            </tr>
+
+            <tr>
+              <td>homework</td>
+              <td>
+                <mark>Assignment 2:</mark> Wonder Cabinets
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    -->
+    </section>
+    <div id="threshold"></div>
+    <section id="ocean">
+      <pre>_,.='``'-.,_</pre>
+      <pre>_,.='``'-.,_,.-'``'-.,_</pre>
+      <pre>_,.='``'-.,_</pre>
+      <pre>_,.='``'-.,_,.-'``'-.,_</pre>
+      <pre>_,.='``'-.,_</pre>
+      <pre>_,.='``'-.,_</pre>
+      <pre>_,.='``'-.,_</pre>
+      <pre>_,.='``'-.,_</pre>
+      <pre>_,.='``'-.,_</pre>
+      <pre>_,.='``'-.,_</pre>
+      <pre>_,.='``'-.,_</pre>
+      <pre>_,.='``'-.,_</pre>
+      <pre>_,.='``'-.,_</pre>
+
+      <div id="info">
+        <input type="text" id="nickname" placeholder="name..." />
+        <select id="creature-select">
+        </select>
+      </div>
+
+      <div id="signup">
+        <form method="post">
+          <input type="text" name="name" placeholder="enter name..." maxlength="30">
+          <button type="submit">add to waiting list</button>
+        </form>
+        <ol>
+          loading...
+        </ol>
+      </div>
+      <!--/<iframe id="school" src="http://localhost:4000/"></iframe>-->
+    </section>
+  </body>
+</html>

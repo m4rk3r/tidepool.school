@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="30.133379px"
+   height="26.879538px"
+   viewBox="0 0 30.133379 26.879538"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.1 (0767f8302a, 2020-10-17)"
+   sodipodi:docname="stone.svg">
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-38.245427,-85.37706)">
+    <path
+       style="fill:rgb(128, 137, 139);stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 39.684175,94.192379 c 0,0 10.359606,-15.504237 22.87799,-5.077457 12.518385,10.426785 1.551031,22.353228 -5.944751,22.731198 -6.931186,0.3495 -16.375425,2.25935 -18.193124,-12.080469 -0.148066,-1.168086 0.0056,-3.316959 1.259885,-5.573272 z"
+       id="path835"
+       sodipodi:nodetypes="csssc" />
+  </g>
+</svg>

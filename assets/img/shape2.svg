@@ -1,11 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="1px" height="1px" viewBox="0 0 1 1" enable-background="new 0 0 1 1" xml:space="preserve">
-<path fill="#FFFFFF" stroke="#000000" stroke-width="0.01" stroke-miterlimit="10" d="M0.081,0.274c0,0,0.046,0.037,0.05-0.04
-	c0.005-0.078,0.058-0.144,0.122-0.131c0,0,0.204,0.054,0.26,0.009c0.056-0.044,0.215-0.08,0.27-0.053
-	c0.056,0.028,0.182,0.08,0.165,0.253c-0.017,0.173-0.094,0.253-0.097,0.28s0.053,0.09,0.068,0.137
-	c0.014,0.047,0.04,0.24-0.141,0.219c-0.181-0.021-0.473-0.071-0.56-0.175C0.131,0.669,0.084,0.488,0.081,0.419
-	C0.077,0.35,0.014,0.243,0.081,0.274z"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1"
+   height="1"
+   viewBox="0 0 0.26458332 0.26458332"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.1 (0767f8302a, 2020-10-17)"
+   sodipodi:docname="shape2.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="256"
+     inkscape:cx="0.815853"
+     inkscape:cy="0.88699743"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1515"
+     inkscape:window-height="1199"
+     inkscape:window-x="689"
+     inkscape:window-y="139"
+     inkscape:window-maximized="0"
+     units="px" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.00966448;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 0.04687055,0.04918477 c 0,0 0.03030587,-0.06215032 0.09788569,-0.03942334 0.0675798,0.02272699 0.0989491,0.00905562 0.0741526,0.05995842 -0.0247961,0.05090763 -0.00749,0.06964415 0.00749,0.07539548 0.0149799,0.00575 0.0234615,0.0799349 -0.0204877,0.10019319 -0.0439492,0.0202577 -0.13900563,0.026126 -0.16864754,-0.029351 -0.02964192,-0.055476 0.0096065,-0.1667738 0.0096065,-0.1667738 z"
+       id="path833" />
+  </g>
 </svg>

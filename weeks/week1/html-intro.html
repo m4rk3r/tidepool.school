@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML Recap</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Nanum+Gothic);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans';}
+      h1, h2, h3 {
+        font-family: 'Nanum Gothic';
+        font-weight: normal;
+      }
+      .remark-container {
+        background: rgb(237, 238, 229);
+      }
+      .remark-slide-scaler {
+        box-shadow: 0 0 10px #88888857;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .hljs-default .hljs-name { color: #5fa04b; }
+      .remark-inline-code {
+        background: #F0F0F0;
+        color: #5fa04b;
+        padding: 0 3px;
+      }
+
+      a { text-decoration: none; }
+      a:visited { color: blue;}
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: middle center
+
+# ~ HTML Recap ~
+
+---
+class: middle
+
+# html tags
+As you'll recall, html tags are designated with brackets wrapping a tag name:
+
+![html tag](assets/html-tag.png)
+
+The closing tag is prefaced with a `/` slash to indicate the tag is ending.
+
+**note:** There are a few special "void" elements like an `<img>` tag that don't require a closing tag since they can't contain any content..
+
+
+---
+class: middle
+
+To start off an html document, we need to tell the browser that what we are making is actually
+and html page:
+```html
+<!DOCTYPE html>
+<html>
+</html>
+ ```
+
+It's also good practice to specify what language your page will be in, for instance here I'll be using english:
+```html
+<!DOCTYPE html>
+<html lang="en">
+</html>
+```
+
+---
+class: middle
+
+Inside our `html` tag we can add our foundational `head` and `body` tags:
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+  </body>
+</html>
+```
+
+
+---
+class: middle
+
+# comments
+It can be really helpful to leave notes to yourself about what elements are, or how they work, for later reference.<BR>
+
+```html
+<!-- this is a comment -->
+<header>
+  <h1>My Page</h1>
+</header>
+```
+Comments are made by starting with `<!--`
+Anything after that, regardless of how many lines, won't be considered by the browser until you end it with: `-->`
+
+**note:** comments will be visible to anyone viewing the source of  your html ; ~ )
+
+---
+class: middle
+
+# `block` and `inline` tags
+There are two primary types of interaction for tags to keep in mind.
+
+## block tags
+
+Things like `div`, `p`, `section` etc.. `block tags` will take up the full width of the container, pushing other elements to be below them.
+You can also set additional css attributes on them like `width` and `height`.
+
+## inline tags
+
+Are more often used within content, like: `span`, `a`, `strong` and other formatting tags that will flow with content instead of breaking it.
+
+---
+class: middle
+
+## The box model
+Html elements are represented as a boxes, and these boxes have several properties you can
+manipulate with css. The `padding`, `margin`, and `border` control how these boxes interact with neighboring elements.
+![box model](assets/box-model.png)
+
+---
+class: middle
+
+## semantic html
+Using tags that can indicate what kind of content they contain can be a useful way to improve the accessibility and parse-ability of your pages.
+
+These tags that can confer extra meaning are called semantic tags.
+
+---
+class: middle
+
++ **core semantic elements**: `h1`-`h6`, `p`, `main`, `header`, `main`, `footer`, `nav`, `article`, `section`, `aside`, `blockquote`, `img`, `video`, `figure`...
+```html
+  <!-- these are some of the tags you'll use most often -->
+  <h1>The heading tag</h1>
+```
++ **general elements**: `div`, `span`
++ **lists**: ul, ol, dl
+  ```html
+      <h2>Types of Lists:</h2>
+      <dl>
+        <dt>ul tag</dt>
+        <dd>unordered lists (e.g. · bulleted lists)</dd>
+
+        <dt>ol tag</dt>
+        <dd>ordered lists (e.g. 1) 2) 3))</dd>
+
+        <dt>dl tag</dt>
+        <dd>the description list list.. meta</dd>
+      </dl>
+    ```
+---
+class: middle
+
+## links
+  You can use anchor `<a>` tags to link to outside pages or to an element on the same page:
+  ```html
+  <!-- link to another page -->
+  <a href="page-2.html">Go to page two</a>
+  <!-- or to an element down the page -->
+  <a href="#footnote">Go to the footnote</a>
+
+  ...
+
+  <!-- at the bottom of the page -->
+  <footer id="footnote">a note about..</footer>
+
+  <!-- or you can add prefixes to the href to create links that spawn an action depending on the browser and device -->
+  <a href="mailto:myemail@gmail.com">contact me!</a>
+
+  <!-- or on a mobile device..-->
+  <a href="tel:123111111">Give me a call! 📞</a>
+  ```
+---
+class: middle
+
+  ## relative vs absolute links
+  There are two ways to link to outside resources: `relative` and `absolute` links.
+
+---
+  #### absolute
+  Absolute links point to the exact directory or location of the page you are linking to, e.g.
+  ```html
+  <!-- Note the `/` intial slash -->
+  <a href="/my-website/pages/homepage.html">homepage</a>
+  <a href="https://youtube.com/">Youtube</a>
+  ```
+  #### relative
+  Relative links point to another page in relation to the current url:
+  ```html
+  <!-- this links to a pages/ folder within the same directory as the current file.. -->
+  <a href="pages/homepage.html">homepage</a>
+  <!-- the .. means go one directory up and then into the pages directory -->
+  <a href="../pages/homepage.html">homepage</a>
+  ```
+  It's generally better to use absolute urls to ensure links wont break if the url setup changes
+
+???
+remember that the id's of elements must be unique!
+---
+class: middle
+
+  ## image, video, and audio tags
+  There are special tags to incorporate images and other media types on your page:
+  ```html
+  <!-- the alt= property is to provide a description of the image -->
+  <img src="/images/example.png" alt="My Example Image">
+  ```
+  or video:
+  ```html
+  <!-- attributes can be defined of the parent tag to control how the widget displays -->
+  <video controls loop>
+    <!-- multiple types can be supplied, and the browser will choose the best/supported version -->
+    <source src="/videos/my-video.webm" type="video/webm">
+    <source src="/videos/my-video.mp4" type="video/mp4">
+    <!-- you can also supply an optional fallback text when video isn't supported -->
+    Sorry, it appears your browser doesn't support video.
+  </video>
+  ```
+  or audio:
+  ```html
+  <!-- if there's only one source, the source can be supplied within the parent tag too -->
+  <audio src="/songs/my-song.mp3" type="audio/mp3"></audio>
+  ```
+???
+don't forget alt tags! they important for both seo and accessibility
+---
+class: middle
+
+  ## putting it all together
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>My new page</title>
+    </head>
+    <body>
+
+    </body>
+  </html>
+  ```
+    </textarea>
+    <script src="/assets/js/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({ ratio: '4:3', navigation: { scroll: false }});
+    </script>
+  </body>
+</html>

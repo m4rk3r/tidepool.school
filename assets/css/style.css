@@ -1,21 +1,199 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 html {
   font-size: 62.5%;
+  font-family: "Lato";
 }
 
 body {
-  background: rgb(103, 110, 112);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #939fa2;
   font-size: 1.6rem;
+  overflow-x: hidden;
+  margin: 0;
 }
 
 header {
   text-align: center;
+  margin-top: 3rem;
+  color: white;
+}
+
+a {
+  color: white;
 }
 
 h1 {
   color: white;
-  font-family: sans-serif;
-  font-weight: 100;
+  font-weight: 400;
   font-size: 2.8rem;
+  margin-bottom: 0;
+}
+
+h2 {
+  color: white;
+  font-weight: 200;
+  font-size: 1.8rem;
+  margin-top: 1rem;
+}
+
+h3 {
+  color: white;
+  font-weight: 400;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+mark {
+  background-color: white;
+  color: #3456e4;
+}
+
+.airbubble {
+  display: block;
+  border: solid 1px rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  width: 5px;
+  height: 5px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#threshold {
+  background: linear-gradient(-3deg, #3456e4 50%, rgba(0, 0, 0, 0) 80%);
+  height: 40rem;
+  width: 100vw;
+  z-index: 50;
+}
+
+#ocean {
+  height: 100vh;
+  width: 100vw;
+  background: #3456e4;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: none;
+}
+#ocean * {
+  user-select: none;
+}
+#ocean iframe {
+  border: dotted 0.1rem white;
+  width: 40rem;
+  height: 40rem;
+  z-index: 50;
+}
+#ocean #info {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 11rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 45;
+}
+#ocean #nickname {
+  margin-bottom: 0.5rem;
+}
+#ocean #signup {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: dotted 0.1rem white;
+  padding: 1.5rem;
+  background: #3456e4;
+  z-index: 50;
+}
+#ocean #signup form {
+  margin-top: 20px;
+}
+#ocean #signup ol {
+  height: 100%;
+  overflow: auto;
+  flex-grow: 1;
+}
+#ocean #signup li.complete {
+  text-decoration: line-through;
+  opacity: 0.75;
+}
+#ocean #signup li.current {
+  list-style-type: "🐸 ";
+}
+#ocean #signup input, #ocean #signup button {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+#ocean pre {
+  position: absolute;
+  color: white;
+  z-index: 10;
+  pointer-events: none;
+}
+#ocean .event {
+  position: absolute;
+  z-index: 40;
+  transition: opacity 2s ease-in-out;
+  pointer-events: none;
+}
+#ocean .creature {
+  position: absolute;
+  z-index: 50;
+  transition: opacity 2s ease-in-out;
+  padding: 1.5rem;
+  pointer-events: none;
+  /* border: solid 1px #FFF; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#ocean .creature .name {
+  transition: opacity 0.25s ease-in-out;
+  opacity: 1;
+  color: white;
+  font-size: 1rem;
+}
+#ocean .creature.resting .name {
+  opacity: 1;
+}
+#ocean .creature.self {
+  pointer-events: none;
+}
+#ocean .creature span {
+  display: block;
+  /* width: .5rem; */
+  /* height: .5rem; */
+  border-radius: 50%;
+  font-size: 1.5rem;
+  /* background-color: skyblue; */
+}
+#ocean .event.fade, #ocean .creature.fade {
+  opacity: 0;
+}
+
+.ocean-link {
+  position: absolute;
+  right: 30px;
+  top: 10px;
+  color: blue;
+  text-transform: uppercase;
+  text-decoration: none;
+  transform-origin: right;
+  transform: rotateZ(-90deg);
+}
+.ocean-link:hover {
+  color: white;
+}
+
+.stone {
+  position: absolute;
 }
 
 #pools {
@@ -27,18 +205,44 @@ h1 {
 
 .pool {
   position: relative;
-  background-color: blue;
+  background-color: #3456e4;
   min-width: 40rem;
   width: fit-content;
   min-height: 38rem;
   height: fit-content;
   color: white;
   font-size: 1.6rem;
+  padding: 15%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.pool table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+.pool table td {
+  border: solid 0.1rem white;
+  padding: 0.5rem;
+}
+.pool table td:first-of-type {
+  text-align: center;
+}
+.pool table td ul {
+  text-align: left;
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+}
+.pool table tr:last-of-type td {
+  border: dashed 0.1rem white;
 }
 
 .cp {
   position: absolute;
-  width: 0; height: 0;
+  width: 0;
+  height: 0;
 }
 
 .pool-container {
@@ -46,20 +250,20 @@ h1 {
   justify-content: center;
   align-items: center;
 }
+
 .week-1 {
   grid-column: 1;
 }
 .week-1 .pool {
-  clip-path: url(#c1);
-  padding: 10%;
+  clip-path: url(#c6);
 }
+
 .week-2 {
   grid-column: 2;
   grid-row: 2;
 }
 .week-2 .pool {
   clip-path: url(#c2);
-  padding: 10%;
 }
 
 .week-3 {
@@ -68,14 +272,32 @@ h1 {
 }
 .week-3 .pool {
   clip-path: url(#c1);
-  padding: 10%;
+}
+
+.week-4 {
+  grid-column: 2;
+  grid-row: 4;
+}
+.week-4 .pool {
+  clip-path: url(#c3);
+}
+
+.week-5 {
+  grid-column: 1;
+  grid-row: 5;
+}
+.week-5 .pool {
+  clip-path: url(#c4);
 }
 
 @media (max-width: 900px) {
   #pools {
     grid-template-columns: 1fr;
   }
+
   .pool-container {
     grid-column: 1;
   }
 }
+
+/*# sourceMappingURL=style.css.map */

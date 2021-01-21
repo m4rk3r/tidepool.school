@@ -1,0 +1,57 @@
+HTML, HEAD, BODY tags
+
+H1 versus P tags
+
+Ordered and Unordered Lists
+
+Linking to a webpage
+
+IMG tag
+
+What is a DIV?                                         
+
+The Box Model
+
+Linking a stylesheet
+
+What is a CSS class?
+
+How to specify a color in CSS
+
+Relative Positioning
+
+Absolute Positioning
+
+Fixed Positioning
+
+Flexbox
+
+Float
+
+Media Queries
+
+What is the Document Object Model (DOM)?
+
+What is JavaScript? When do you use it?
+
+Linking a JavaScript file to an HTML file
+
+What is jQuery?
+
+Variable
+
+Arithmetic Operators (+ - * / %)
+
+Comparison Operators (&& |== < > <= >=)
+
+IF THEN conditional statements
+
+Arrays
+
+FOR Loop
+
+Function
+
+Using event handlers such as ‘click’ on an HTML element
+
+Add or remove a CSS class using JavaScript/jQuery

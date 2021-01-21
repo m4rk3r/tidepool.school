@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="30.119772mm"
+   height="25.919237mm"
+   viewBox="0 0 30.119772 25.919237"
+   version="1.1"
+   id="svg1535"
+   inkscape:version="1.0.1 (0767f8302a, 2020-10-17)"
+   sodipodi:docname="stone10.svg">
+  <defs
+     id="defs1529" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="11.2"
+     inkscape:cx="39.328151"
+     inkscape:cy="55.376293"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1515"
+     inkscape:window-height="1199"
+     inkscape:window-x="241"
+     inkscape:window-y="120"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata1532">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-57.908221,-52.195466)">
+    <path
+       style="fill:rgb(128, 137, 139);stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 61.128543,66.007251 c -0.616441,-2.211058 -0.206334,-2.138107 1.327828,-2.897999 1.534157,-0.759893 6.93822,-2.576242 8.744851,-2.203563 1.80663,0.372679 3.011154,0.535995 3.36075,1.377134 0.349596,0.841139 -0.206444,1.58564 -1.53322,2.253813 -1.326777,0.668174 -4.582944,1.490472 -6.406174,2.127402 -0.574499,0.200696 -2.998942,0.725494 -4.007822,0.474081 -1.00888,-0.251414 -1.486213,-1.130868 -1.486213,-1.130868 z"
+       id="path2294"
+       sodipodi:nodetypes="ccsssssc" />
+  </g>
+</svg>

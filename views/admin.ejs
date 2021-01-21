@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      li.complete {
+        text-decoration: line-through;
+      }
+      li.current {
+        color: green;
+        font-style: italic;
+      }
+    </style>
+    <script type="text/javascript" src="/assets/js/socket.io.js"></script>
+    <script type="text/javascript" src="/assets/js/admin.js" defer></script>
+  </head>
+  <body>
+    <ol>
+    <% people.forEach(person => { %>
+      <% if (person.complete) { %>
+        <li class="complete"><%= person.name %> <button data-action="remove" data-id="<%= person.id %>" type="button">Remove</button></li>
+      <% } else if (person.current) { %>
+        <li class="current">
+          <%= person.name %>
+          <button data-action="current" data-id="<%= person.id %>" type="button">Mark Current</button> /
+          <button data-action="complete" data-id="<%= person.id %>" type="button">Mark Complete</button> /
+          <button data-action="remove" data-id="<%= person.id %>" type="button">Remove</button>
+        </li>
+      <% } else { %>
+        <li>
+          <%= person.name %>
+          <button data-action="current" data-id="<%= person.id %>" type="button">Mark Current</button> /
+          <button data-action="complete" data-id="<%= person.id %>" type="button">Mark Complete</button> /
+          <button data-action="remove" data-id="<%= person.id %>" type="button">Remove</button>
+        </li>
+      <% } %>
+    <% }) %>
+    </ol>
+
+    <BR><BR>
+    <h2>Skills Assessment</h2>
+    <textarea rows="20" cols="100" ></textarea>
+  </body>
+</html>
