@@ -64,7 +64,7 @@ let offsetY = 15 / window.innerHeight * 100;
 
 const creatureExpiry = {};
 const creatureIcons = {
-  wale: '🐳',
+  whale: '🐳',
   dolphin: '🐬',
   fish: '🐟',
   tropical_fish: '🐠',
@@ -80,7 +80,7 @@ const creatureIcons = {
   shrimp: '🦐',
 };
 const creatureEvent = {
-  wale: '🌊',
+  whale: '🌊',
   dolphin: '💦',
   fish: '<span class="airbubble"></span>',
   tropical_fish: '<span class="airbubble"></span>',

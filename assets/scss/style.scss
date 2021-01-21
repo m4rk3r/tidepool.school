@@ -117,7 +117,6 @@ mark {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: dotted .1rem white;
     padding: 1.5rem;
     background: $blue;
     z-index: 50;
@@ -137,10 +136,19 @@ mark {
     li.current {
       list-style-type: '🐸 ';
     }
-    input,button {
+    input {
       padding: 5px;
-      border-radius: 5px;
-      border: none;
+      border: solid 1px white;
+      background: transparent;
+      color: white;
+    }
+    button {
+      padding: 5px;
+
+      border: solid 1px white;
+      background: transparent;
+      color: white;
+      cursor: pointer;
     }
   }
 

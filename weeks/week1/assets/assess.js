@@ -30,7 +30,7 @@ const creatureIcons = {
   ladybug: '🐞',
   bug: '🐛',
   snail: '🐌',
-  wale: '🐳',
+  whale: '🐳',
   dolphin: '🐬',
   fish: '🐟',
   tropical_fish: '🐠',
