@@ -47,7 +47,7 @@ const creatureIcons = {
 };
 
 const creatures = Object.keys(creatureIcons);
-let nickname = '';
+let nickname = window.localStorage.getItem('tidepool-nickname') || '';
 
 let creature = creatures[Math.round(Math.random() * (creatures.length-1))];
 const creatureSelect = document.querySelector('#creature-select');
@@ -65,6 +65,7 @@ document.addEventListener('mousemove', (evt) => {
 
 document.querySelector('#nickname').addEventListener('input', evt => {
   nickname = evt.target.value;
+  window.localStorage.setItem('tidepool-nickname', nickname);
 });
 
 

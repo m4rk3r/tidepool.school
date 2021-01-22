@@ -96,7 +96,7 @@ const creatureEvent = {
   shrimp: '<span class="airbubble"></span>'
 };
 const creatures = Object.keys(creatureIcons);
-let nickname = '';
+let nickname = window.localStorage.getItem('tidepool-nickname') || '';
 
 let creature = creatures[Math.round(Math.random() * (creatures.length-1))];
 const creatureSelect = document.querySelector('#creature-select');
@@ -164,6 +164,7 @@ ocean.addEventListener('mouseup', (evt) => {
 
 document.querySelector('#nickname').addEventListener('input', evt => {
   nickname = evt.target.value;
+  window.localStrage.setItem('tidepool-nickname', nickname);
 });
 
 
