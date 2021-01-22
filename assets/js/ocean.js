@@ -164,7 +164,7 @@ ocean.addEventListener('mouseup', (evt) => {
 
 document.querySelector('#nickname').addEventListener('input', evt => {
   nickname = evt.target.value;
-  window.localStrage.setItem('tidepool-nickname', nickname);
+  window.localStorage.setItem('tidepool-nickname', nickname);
 });
 
 
