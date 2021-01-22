@@ -4,29 +4,19 @@ H1 versus P tags
 
 Ordered and Unordered Lists
 
-Linking to a webpage
-
-IMG tag
-
-What is a DIV?                                         
-
 The Box Model
 
 Linking a stylesheet
 
-What is a CSS class?
+The difference between a class and id in CSS
 
 How to specify a color in CSS
 
-Relative Positioning
-
-Absolute Positioning
-
-Fixed Positioning
+Relative, Absolute, and Fixed Positioning
 
 Flexbox
 
-Float
+CSS grid
 
 Media Queries
 
@@ -36,17 +26,13 @@ What is JavaScript? When do you use it?
 
 Linking a JavaScript file to an HTML file
 
-What is jQuery?
-
 Variable
-
-Arithmetic Operators (+ - * / %)
-
-Comparison Operators (&& |== < > <= >=)
 
 IF THEN conditional statements
 
-Arrays
+Comparison Operators (&& |== < > <= >=)
+
+Arrays and Objects
 
 FOR Loop
 
@@ -54,4 +40,4 @@ Function
 
 Using event handlers such as ‘click’ on an HTML element
 
-Add or remove a CSS class using JavaScript/jQuery
+Add or remove a CSS class using JavaScript
