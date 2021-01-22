@@ -98,13 +98,15 @@ const creatureEvent = {
 const creatures = Object.keys(creatureIcons);
 let nickname = window.localStorage.getItem('tidepool-nickname') || '';
 
-let creature = creatures[Math.round(Math.random() * (creatures.length-1))];
+const storedCreature = window.localStorage.getItem('tidepool-creature');
+let creature = storedCreature && creatures.includes(storedCreature) ? storedCreature : creatures[Math.round(Math.random() * (creatures.length-1))];
 const creatureSelect = document.querySelector('#creature-select');
 creatures.forEach(c => creatureSelect.innerHTML += `<option value="${c}" ${ creature === c ? 'selected="true"' : ''}>${creatureIcons[c]} ${c}</option>`);
 
 creatureSelect.addEventListener('click', (evt) => evt.stopPropagation());
 creatureSelect.addEventListener('change', (evt) => {
   creature = evt.target.value;
+  window.localStorage.setItem('tidepool-creature', creature);
 });
 
 const sendMouseAction = () => {
