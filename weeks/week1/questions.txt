@@ -10,13 +10,11 @@ Linking a stylesheet
 
 The difference between a class and id in CSS
 
-How to specify a color in CSS
-
 Relative, Absolute, and Fixed Positioning
 
-Flexbox
+CSS animations
 
-CSS grid
+Flexbox and grid in CSS
 
 Media Queries
 
