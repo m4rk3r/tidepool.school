@@ -78,6 +78,7 @@ mark {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   cursor: none;
 }
 #ocean * {
@@ -304,6 +305,19 @@ mark {
 
   .pool-container {
     grid-column: 1;
+  }
+  .pool-container .pool {
+    min-width: auto;
+    padding: 20%;
+  }
+}
+@media (max-width: 400px) {
+  #ocean #info {
+    display: none;
+  }
+
+  .hidden-xs {
+    display: none;
   }
 }
 
