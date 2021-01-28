@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSS Recap</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Nanum+Gothic);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans';}
+      h1, h2, h3 {
+        font-family: 'Nanum Gothic';
+        font-weight: normal;
+      }
+      .remark-container {
+        background: rgb(237, 238, 229);
+      }
+      .remark-slide-scaler {
+        box-shadow: 0 0 10px #88888857;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .hljs-default .hljs-name { color: #5fa04b; }
+      .hljs-default .hljs-string, .hljs-default .hljs-selector-id, .hljs-default .hljs-selector-class {
+        color: rgb(198, 122, 22);
+      }
+      .hljs-default .hljs-selector-pseudo {
+        color: rgb(30, 115, 203);
+      }
+      .remark-inline-code {
+        background: #F0F0F0;
+        color: #5fa04b;
+        padding: 0 3px;
+      }
+
+      .footnote {
+        position: absolute;
+        bottom: 2%;
+        font-size: 12px;
+        left: 2%;
+        font-style: italic;
+        color: rgb(108, 108, 108);
+      }
+
+      a { text-decoration: none; }
+      a:visited { color: blue;}
+
+      /* for slide examples */
+      #box1 {
+        margin: 15px;
+        border: dashed 1px green;
+      }
+      #box2 {
+        padding: 15px;
+        border: solid 1px orange;
+      }
+      .box {
+        color: blue;
+      }
+
+      #box4 {
+        border: solid 1px #ccc;
+        width: 300px;
+        padding: 15px 0;
+      }
+
+      #box4 h2 {
+        border-bottom: solid 2px green;
+        width: 25%;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .example-link:link {
+        color: black;
+      }
+      .example-link:visited {
+        color: black;
+      }
+      .example-link:hover {
+        color: blue;
+      }
+      .example-link:active {
+        color: blue;
+      }
+      #notice {
+        display: inline-block;
+        position: relative;
+        padding: 50px;
+        background: rgb(245, 187, 127);
+      }
+      .x-icon {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        line-height: 1;
+      }
+      #box5 {
+        width: 50px;
+        height: 50px;
+        background-color: green;
+      }
+      #box5:hover {
+        background-color: orange;
+      }
+
+      #square {
+        width: 50px;
+        height: 50px;
+        background-color: green;
+        transition: background-color .5s ease-in-out;
+      }
+      #square:hover {
+        background-color: orange;
+      }
+
+      #alignment-example h1 {
+        text-align: center;
+      }
+      #alignment-example p {
+        text-align: justify;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: middle center
+
+# ~ CSS Recap ~
+
+---
+class: middle
+background-image: url(assets/waterfallorgasm-large.gif)
+
+## `CSS ~ cascading style sheets`
+
+.footnote[GIF by Faith Holland]
+
+---
+class: middle
+
+## How do you add styles to html documents?
+There are several ways to apply css styles to html pages:
+- inline
+- embedded style tags
+- linked stylesheets
+
+---
+class: middle
+
+#### inline
+```html
+<a href="profile.html" style="color: red;">my profile</a>
+```
+
+Recall that inline styles take one of the highest precedence in the `cascade`, so they are the least ideal.
+
+---
+class: middle
+
+#### embedded
+```html
+<head>
+  <style>
+    p {
+      color: turquoise;
+    }
+  </style>
+</head>
+```
+Embedded styles are good for quick experimentation, but become hard to maintain as the amount of styles you create grows
+
+---
+class: middle
+
+#### linked
+```html
+<head>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+```
+The optimal way to include your styles is to use the link tag to include from a separate file.
+
+---
+class: middle
+
+## How to apply styles to elements
+There are various ways to target elements in order to apply styles to them, called `selectors`.
+
+---
+class: middle
+
+#### ids
+There can only be one id on a page, so ids are usually for singular or foundational elements
+
+```CSS
+#profile {
+  background: blue;
+}
+```
+```html
+<div id="profile">...</div>
+```
+
+#### classes
+Classes are great for items that repeat or compound styles
+```CSS
+.red {
+  color: red;
+}
+.bold {
+  font-weight: bold;
+}
+```
+```html
+<span class="red bold">danger!</span>
+```
+
+---
+class: middle
+
+#### element selectors
+Or you can select for tags broadly
+
+```CSS
+p {
+  color: grey;
+}
+```
+```html
+<p>...</p>
+```
+
+---
+class: middle
+
+The `cascade` in css refers to the priority in which style rules are applied to a html document
+
+several factors to determine priority, loosely from greatest to least:
+1.  the `!important` flag on a css property (e.g. `color: red !important;`)
+1.  inline styles (e.g. `style="color: red;"`)
+1.  `#[id]` ID selectors (e.g. `#first-pg { color: red; }`)
+1.  `.[class]` class selectors (e.g. `.graph { color: red; }`)
+1.  type selectors (e.g. `p { color: red; }`)
+
+---
+class: middle
+
+## Getting specific with `selectors`
+You can also select the children — the elements within elements — with css
+```html
+<style type="text/css">
+  #root p {
+    color: #333;
+  }
+</style>
+
+<article id="root">
+  <img src="assets/300px-River_of_Blue.jpg" alt="Photo demonstrating crown shyness">
+  <h1>The phenomenon of crown shyness</h1>
+  <!-- this will receive custom style -->
+  <p>
+    Crown Shyness is a phenomenon observed in some tree species, in which the
+    crowns of fully stocked trees do not touch each other, forming a canopy
+    with channel-like gaps.
+  </p>
+</article>
+<footer>
+  <!-- this wont receive custom style -->
+  <p>Please support our blog!</p>
+</footer>
+```
+
+---
+class: middle
+
+## pseduo-classes
+`pseduo-classes` are keywords added to the end of selectors to target a special state of selected elements.
+
+For example, we can use pseudo-classes to style the various different states of an anchor tag:
+```html
+<style type="text/css">
+  a:link {
+    color: black;
+  }
+  a:visited {
+    color: black;
+  }
+  a:hover {
+    color: blue;
+  }
+  a:active {
+    color: blue;
+  }
+</style>
+
+<a href="profile.html">Go to profile</a>
+```
+<a href="#22" class="example-link">Go to profile</a>
+
+---
+class: middle
+
+## the box model
+Html elements are represented as a boxes, and these boxes have several properties you can
+manipulate with css. The `padding`, `margin`, and `border` control how these boxes interact with neighboring elements.
+![box model](assets/box-model.png)
+
+---
+class: middle
+
+#### box model demo
+```html
+<style type="text/css">
+  #box1 {
+    margin: 15px;
+    border: dashed 1px green;
+  }
+  #box2 {
+    padding: 15px;
+    border: solid 1px orange;
+  }
+  .box {
+    color: blue;
+  }
+</style>
+...
+<div id="box1">box 1</div>
+<div id="box2">box 2</div>
+<!-- inline elements, so they'll sit right next to each other and flow -->
+<span class="box">box a</span>
+<span class="box">box b</span>
+```
+
+<div id="box1">box 1</div>
+<div id="box2">box 2</div>
+<span class="box">box a</span>
+<span class="box">box b</span>
+
+---
+class: middle
+
+## units & sizing
+Sizing and the units you choose to use with css can become a complex topic.
+There are a few simple units we can use to get started:
+
+`px` = Pixels, `%` = percentage of container
+
+```html
+<style media="screen">
+  #box4 {
+    border: solid 1px #ccc;
+    width: 300px;
+    padding: 15px 0 15px 0; /* this is top, right, bottom, left */
+  }
+
+  #box4 h2 {
+    border-bottom: solid 2px green;
+    width: 25%;
+    margin: 0 auto; /* like padding above, but condensed top/bottom, left/right */
+    text-align: center;
+  }
+</style>
+
+<section id="box4">
+  <h2>Hiii</h2>
+</section>
+```
+<section id="box4">
+  <h2>Hiii</h2>
+</section>
+
+---
+class: middle
+
+## Sidebar about `auto`
+With the last example, we used `auto` to have the browser determine the margin for us.
+
+When an element has a defined width `auto` can be used to have the browser calculate the
+available space and fill it out.
+
+---
+class: middle
+
+## Aligning text
+You can control the alignment of text within an element by using the [text-align](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align) css property
+```html
+<style type="text/css">
+  h1 {
+    text-align: center;
+  }
+  p {
+    text-align: justify;
+  }
+</style>
+
+<h1>My Blog</h1>
+<p>This is a little post introducing you all to my blog : )</p>
+```
+<div id="alignment-example">
+  <h1>My Blog</h1>
+  <p>This is a little post introducing you all to my blog : )</p>
+</div>
+---
+class: middle
+
+## Positioning
+You can alter the positioning of elements within the page by using the [position](https://www.w3schools.com/cssref/pr_class_position.asp) property
+
+`position` has several possible values, but the most commonly used are `relative`, `absolute`, `fixed`, and `sticky`
+
+---
+class: middle
+
+## Position `absolute` and `relative`
+position `absolute` will position an element absolutely to the nearest `relative` positioned containing element
+
+```html
+<style type="text/css">
+  #notice {
+    display: inline-block;
+    position: relative;
+    padding: 50px;
+    background: rgb(245, 187, 127);
+  }
+  .x-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+</style>
+<!-- oops, this is outside the position: relative element, so it'll be positioned in relation to body tag -->
+<span class="x-icon">x</span>
+<div id="notice">
+  <span class="x-icon">x</span>
+  This is a notice!
+</div>
+```
+
+<span class="x-icon">x</span>
+<div id="notice">
+  <span class="x-icon">x</span>
+  This is a notice!
+</div>
+
+---
+class: middle
+
+## position `fixed`
+Fixed position locks the element within the browser viewport regardless of scroll position
+
+```html
+<style type="text/css">
+  nav {
+    position: fixed;
+    top: 0;
+  }
+</style>
+<nav>
+  <a href="/home">Home</a>
+  <a href="/blog">blog</a>
+</nav>
+```
+
+---
+class: middle
+
+## Adding basic interactivity to css
+pesduo-classes can also be applied to elements to add interactivity
+
+```html
+<style type="text/css">
+
+  /* set the initial box color to green */
+  #box5 {
+    width: 50px;
+    height: 50px;
+    background-color: green;
+  }
+  /* and then use the :hover keyword to change it to orange */
+  #box5:hover {
+    background-color: orange;
+  }
+</style>
+
+<div id="box5"></div>
+```
+<div id="box5"></div>
+
+---
+class: middle
+
+## Smooth interaction
+We can quickly start to add smooth interactions by using the css property `transition`
+
+```html
+<style type="text/css">
+  /* set the initial box color to green */
+  #square {
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    transition: background-color .5s ease-in-out;
+  }
+  /* and then use the :hover keyword to change it to orange */
+  #square:hover {
+    background-color: orange;
+  }
+</style>
+
+<div id="square"></div>
+```
+<div id="square"></div>
+
+
+---
+class: middle
+
+Transition supports lots of different css properties which allows for adding
+easy expressive animations without much work
+
+```html
+<style type="text/css">
+  /* set the initial box color to green */
+  #square2 {
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    border: solid 1px orange;
+    transition: background-color .5s ease-in-out, border-width .5s ease-in-out;
+  }
+  /* and then use the :hover keyword to change it to orange */
+  #square2:hover {
+    background-color: orange;
+    border-width: 3px;
+  }
+</style>
+
+<div id="square2"></div>
+```
+<div id="square2"></div>
+
+
+    </textarea>
+    <script src="/assets/js/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({ ratio: '4:3', navigation: { scroll: false }});
+
+      var links = document.links;
+
+      for (var i = 0, linksLength = links.length; i < linksLength; i++) {
+         if (links[i].hostname != window.location.hostname) {
+             links[i].target = '_blank';
+         }
+      }
+    </script>
+  </body>
+</html>
