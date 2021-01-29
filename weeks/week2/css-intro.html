@@ -132,6 +132,9 @@
       #square2:hover {
         border-width: 25px;
       }
+      .groceries li:last-child {
+        color: brown;
+      }
     </style>
   </head>
   <body>
@@ -309,6 +312,36 @@ For example, we can use pseudo-classes to style the various different states of 
 <a href="profile.html">Go to profile</a>
 ```
 <a href="#22" class="example-link">Go to profile</a>
+
+---
+class: middle
+
+## pseduo-classes continued
+
+They're a bit more advanced, but I also wanted to mention some [pseduo-class selector tools](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes#tree-structural_pseudo-classes) you can
+use to target specific elements, like the `:last-child` or `:first-of-kind`
+
+```html
+<style type="text/css">
+  .groceries li:last-child {
+    color: brown;
+  }
+</style>
+
+<h2>grocery list</h2>
+<ul>
+  <li>milk</li>
+  <li>eggs</li>
+  <li>chocolate</li>
+</ul>
+```
+<h2>grocery list</h2>
+<ul class="groceries">
+  <li>milk</li>
+  <li>eggs</li>
+  <li>chocolate</li>
+</ul>
+
 
 ---
 class: middle
