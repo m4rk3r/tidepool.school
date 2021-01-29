@@ -120,6 +120,18 @@
       #alignment-example p {
         text-align: justify;
       }
+      #square2 {
+        width: 50px;
+        height: 50px;
+        background-color: rgb(127, 174, 212);
+        border: solid 1px rgb(147, 137, 47);
+        box-sizing: border-box;
+        transition: border-width .5s ease-in-out;
+      }
+      /* and then use the :hover keyword to change it to orange */
+      #square2:hover {
+        border-width: 25px;
+      }
     </style>
   </head>
   <body>
@@ -516,8 +528,8 @@ We can quickly start to add smooth interactions by using the css property `trans
 ---
 class: middle
 
-Transition supports lots of different css properties which allows for adding
-easy expressive animations without much work
+Transition supports [lots of different css properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties) which enables adding
+easy expressive animations with little code.
 
 ```html
 <style type="text/css">
@@ -525,20 +537,22 @@ easy expressive animations without much work
   #square2 {
     width: 50px;
     height: 50px;
-    background-color: green;
-    border: solid 1px orange;
-    transition: background-color .5s ease-in-out, border-width .5s ease-in-out;
+    background-color: rgb(127, 174, 212);
+    border: solid 1px rgb(147, 137, 47);
+    box-sizing: border-box;
+    transition: border-width .5s ease-in-out;
   }
   /* and then use the :hover keyword to change it to orange */
   #square2:hover {
-    background-color: orange;
-    border-width: 3px;
+    border-width: 25px;
   }
 </style>
 
 <div id="square2"></div>
 ```
+<div class="square2-wrapper">
 <div id="square2"></div>
+</div>
 
 
     </textarea>

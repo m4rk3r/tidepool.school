@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      body {
+        background: rgb(232, 252, 226);
+        font-family: "Lato";
+        margin: 15px;
+      }
+      .info {
+        max-width: 75vw;
+        font-size: 20px;
+        margin-bottom: 50px;
+      }
+
+      li {
+        margin-bottom: 30px;
+      }
+
+      #web-ring-map {
+        position: relative;
+        width: 800px;
+        height: 800px;
+        margin: 0 auto;
+      }
+      .student {
+        position: absolute;
+        font-size: 10px;
+        text-decoration: none;
+        transform-origin: center;
+        color: black;
+        z-index: 50;
+        background: rgb(232, 252, 226);
+      }
+      .student:hover {
+        color: blue;
+      }
+      h3  {
+        text-align: center;
+        color: rgb(66, 158, 78);
+      }
+      #canvas {
+        position: absolute;
+      }
+
+      .underline {
+        text-decoration: underline;
+      }
+
+      .main-nav {
+        position: fixed;
+        top: 1.5rem;
+        right: 1.5rem;
+      }
+      .main-nav a {
+        transition: color 125ms ease-in-out;
+        color: #f2950c;
+        font-weight: bold;
+        text-decoration: none;
+        padding: .1rem;
+      }
+      code {
+        display: block;
+        background: rgba(255,255,255, 0.5);
+        white-space: pre;
+        margin-bottom: 15px;
+        border: solid 1px rgb(171, 201, 162);
+      }
+
+      .code {
+        margin: 50px 0;
+      }
+
+    </style>
+    <script type="text/javascript" src="assets/webring.js" defer></script>
+  </head>
+  <body>
+    <nav class="main-nav"><a href="/">🏠 index</a></nav>
+
+    <h1>Week 2 Homework: Style class profile and add playlist</h1>
+    <main>
+      <section class="info">
+        <ol>
+          <li>Add CSS styling to your profile by creating a <mark>style.css</mark> and link it to your profile.</li>
+          <li>Make a playlist with an embeddable service or method of your choosing (mp3, youtube, spotify, itunes, etc) and <a href="https://vimeo.com/showcase/8025633/video/502386717" target="_blank">embed&nbsp;it</a> within a new page linked from your profile. Style the page with CSS in a way that compliments your playlist.</li>
+          <li>We're going to build a <a href="https://en.wikipedia.org/wiki/Webring" target="_blank">web ring</a> for our class -- find your email below and email the link to your github pages profile to the person you're arrow points to. <span class="underline">Please also <a href="mailto:beasleym@newschool.edu" target="_blank">email me</a> a link to you profile.</span></li>
+          <li>Use the <a href="#profile-code">code below</a> to add your classmate's link to your profile</li>
+        </ol>
+      </section>
+      <h3>Our Class Webring</h3>
+      <div id="web-ring-map">
+        <canvas id="canvas" width="800" height="800"></canvas>
+      </div>
+      <section class="code">
+        <h2 id="profile-code">Adding the link</h2>
+        <p>Use the following code to add your classmate's link to your profile. Replace <mark>https://their-name.github.io</mark> with the profile link you received form your partner.</p>
+        html:
+        <code>
+  &lt;nav id="web-ring"&gt;
+    &lt;a href="https://their-name.github.io"&gt;https://their-name.github.io&lt;/a&gt;
+  &lt;/nav&gt;
+          </nav>
+        </code>
+        css:
+        <code>
+  #web-ring {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    padding: 15px;
+    background-color: rgb(52, 86, 228);
+    border: solid 2px white;
+    font-family: sans-serif;
+  }
+
+  #web-ring a:link {
+    color: white;
+    text-decoration: none;
+  }
+
+  #web-ring a:hover {
+    text-decoration: underline;
+  }
+        </code>
+
+      </section>
+    </main>
+  </body>
+</html>
