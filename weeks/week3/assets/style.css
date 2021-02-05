@@ -2,6 +2,7 @@
 
 html {
   font-family: "Lato";
+  min-height: 100%;
 }
 
 body {
