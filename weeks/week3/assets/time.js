@@ -10,7 +10,7 @@ setInterval(() => {
 const trs = document.querySelectorAll('tr');
 
 let h = 9;
-let m = 30;
+let m = 20;
 
 trs.forEach((tr) => {
   const td = tr.querySelector('td:last-child');
