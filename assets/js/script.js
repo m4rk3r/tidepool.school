@@ -21,3 +21,21 @@ for (i = 0; i < stones; i++) {
   s.style.zIndex = 0;
   document.body.appendChild(s);
 }
+
+document.addEventListener('keydown', (evt) => {
+  if (evt.altKey && evt.key === 'u') {
+    const url = prompt('url?');
+    const wrapper = document.querySelector('#playlist-wrapper');
+    wrapper.querySelector('.urlbar').innerHTML = `🔊&nbsp;&nbsp;${url}`;
+    wrapper.classList.add('show');
+    wrapper.querySelector('iframe').src = url;
+    console.log(url);
+  }
+
+  if (evt.altKey && evt.key === 'm') {
+    const msg = prompt('msg?');
+    const msgBox = document.querySelector('#msg');
+    msgBox.innerHTML = msg;
+    msgBox.classList.add('show');
+  }
+});

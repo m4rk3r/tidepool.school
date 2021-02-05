@@ -84,11 +84,53 @@ mark {
 #ocean * {
   user-select: none;
 }
-#ocean iframe {
-  border: dotted 0.1rem white;
-  width: 40rem;
-  height: 40rem;
-  z-index: 50;
+#ocean #msg {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  z-index: 100;
+  background: #3456e4;
+  padding: 30px;
+  color: white;
+  min-width: 200px;
+  max-width: 300px;
+  min-height: 50px;
+  border: solid 1px white;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.8rem;
+  display: none;
+}
+#ocean #msg.show {
+  display: flex;
+}
+#ocean #playlist-wrapper {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: calc(1024px * 0.25);
+  z-index: 100;
+  display: none;
+}
+#ocean #playlist-wrapper .urlbar {
+  color: white;
+  padding: 5px;
+  background: #3456e4;
+  font-size: 1.4rem;
+  background: #3456e4;
+  border: solid 1px white;
+  margin-bottom: 5px;
+}
+#ocean #playlist-wrapper .wrapper {
+  transform: scale(0.25, 0.25);
+  transform-origin: top left;
+}
+#ocean #playlist-wrapper .wrapper iframe {
+  width: 1024px;
+  height: 768px;
+}
+#ocean #playlist-wrapper.show {
+  display: block;
 }
 #ocean #info {
   position: absolute;

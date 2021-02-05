@@ -93,11 +93,58 @@ mark {
     user-select: none;
   }
 
-  iframe {
-    border: dotted .1rem white;
-    width: 40rem;
-    height: 40rem;
-    z-index: 50;
+  #msg {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 100;
+    background: $blue;
+    padding: 30px;
+    color: white;
+    min-width: 200px;
+    max-width: 300px;
+    min-height: 50px;
+    border: solid 1px white;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.8rem;
+    display: none;
+  }
+  #msg.show {
+    display: flex;
+  }
+
+  #playlist-wrapper {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: calc(1024px * 0.25);
+    z-index: 100;
+    display: none;
+
+    .urlbar {
+      color: white;
+      padding: 5px;
+      background: $blue;
+      font-size: 1.4rem;
+      background: $blue;
+      border: solid 1px white;
+      margin-bottom: 5px;
+    }
+
+    .wrapper {
+      transform: scale(0.25, 0.25);
+      transform-origin: top left;
+
+      iframe {
+        width: 1024px;
+        height: 768px;
+      }
+    }
+
+    &.show {
+      display: block;
+    }
   }
 
   #info {

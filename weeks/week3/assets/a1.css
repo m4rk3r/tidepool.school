@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+html {
+  height: 100%;
+  font-family: "Lato";
+  font-size: 62.5%;
+}
+
+body {
+  background: hsl(270, 81.3%, 93.7%);
+  margin: 15px;
+  font-size: 1.6rem;
+}
+
+h1 {
+  color: black;
+  font-size: 3.5rem;
+}
+
+#wiki-logo {
+  background-image: url('https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
+  background-repeat: repeat-x;
+  background-size: contain;
+  height: 8rem;
+  position: relative;
+  margin: 5rem 0;
+}
+#wiki-logo:after {
+  content: '';
+  position: absolute;
+  height: 8rem;
+  width: 30rem;
+  background: linear-gradient(90deg, hsla(270, 81.3%, 93.7%, 0), hsla(270, 81.3%, 93.7%, 1) 88%);
+  right: 0;
+  top: 0;
+}
+
+img {
+  width: 75px;
+  margin: 0 auto;
+}
+
+
+mark {
+  background: rgb(132, 213, 140);
+  padding: 0 2px;
+  color: white;
+}
+
+.main-nav {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+.main-nav a {
+  transition: color 125ms ease-in-out;
+  color: blue;
+  font-weight: bold;
+  text-decoration: none;
+  padding: .1rem;
+  font-size: 1.8rem;
+}
+
+p {
+  font-size: 2rem;
+}
+p.brief {
+  padding-bottom: 1rem;
+  border-bottom: solid 2px black;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+
+.underline {
+  text-decoration: underline;
+}
+
+ul.requirements {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 3rem;
+}
+
+.wiki-pages {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 3rem;
+  width: max-content;
+}
+
+blockquote {
+  background: hsl(270, 81.3%, 95.7%);
+  padding: 30px;
+  margin: 0;
+}
+aside {
+  font-style: italic;
+  color: grey;
+  font-size: 1.4rem;
+  margin-top: 5px;
+}
+
+main {
+  max-width: 1268px;
+}
+
+hr {
+  border: none;
+  background: black;
+  height: 2px;
+  margin: 20px 0;
+}
