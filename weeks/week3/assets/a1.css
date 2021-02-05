@@ -51,6 +51,7 @@ mark {
   position: fixed;
   top: 1.5rem;
   right: 1.5rem;
+  z-index: 100;
 }
 .main-nav a {
   transition: color 125ms ease-in-out;
@@ -102,7 +103,8 @@ aside {
 }
 
 main {
-  max-width: 1268px;
+    max-width: 1268px;
+    padding-bottom: 50px;
 }
 
 hr {
