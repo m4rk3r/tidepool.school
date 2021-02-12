@@ -1,0 +1,86 @@
+html {
+  /* 62.5 ~= 10px */
+  font-size: 62.5%;
+}
+
+body {
+  background: rgb(23, 21, 38);
+}
+
+@keyframes bug {
+  0% { left: 10%; top: 15%; }
+  50% { left: 75%; top: 20%; }
+  100% { left: 10%; top: 15%; }
+}
+
+@keyframes bug2 {
+  0% { left: 80%; top: 5%; }
+  50% { left: 35%; top: 70%; }
+  100% { left: 80%; top: 5%; }
+}
+
+@keyframes bug3 {
+  0% { left: 15%; top: 95%; }
+  50% { left: 50%; top: 48%; }
+  100% { left: 15%; top: 95%; }
+}
+
+@keyframes bug4 {
+  0% { left: 83%; top: 68%; }
+  50% { left: 75%; top: 42%; }
+  100% { left: 83%; top: 68%; }
+}
+
+@keyframes glow {
+  0% { background-color: rgba( 136, 106, 55, 0.05); }
+  50% { background-color: rgba(223, 185, 69, 0.85); }
+  100% { background-color: rgba( 136, 106, 55, 0.05); }
+}
+
+.firefly {
+  position: absolute;
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: rgba( 136, 106, 55, 0.05);
+  border-radius: 50%;
+  filter: blur(3px);
+  animation-iteration-count: infinite, infinite;
+  animation-timing-function: ease-in-out, ease-in-out;
+}
+.firefly:hover {
+  cursor: grabbing;
+  animation-play-state: paused, running;
+}
+
+body .firefly:nth-child(1) {
+  /* animation: bug 10s ease-in-out infinite; */
+  animation-name: bug, glow;
+  animation-duration: 10s, 4s;
+  animation-delay: 0s, 3s;
+  left: 10%;
+  top: 15%;
+}
+body .firefly:nth-child(2) {
+  /* animation: bug2 15s ease-in-out infinite; */
+  animation-name: bug2, glow;
+  animation-duration: 15s, 4s;
+  animation-delay: 3s, 10s;
+  left: 80%;
+  top: 5%;
+}
+body .firefly:nth-child(3) {
+  /* animation: bug3 13s ease-in-out infinite; */
+  animation-name: bug3, glow;
+  animation-duration: 13s, 4s;
+  animation-delay: 8s, 6s;
+  left: 15%;
+  top: 95%;
+}
+body .firefly:nth-child(4) {
+  /* animation: bug4 18s ease-in-out infinite; */
+  animation-name: bug4, glow;
+  animation-duration: 18s, 4s;
+  animation-delay: 15s, 15s;
+  left: 83%;
+  top: 68%;
+}

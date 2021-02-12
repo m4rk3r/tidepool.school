@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Advanced CSS</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Nanum+Gothic);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      html {
+        font-size: 24px;
+      }
+
+      body { font-family: 'Open Sans';}
+      h1, h2, h3 {
+        font-family: 'Nanum Gothic';
+        font-weight: normal;
+      }
+      .remark-container {
+        background: rgb(237, 238, 229);
+      }
+      .remark-slide-scaler {
+        box-shadow: 0 0 10px #88888857;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .hljs-default .hljs-name { color: #5fa04b; }
+      .hljs-default .hljs-string, .hljs-default .hljs-selector-id, .hljs-default .hljs-selector-class {
+        color: rgb(198, 122, 22);
+      }
+      .hljs-default .hljs-selector-pseudo {
+        color: rgb(30, 115, 203);
+      }
+      .remark-inline-code {
+        background: #F0F0F0;
+        color: #5fa04b;
+        padding: 0 3px;
+      }
+
+      .footnote {
+        position: absolute;
+        bottom: 2%;
+        font-size: 12px;
+        left: 2%;
+        font-style: italic;
+        color: rgb(108, 108, 108);
+      }
+
+      .two-column ul {
+        columns: 2;
+      }
+      .li-spacing li {
+        margin-bottom: 35px;
+      }
+
+      a { text-decoration: none; }
+      a:visited { color: blue;}
+
+      /* for slide examples */
+      .exp-message {
+        font-size: 2em;
+      }
+      img[alt="chart"], img[alt="grid"] {
+        width: 100%;
+      }
+
+
+      #box1 {
+        width: 50px;
+        height: 50px;
+        background-color: green;
+        transition: background-color 1s ease-in-out;
+      }
+      #box1:hover {
+        background-color: orange;
+      }
+      #box2 {
+        width: 50px;
+        height: 50px;
+        background-color: green;
+        transition: background-color 1s ease-in-out,
+                    transform 1s ease-in-out;
+      }
+      #box2:hover {
+        background-color: orange;
+        transform: scale(1.5, 1.5);
+      }
+
+      #exp {
+        padding: .5rem;
+        border: solid .1rem green;
+        color: green;
+        transition: all 500ms ease-in-out;
+      }
+      #exp:hover {
+        color: blue;
+        border-color: blue;
+      }
+
+      @keyframes slide {
+        from { left: 0%; }
+        to { left: 50%; }
+      }
+      #orb {
+        position: absolute;
+        animation: slide 5s ease-in-out infinite;
+      }
+
+      @keyframes slide2 {
+        0%  { left: 40px; }
+        50% { left: 165px; }
+        100% { left: 40px; }
+      }
+      #orb2 {
+        position: absolute;
+        animation: slide2 5s ease-in-out infinite;
+      }
+      @keyframes slide3 {
+        0%  { transform: translateX(0%); }
+        50% { transform: translateX(50%); }
+        100% { transform: translateX(0%); }
+      }
+      #orb3 {
+        animation: slide3 5s ease-in-out infinite;
+      }
+      @keyframes slide4 {
+        0%  { transform: translateX(0%); }
+        50% { transform: translateX(10rem) rotateZ(180deg); }
+        100% { transform: translateX(0%); }
+      }
+      #orb8 {
+        animation: slide4 5s ease-in-out infinite;
+      }
+      #orb4 {
+        animation: slide4 5s ease-in-out infinite;
+        width: max-content;
+      }
+      @keyframes slide5 {
+        0%  { transform: translateX(0%); }
+        50% { transform: translateX(10rem) rotateZ(180deg) scale(0.3, 0.3); }
+        100% { transform: translateX(0%); }
+      }
+      #orb5 {
+        animation: slide5 5s ease-in-out infinite;
+        width: max-content;
+      }
+      @keyframes slide6 {
+        0%  { transform: translateX(0%); }
+        50% { transform: scale(0.3, 0.3) translateX(10rem) rotateZ(180deg); }
+        100% { transform: translateX(0%); }
+      }
+      #orb6 {
+        animation: slide6 5s ease-in-out infinite;
+        width: max-content;
+      }
+      @keyframes slide7 {
+        0%  { transform: translateX(0%); }
+        50% { transform: translateX(10rem) rotateZ(180deg) scale(0.3, 0.3); }
+        100% { transform: translateX(0%); }
+      }
+      #orb7 {
+        animation: slide7 5s ease-in-out infinite;
+        width: max-content;
+      }
+      .post p:nth-child(2) {
+        color: green;
+      }
+      .post p:last-child {
+        font-style: italic;
+      }
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: middle center
+
+# ~ Responsive css ~
+
+---
+class: middle
+
+Some of the pitfalls of unresponsive css...
+- [position absolute pt 1](pos-a.html)
+- [position absolute pt 2](pos-b.html)
+
+---
+class: middle
+
+## Responsive css
+Making a `responsive` website is about ensuring the css *responds* to different device conditions like mobile phones,
+wide screen monitors and everything in between.
+
+![chart](assets/stats.png)
+
+---
+class: middle
+
+## Setting the meta viewport
+The very first step to creating a `responsive` site is to tell the browser that the site is designed to handle various browser dimensions:
+```html
+<meta name="viewport" content="width=device-width,initial-scale=1">
+```
+Like the meta tag setting `charset="utf-8"` this tells the browser to set the width that css uses as the device width:
+```html
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+```
+
+---
+class: middle
+
+## Changing the layout based on browser dimensions
+Now that we've told the browser we're accounting for dimensions, it's time to actually
+change things when the browser size changes with **media queries**.
+
+```css
+body {
+  font-size: 16px;
+}
+
+/* any browser window 320px and smaller will get these styles */
+@media (max-width: 320px) {
+  body {
+    font-size: 12px;
+  }
+}
+```
+The `@media` can be placed after any rule that you'd like to change based on some condition
+
+---
+class: middle
+
+There are [a few important conditions](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#media_types) you can target, another common one being print:
+```css
+#menu {
+  /* menu css here... */
+}
+
+/* hide the menu when printing this page */
+@media print {
+  #menu {
+    display: none;
+  }
+}
+
+```
+
+---
+class: middle li-spacing
+
+## Responsive units?
+Two main issues with using `px` for sizing fonts and elements are that:
++ actual `px` units are approximate, `1px` does not equal one screen pixel, there are all sorts of things that effect this: screen densities (retina screens),
+scaling, screen types...
++ `px` are absolute, they override any user font size settings (accessibility), they're inflexible to screen
+size differences, etc..
+
+
+---
+class: middle
+
+## Using responsive units
+Two weeks ago we recapped using `%` percentage and `px` pixel units in css.
+
+Along with `%`, there are two other important responsive units: `em` and `rem`.
+
+---
+class: middle
+
+## `em` units
+The `em` unit refers to the *computed* font-size of that elements nearest parent's font size.
+In most browsers, the default font size for the html root is 16px, so:
++ `1em` is equal to `16px`
++ `2em` is equal to `32px`
+
+Therefore `em` units are an effective way to create a relative and responsive layout...
+
+---
+class: middle
+
+One trick to simplify working with `em` units is to convert the container element to have a font size that's
+easier to convert to whatever size you're trying to approximate...
+
+
+---
+class: middle
+
+By default `1em` is equal to `16px`, if you wanted to make a font appear as `20px` you would want to set
+it to `1.25em` (16 * 1.25 = 20).
+
+But who wants to be doing math to write css...
+
+If we set our root element to be `10px`, then we only need to do the much simpler math of multiplying things by 10.
+
+So moving the decimal place one to the left
+e.g. `2.0rem` or just `2rem` (`1rem` is euqal to `10px` so `2rem` = `20px`)
+
+---
+class: middle
+
+But setting our root element to `10px` would defeat the whole purpose of not using absolute units.. so the trick is
+to use a `%` percentage unit to achieve the `10px`... so `62.5%` of `16px` is `10px` (16 * .625 = 10):
+```css
+html {
+  /* we can have our 10px base and be responsive to user settings~ */
+  font-size: 62.5%;
+}
+```
+</section>
+
+---
+class: middle center
+
+![maths](assets/maths.jpg)
+
+---
+class: middle
+But...
+
+Since `em` units are relative to their parent, they can have a cascading effect if they are nested:
+```html
+<style>
+  html {
+    font-size: 62.5%; /* aka 10px */
+  }
+
+  .message {
+    font-size: 2em;
+  }
+</style>
+  <!-- 2em aka 20px; -->
+  <div class="message">
+    Big
+    <!-- oop, parent element is 20 x 2 aka 40px -->
+    <div class="message">
+        Bigger
+        <!-- oop, parent element is 40 x 2 aka 80px -->
+        <div class="message">
+          Biggest!
+          <!-- oop, parent element is 80 x 2 aka 100px -->
+          <div class="message">
+            ahhhhh
+          </div>
+        </div>
+    </div>
+  </div>
+```
+
+</style>
+  <div class="exp-message">
+    Big
+    <div class="exp-message">
+        Bigger
+        <div class="exp-message">
+          Biggest!
+          <div class="exp-message">
+            ahhhhh
+          </div>
+        </div>
+    </div>
+  </div>
+
+---
+class: middle
+
+This is what went wrong with what has become one of my [favorite websites.](https://webrecorder.io/_embed_noborder/m4rk3r/cool-old-web/20150313041327/http://www.sewingandembroiderywarehouse.com/embtrb.htm)
+
+---
+class: middle
+
+To solve the possibility of runaway text sizing, a second safer responsive unit exists: the `rem`
+
+It's just like the `em` unit, but the `r` stands for root. `rem` units \*only* look at the root element aka `html`
+font-size to determine their size, eliminating any potential for nested chaos.
+
+---
+class: middle
+
+## How to use responsive units
+The true power of responsive units becomes clear when we start making responsive
+sites that have different appearances for different browser sizes.
+
+---
+class: middle
+
+With fixed `px` units:
+```html
+<style media="screen">
+  section article h1 {
+    font-size: 36px;
+  }
+  section article img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+  }
+  section article p {
+    font-size: 18px;
+  }
+  section article blockquote {
+    font-size: 20px;
+  }
+  @media (max-width: 320px) {
+    section article h1 {
+      font-size: 24px;
+    }
+    section article img {
+      height: 100px;
+    }
+    section article p {
+      font-size: 12px;
+    }
+    section article blockquote {
+      font-size: 16px;
+    }
+  }
+</style>
+<section>
+    <article>
+      <h1>My Blog Post</h1>
+      <img src="blog-header.jpg">
+      <p>Hi welcome to my first post...</p>
+      <blockquote>I've always wanted to blog!</blockquote>
+      <p>Finally I'm posting my blog..</p>
+    </article>
+</section>
+```
+
+---
+class: middle
+
+Simplified with responsive units:
+```html
+<style media="screen">
+  html {
+    /* this is the equivelent of setting 10px (16 * .625 = 10) */
+    font-size: 62.5%;
+  }
+  section article h1 {
+    /* 3.6em x the root element (10px) = 36px */
+    font-size: 3.6rem;
+  }
+  section article img {
+    width: 100%;
+    height: 20rem;
+    object-fit: contain;
+  }
+  section article p {
+    font-size: 1.8rem;
+  }
+  section article blockquote {
+    font-size: 2rem;
+  }
+  @media (max-width: 320px) {
+    html {
+      font-size: 50%;
+    }
+  }
+</style>
+<section>
+    <article>
+      <h1>My Blog Post</h1>
+      <img src="blog-header.jpg">
+      <p>Hi welcome to my first post...</p>
+      <blockquote>I've always wanted to blog!</blockquote>
+      <p>Finally I'm posting my blog..</p>
+    </article>
+</section>
+```
+
+---
+class: middle
+
+## Example
+[px vs em units](https://m4rk3r.github.io/week3/units-example.html) / [source](https://github.com/m4rk3r/m4rk3r.github.io/blob/master/week3/units-example.html)
+
+
+---
+class: middle center
+
+# ~ Animating css ~
+
+---
+class: middle
+
+## Revisiting interactive elements
+The other week we talked about adding interactivity with the `transition` property:
+
+```html
+<style type="text/css">
+  /* set the initial box color to green */
+  #box1 {
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    transition: background-color 1s ease-in-out;
+  }
+  /* and then use the :hover keyword to change it to orange */
+  #box1:hover {
+    background-color: orange;
+  }
+</style>
+
+<div id="box1"></div>
+```
+<div id="box1"></div>
+
+---
+class: middle center
+
+## [list properties that can be animated with transition](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties)
+
+---
+class: middle
+
+## The `all` catchall
+You can also use `all` to animate any multiple properties that change:
+```html
+<style type="text/css">
+  a {
+    padding: .5rem;
+    border: solid .1rem #333;
+    color: green;
+    transition: all 500ms ease-in-out;
+  }
+  a:hover {
+    color: blue;
+    border-color: blue;
+  }
+</style>
+
+<a href="#">Test Link</a>
+```
+<a id="exp" href="#">Test Link</a>
+
+---
+class: middle
+
+## Creating animations with `@keyframe`
+Along with user interactive animations with `transition`, css has another way to create animations with `@keyframes`.
+```html
+<style type="text/css">
+  @keyframes slide {
+    from { left: 0%; }
+    to { left: 50%; }
+  }
+
+  #orb {
+    position: absolute;
+    animation: slide 5s ease-in-out infinite;
+  }
+</style>
+<div id="orb">hiii</div>
+```
+<div id="orb">hiii</div>
+
+---
+class: middle
+
+The states of the animation can be made more granular than `from/to` by using percentages from 0% - 100%
+```html
+<style type="text/css">
+  /* lets make it go smoothly back and forth */
+  @keyframes slide {
+    0%  { left: 40px; }
+    50% { left: 165px; }
+    100% { left: 40px; }
+  }
+
+  #orb {
+    position: absolute;
+    animation: slide 5s ease-in-out infinite;
+  }
+</style>
+<div id="orb">less</div>
+<p>place</p>
+```
+<div id="orb2">less</div>
+<p>place</p>
+
+---
+class: middle
+
+## Changing the position, scale and rotation with `transform`
+
+---
+class: middle
+
+CSS `transform`s are a powerful way to change an element in 2d and 3d space.
+
+We can use `transform` instead of position absolute to move the previous example:
+
+```html
+<style type="text/css">
+  /* lets make it go smoothly back and forth */
+  @keyframes slide {
+    0%  { transform: translateX(0%); }
+    50% { transform: translateX(50%); }
+    100% { transform: translateX(0%); }
+  }
+
+  #orb {
+    animation: slide 5s ease-in-out infinite;
+  }
+</style>
+<div id="orb">less</div>
+<p>place</p>
+```
+<div id="orb3">less</div>
+<p>place</p>
+
+---
+class: middle
+
+We can also add rotations to the previous example:
+
+But note that we're using a block element, which will be with width of the container...
+
+```html
+<style type="text/css">
+  /* lets make it go smoothly back and forth */
+  @keyframes slide {
+    0%  { transform: translateX(0rem); }
+    50% { transform: translateX(10rem) rotateZ(180deg); }
+    100% { transform: translateX(0rem); }
+  }
+
+  #orb {
+    animation: slide 5s ease-in-out infinite;
+  }
+</style>
+<div id="orb">hiii</div>
+```
+<div id="orb8">hiii</div>
+
+---
+class: middle
+
+Setting the width of our container to be the width of content `width: max-content;`
+
+This results in our element being centered on just the text itself:
+
+```html
+<style type="text/css">
+  /* lets make it go smoothly back and forth */
+  @keyframes slide {
+    0%  { transform: translateX(0rem); }
+    50% { transform: translateX(10rem) rotateZ(180deg); }
+    100% { transform: translateX(0rem); }
+  }
+
+  #orb {
+    animation: slide 5s ease-in-out infinite;
+    /* we need to set the width of our box since it's a block element */
+    /* It will otherwise be with width of the container */
+    width: max-content;
+  }
+</style>
+<div id="orb">hiii</div>
+```
+<div id="orb4">hiii</div>
+
+---
+class: middle
+
+The `scale` property is also an interesting way to manipulate elements
+
+```html
+<style type="text/css">
+  @keyframes slide {
+    0%  { transform: translateX(0rem); }
+    50% { transform: translateX(10rem) rotateZ(180deg) scale(0.3, 0.3); }
+    100% { transform: translateX(0rem); }
+  }
+
+  #orb {
+    animation: slide 5s ease-in-out infinite;
+    width: max-content;
+  }
+</style>
+<div id="orb">hiii</div>
+```
+<div id="orb5">hiii</div>
+
+---
+class: middle
+
+For certain `transform` effects, the order of the properties makes a difference:
+```css
+50% { transform: scale(0.3, 0.3) translateX(10rem) rotateZ(180deg); }
+```
+<div id="orb6">hiii</div>
+
+```css
+50% { transform: translateX(10rem) rotateZ(180deg) scale(0.3, 0.3); }
+```
+<div id="orb7">hiii</div>
+
+---
+class: middle
+
+`Transform` can also be used to create interactive changes, using our first example...
+
+```html
+<style type="text/css">
+  /* set the initial box color to green */
+  #box2 {
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    transition: background-color 1s ease-in-out,
+                transform 1s ease-in-out;
+  }
+  /* and then use the :hover keyword to change it to orange */
+  #box2:hover {
+    background-color: orange;
+    transform: scale(1.5, 1.5);
+  }
+</style>
+
+<div id="box2"></div>
+```
+<div id="box2"></div>
+
+---
+class: middle
+
+## Quick recap on `pseudo-class`
+Recall that `pseudo-classes` are those selectors that we used like `:hover` that modify an element..
+in the case of hover adding styles on mouse interaction.
+
+Another type of `pseudo-class` are selectors, like `:nth-child`, `:last-child`, `:first-child` etc..
+
+---
+class: middle
+
+These `pseudo-class` selectors can be useful for selecting items within a list or group of elements:
+```html
+<style type="text/css">
+  .post p:nth-child(2) {
+    color: green;
+  }
+  .post p:last-child {
+    font-style: italic;
+  }
+</style>
+<section class="post">
+  <p>pg1</p>
+  <p>pg2</p>
+  <p>pg2</p>
+</section>
+```
+<section class="post">
+  <p>pg1</p>
+  <p>pg2</p>
+  <p>pg2</p>
+</section>
+---
+class: middle center
+
+### keyframes demo
+
+    </textarea>
+    <script src="/assets/js/remark-latest.min.js"></script> <script>
+      var slideshow = remark.create({ ratio: '4:3', navigation: { scroll: false }});
+
+      var links = document.links;
+
+      for (var i = 0, linksLength = links.length; i < linksLength; i++) {
+         if (links[i].hostname != window.location.hostname) {
+             links[i].target = '_blank';
+         }
+      }
+    </script>
+  </body>
+</html>
