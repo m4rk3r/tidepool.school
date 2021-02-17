@@ -3,6 +3,7 @@
   <head>
     <title>Continuing w/ JS</title>
     <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/png" href="/assets/img/tidepool.png"/>
     <style>
       @import url(https://fonts.googleapis.com/css?family=Nanum+Gothic);
       @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic);
@@ -39,9 +40,9 @@
 
       .footnote {
         position: absolute;
-        bottom: 2%;
-        font-size: 12px;
-        left: 2%;
+        bottom: 1%;
+        font-size: 10px;
+        left: 1%;
         font-style: italic;
         color: rgb(108, 108, 108);
       }
@@ -82,6 +83,10 @@
 
       .red {
         color: red;
+      }
+
+      .condensed pre {
+        margin: 5px 0;
       }
 
     </style>
@@ -137,12 +142,12 @@ and so much <span id="more">more</span>
 class: middle
 
 ## How to use Javascript
-Similar to how we use CSS, javascript can be used embedded or linked
+Similar to how we use CSS, javascript can be used embedded or externally
 
 #### embedded
 ```html
 <script type="text/javascript">
-  console.log('hi class~');
+  console.log('hi everyone~');
 </script>
 ```
 
@@ -164,15 +169,15 @@ Some basics:
    comment */
 
 // this writes a message to the developer console
-// which can be useful for debugging your code!
+// which can be useful for debugging our code!
 console.log('hi everyone~');
 
 // a bit old school, this will create an alert box
 alert('hi everyone!!');
 ```
 <script type="text/javascript">
-  console.log('hi class~');
-  alert('hi class!!');
+  console.log('hi everyone~');
+  alert('hi everyone!!');
 </script>
 
 
@@ -220,6 +225,12 @@ let my2ndVariable = 'hi';
 let my_variable = 'hi';
 ```
 Like CSS, we end each line with a semicolon (`;`)
+
+---
+class: middle
+
+You may see code that uses `var` to create variables. This is also an acceptable
+way to create them, but `let` is a newer way that comes with some advantages.
 
 ---
 class: middle
@@ -332,7 +343,7 @@ if (name == 'goose') {
 class: middle two-column
 
 Often we use conditionals to compare one value to another. The way we compare values is with `Comparison Operators`.
-In the last example we used the `==` comparator, which asks is the value on the left is the same as the value on the right.
+In the last example we used the `==` comparator, which asks if the value on the left is the same as the value on the right.
 
 ```js
 let name = 'goose';
@@ -378,7 +389,7 @@ if (name == 'goose') {
 ---
 class: middle fix-multiline fix-again-ugh
 
-There's a third way to control the flow of your conditionals, with the **`else if` statement**:
+There's a third way to control the flow of our conditionals, with the **`else if` statement**:
 ```js
 /* eggs:
   0 0 0 0 0 0
@@ -415,52 +426,6 @@ if (guess < 12) {
 ---
 class: middle
 
-```js
-/*   __//
-    /.__.\
-    \ \/ /
- '__/    \
-  \-      )
-   \_____/   -cf
-_____|_|____ */
-
-let eggs = '0000000000000000000000';
-
-let guess = window.prompt("Guess how many eggs? 0000000000000000000000");
-console.log("You guessed: " + guess);
-
-// how many eggs do we have?
-if (guess < eggs.length || guess > eggs.length) {
-  console.log("you're wrong!");
-} else if (guess == eggs.length) {
-  console.log("bingo!");
-}
-
-// or could be written:
-if (guess == eggs.length) {
-  console.log("bingo!");
-} else {
-  console.log("you're wrong!");
-}
-```
-
-<script type="text/javascript">
-let eggs = '0000000000000000000000';
-let guess = window.prompt("Guess how many eggs? 0000000000000000000000");
-console.log("You guessed: " + guess);
-
-// how many eggs do we have?
-if (guess < eggs.length || guess > eggs.length) {
-  console.log("you're wrong!");
-} else if (guess == eggs.length) {
-  console.log("bingo!");
-}
-</script>
-
-
----
-class: middle
-
 #### A quick note about spacing
 The formatting of certain items in javascript is flexible:
 ```js
@@ -480,6 +445,7 @@ if (1 == 1) {
 ```
 This isn't a necessity, but a good habit to get into. <span class="rotate-90">: )</span>
 
+
 ---
 class: middle
 
@@ -488,7 +454,7 @@ Functions are a powerful concept that most programming languages employ.
 
 They allow us to set aside a group of instructions or code to execute at some later point.
 
-Functions are composed by specifying the `function` keyword and then providing a custom name for your `function`.
+Functions are composed by specifying the `function` keyword and then providing a custom name for our `function`.
 The name is how we will later refer to it.
 
 ```js
@@ -534,6 +500,7 @@ function sayHi() {
   console.log('Hi Josephine.');
 }
 sayHi();
+sayHi();
 
 function sayHello(name) {
   console.log('oh, hello ' + name);
@@ -545,45 +512,315 @@ sayHello('Maryam');
 ---
 class: middle
 
-An important aspect of functions is that they help break up our code so that we don't
-have to repeat ourselves by copying and pasting code.
+When writing code we often interact with functions that are a part of other code we don't see.
 
-So if you find yourself copying and pasting the same code over and over to acheive some goal,
-it might be a great opprotunity to use a function.
+For instance, the `string` type we covered earlier has [a lot of different functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#instance_methods) we
+can all on it.
+
+These functions that are a part of other code are called `methods`.
+
+We call these functions that are a part of some other code with `dot notation`:
+```js
+let myText = "I'm totally not confused by all this! 😅";
+console.log(myText);
+myText = myText.toUpperCase();
+            // ^ here we're using dot notation to access the
+            //   toUpperCase() function that's a part of strings..
+console.log("I said...", myText);
+```
+
+<script type="text/javascript">
+  let myText = "I'm totally not confused by all this! 😅";
+  console.log(myText);
+  myText = myText.toUpperCase();
+  console.log("I said...", myText);
+</script>
 
 ---
 class: middle
 
-Another useful thing functions can do is send back a *value* from the code it contains.
-We use the `return` keyword to send back some value to the place where it was called.
+In the second javascript intro video we'll be talking more about what the DOM is...
 
+But today let's preview a few ways we can interact with a web page with javascript.
+
+---
+class: middle
+
+### Interacting with html: `querySelector`
+
+The main way we can intereact with our html is with the `querySelector` method.
+
+As the name suggests, `querySelector` is a tool to _query_ or search our page by a css _selector_.
+
+We want to query or search throughout our whole page, also know as the `document`:
 ```js
-function scream(text){
-  return text.toUpperCase() + '!!!!';
-}
-
-let shouting = scream('hello everyone');
-console.log(shouting);
-console.log(scream("I hope you're enjoying this js intro 😅"));
+let myDiv = document.querySelector('#my-blog');
 ```
-So we can define a list of instructions that we might need to repeat often, call it at
-whatever point we want, but also return some result from that work to use.
+
+```html
+<main id="blog">
+  ...
+</main>
+```
+
+---
+class: middle
+
+example.js:
+```js
+let blogElement = document.querySelector('#blog');
+console.log('my blog element:', blogElement);
+```
+example.html:
+```html
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="example.js" type="text/javascript"></script>
+  </head>
+  <body>
+      <main id="blog">
+        <h1>My Blog</h1>
+      </main>
+  </body>
+</html>
+```
+...wait why does it say `null`? `null` is a value that is returned When
+something isn't found..
 
 <script type="text/javascript">
-function scream(text){
-  return text.toUpperCase() + '!!!!';
+  let blogElement = document.querySelector('#blog');
+  console.log('my blog element:',blogElement);
+</script>
+---
+class: middle
+
+Since our javascript is executed line by line as the html document is `parsed` the `#blog` div doesn't exist
+at the time the `querySelector` line is executed..
+
+The document parsed these lines one by one
+```html
+<!-- 1 --><!DOCTYPE html>
+<!-- 2 --><html lang="en" dir="ltr">
+<!-- 3 -->  <head>
+<!-- 4 -->    <meta charset="utf-8">
+<!-- 5 -->    <script src="example.js" type="text/javascript"></script>
+```
+
+and then moved to our js file:
+```js
+/* 6 */ let blogElement = document.querySelector('#blog');
+/* 7 */ console.log('my blog element:', blogElement);
+```
+
+---
+class: middle
+
+There are two common solutions to this problem...
+either move our code that selects elements after those elements have been parsed:
+```html
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+      <main id="blog"></main>
+  </body>
+  <script src="example.js" type="text/javascript"></script>
+</html>
+```
+<main id="blog-exp">
+  <h1>My Blog</h1>
+</main>
+
+---
+class: middle
+
+Or more simply, add the `defer` attribute to our script tag to tell the browser to apply our Javascript
+code after the page has been completely parsed.
+
+```html
+<head>
+  <meta charset="utf-8">
+  <script src="example.js" type="text/javascript" defer></script>
+</head>
+```
+**note** this will only work for externally loaded files. Embded javascript, you'll need to place
+the script tag after the body or use other techniques we'll learn more about later..
+
+Another reason to use external scripts <span class="rotate-90">: )</span>
+
+---
+class: middle
+
+example.js:
+```js
+let blogElement = document.querySelector('#blog');
+console.log('my blog element:', blogElement);
+```
+example.html:
+```html
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="example.js" type="text/javascript" defer></script>
+  </head>
+  <body>
+      <main id="blog">]
+        <h1>My Blog</h1>
+      </main>
+  </body>
+</html>
+```
+
+<main id="blog-1">
+  <h1>My Blog</h1>
+</main>
+<script type="text/javascript">
+  let blogElement = document.querySelector('#blog-1');
+  console.log('my blog element:', blogElement);
+</script>
+
+---
+class: middle
+
+Now that we have a reference to our element in javascript, we can do something with it
+like adding a class:
+```css
+.red {
+  color: red;
+}
+```
+The `classList` attribute of a html element in javascript provides tools for adding, removing, and checking
+whether an element has a class.
+
+```js
+let blogElement = document.querySelector('#blog-2');
+blogElement.classList.add('red');
+```
+
+<main id="blog-2">
+  <h1>My Blog</h1>
+</main>
+
+<script type="text/javascript">
+  let blogElement = document.querySelector('#blog-2');
+  blogElement.classList.add('red');
+</script>
+
+---
+class: middle
+
+Where this can become more interesting is when we connect changes to user interactions, like clicking..
+
+---
+class: middle
+
+We _listen_ for these user events with the `addEventListener` method of an element we've selected with
+`querySelector`.
+
+`addEventListener` takes two arguments, the event you want to _listen_ for and then what
+function you want to run when that event happens:
+
+```js
+function showSurprise() {
+  console.log('surprise!');
 }
 
-let shouting = scream('hello class!');
-console.log(shouting);
-console.log(scream('I hope this is all making sense 😅'));
+let paragraph = document.querySelector('#my-text');
+paragraph.addEventListener('click', showSurprise);
+    // note here we don't include the () here  ^
+    // that would call the function right away
+    // instead we just supply the name alone...
+```
+
+```html
+<p id="my-text">
+  click here for a surprise :)
+</p>
+
+```
+
+<p id="my-text" style="font-size: 18px;">
+  click here for a surprise :)
+</p>
+
+<script type="text/javascript">
+  let paragraph = document.querySelector('#my-text');
+  paragraph.addEventListener('click', function () {
+    console.log('surprise!');
+  });
 </script>
+
+
+---
+class: middle condensed
+
+```html
+  <p class="haiku">
+    <span class="line">New Snowfall</span>,<BR>
+    &amp;emsp;<span class="line">onion sprouts</span>,<BR>
+    &amp;emsp;&amp;emsp;<span class="line">mark the path</span>.<BR>
+  </p>
+```
+```css
+  .haiku, .haiku .line {
+    transition: all 3s ease-in-out;
+  }
+  .snowfall {
+    color: green;
+  }
+  .snowfall .line {
+    color: #ccc;
+    filter: blur(3px);
+  }
+```
+
+```js
+let haiku = document.querySelector('.haiku');
+haiku.addEventListener('click', function () {
+  haiku.classList.add('snowfall');
+});
+```
+.footnote[Haiku by Basho from "Moon Woke Me Up Nine Times"]
+
+<style media="screen" type="text/css">
+.haiku, .haiku .line {
+  transition: all 3s ease-in-out;
+}
+.snowfall {
+  color: green;
+}
+.snowfall .line {
+  color: #ccc;
+  filter: blur(3px);
+}
+</style>
+
+<p class="haiku">
+  <span class="line">New Snowfall</span>,<BR>
+  &emsp;<span class="line">onion sprouts</span>,<BR>
+  &emsp;&emsp;<span class="line">mark the path</span>.<BR>
+</p>
+
+<script type="text/javascript">
+  let haiku = document.querySelector('.haiku');
+  haiku.addEventListener('click', function () {
+    haiku.classList.add('snowfall');
+  });
+</script>
+
+
 
 ---
 class: middle center
 
-Those are the basics to getting started with javascript.
-In part II we'll cover the DOM, user events, and making changes to your&nbsp;webpages.
+There's a lot more to these methods, but hopefully this gets you excited to learn more <span class="rotate-90">:o)</span>
+
+In <strong>part II</strong> we'll cover the DOM, more user events, and other ways to make changes to our&nbsp;webpages.
 
     </textarea>
     <script src="/assets/js/remark-latest.min.js"></script>
