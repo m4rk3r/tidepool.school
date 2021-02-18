@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Responsive Images</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Nanum+Gothic);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      html {
+        font-size: 24px;
+      }
+
+      body { font-family: 'Open Sans';}
+      h1, h2, h3 {
+        font-family: 'Nanum Gothic';
+        font-weight: normal;
+      }
+      .remark-container {
+        background: rgb(237, 238, 229);
+      }
+      .remark-slide-scaler {
+        box-shadow: 0 0 10px #88888857;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .hljs-default .hljs-name { color: #5fa04b; }
+      .hljs-default .hljs-string, .hljs-default .hljs-selector-id, .hljs-default .hljs-selector-class {
+        color: rgb(198, 122, 22);
+      }
+      .hljs-default .hljs-selector-pseudo {
+        color: rgb(30, 115, 203);
+      }
+      .remark-inline-code {
+        background: #F0F0F0;
+        color: #5fa04b;
+        padding: 0 3px;
+      }
+
+      .footnote {
+        position: absolute;
+        bottom: 2%;
+        font-size: 12px;
+        left: 2%;
+        font-style: italic;
+        color: rgb(108, 108, 108);
+      }
+
+      .two-column ul {
+        columns: 2;
+      }
+      .li-spacing li {
+        margin-bottom: 35px;
+      }
+
+      a { text-decoration: none; }
+      a:visited { color: blue;}
+
+      /* for slide examples */
+      .exp-message {
+        font-size: 2em;
+      }
+      img[alt="chart"], img[alt="grid"] {
+        width: 100%;
+      }
+
+
+      #box1 {
+        width: 50px;
+        height: 50px;
+        background-color: green;
+        transition: background-color 1s ease-in-out;
+      }
+      #box1:hover {
+        background-color: orange;
+      }
+      #box2 {
+        width: 50px;
+        height: 50px;
+        background-color: green;
+        transition: background-color 1s ease-in-out,
+                    transform 1s ease-in-out;
+      }
+      #box2:hover {
+        background-color: orange;
+        transform: scale(1.5, 1.5);
+      }
+
+      #exp {
+        padding: .5rem;
+        border: solid .1rem green;
+        color: green;
+        transition: all 500ms ease-in-out;
+      }
+      #exp:hover {
+        color: blue;
+        border-color: blue;
+      }
+
+      @keyframes slide {
+        from { left: 0%; }
+        to { left: 50%; }
+      }
+      #orb {
+        position: absolute;
+        animation: slide 5s ease-in-out infinite;
+      }
+
+      @keyframes slide2 {
+        0%  { left: 40px; }
+        50% { left: 165px; }
+        100% { left: 40px; }
+      }
+      #orb2 {
+        position: absolute;
+        animation: slide2 5s ease-in-out infinite;
+      }
+      @keyframes slide3 {
+        0%  { transform: translateX(0%); }
+        50% { transform: translateX(50%); }
+        100% { transform: translateX(0%); }
+      }
+      #orb3 {
+        animation: slide3 5s ease-in-out infinite;
+      }
+      @keyframes slide4 {
+        0%  { transform: translateX(0%); }
+        50% { transform: translateX(10rem) rotateZ(180deg); }
+        100% { transform: translateX(0%); }
+      }
+      #orb8 {
+        animation: slide4 5s ease-in-out infinite;
+      }
+      #orb4 {
+        animation: slide4 5s ease-in-out infinite;
+        width: max-content;
+      }
+      @keyframes slide5 {
+        0%  { transform: translateX(0%); }
+        50% { transform: translateX(10rem) rotateZ(180deg) scale(0.3, 0.3); }
+        100% { transform: translateX(0%); }
+      }
+      #orb5 {
+        animation: slide5 5s ease-in-out infinite;
+        width: max-content;
+      }
+      @keyframes slide6 {
+        0%  { transform: translateX(0%); }
+        50% { transform: scale(0.3, 0.3) translateX(10rem) rotateZ(180deg); }
+        100% { transform: translateX(0%); }
+      }
+      #orb6 {
+        animation: slide6 5s ease-in-out infinite;
+        width: max-content;
+      }
+      @keyframes slide7 {
+        0%  { transform: translateX(0%); }
+        50% { transform: translateX(10rem) rotateZ(180deg) scale(0.3, 0.3); }
+        100% { transform: translateX(0%); }
+      }
+      #orb7 {
+        animation: slide7 5s ease-in-out infinite;
+        width: max-content;
+      }
+      .post p:nth-child(2) {
+        color: green;
+      }
+      .post p:last-child {
+        font-style: italic;
+      }
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: middle center
+
+# ~ Responsive Images ~
+
+---
+class: middle
+
+In addition to using `media queries` to make our designs responsive, we can also
+apply responsive techniques to the content of our pages.
+
+In particular this can be really useful with images.
+
+---
+class: middle
+
+#### The `srcset` property
+
+One way we can do this is with `srcset`.
+
+```html
+<img srcset="pinecone-400.jpg 400w, pinecone.jpg 1200w"
+     sizes="(max-width: 600px) 400px, 1200px"
+     src="pinecone.jpg"
+     alt="A picture of a freshly fallen pinecone resting on snow">
+```
+
+---
+class: middle
+
+`srcset` is really only designed for changing between sizes of same image..
+what if we wanted to change the contents of the image based on the browser size?
+
+---
+class: middle
+
+The `<picture>` element is precisely for that purpose.
+
+Just like the `video` and `audio` tags, the `picture` tag can be provided
+multiple sources with a `media` specification for when to show that particular version.
+
+```html
+
+<picture>
+  <source media="(max-width: 500px)" srcset="pinecone-closeup.jpg">
+  <source media="(min-width: 501px)" srcset="pinecone.jpg">
+  <img src="pinecone.jpg"
+       alt="A picture of a freshly fallen pinecone resting on snow">
+</picture>
+```
+
+---
+class: middle
+
+#### Fitting images within flexible containers
+
+You'll often find the need to resize images to fit within varying sized elements in your design.
+
+While it's still best to crop and resize images to fit your particular needs, there's a CSS
+method to help scale images to fit.
+
+---
+class: middle
+
+#### The `object-fit` css property
+
+With css `object-fit`, we have several options for fitting an image into dimensions that don't fit the images.
+
+---
+class: middle
+
+```html
+<img src="pinecone.jpg" class="image-one" alt="a dried pinecone in my hand">
+<img src="pinecone.jpg" class="image-two" alt="a dried pinecone in my hand">
+```
+
+```css
+.image-one {
+  width: 200px;
+  height: 200px;
+}
+
+.image-two {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+```
+<style media="screen">
+  .image-one {
+    width: 200px;
+    height: 200px;
+  }
+
+  .image-two {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+</style>
+
+<img src="assets/object/pinecone.jpg" class="image-one" alt="a dried pinecone in my hand">
+<img src="assets/object/pinecone.jpg" class="image-two" alt="a dried pinecone in my hand">
+
+---
+class: middle
+
+We can also specify where the clipping happens with the `object-position` property:
+
+```css
+.image-one {
+  width: 350px;
+  height: 200px;
+}
+.image-two {
+  width: 350px;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+```
+<style media="screen">
+  .image-1 {
+    width: 350px;
+    height: 200px;
+  }
+
+  .image-2 {
+    width: 350px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+  }
+</style>
+
+<img src="assets/object/pinecone.jpg" class="image-1" alt="a dried pinecone in my hand">
+<img src="assets/object/pinecone.jpg" class="image-2" alt="a dried pinecone in my hand">
+
+
+---
+class: middle center
+
+[Demo using `object-fit`, `object-position`, and the `picture` tag](demo.html)
+
+
+    </textarea>
+    <script src="/assets/js/remark-latest.min.js"></script> <script>
+      var slideshow = remark.create({ ratio: '4:3', navigation: { scroll: false }});
+
+      var links = document.links;
+
+      for (var i = 0, linksLength = links.length; i < linksLength; i++) {
+         if (links[i].hostname != window.location.hostname) {
+             links[i].target = '_blank';
+         }
+      }
+    </script>
+  </body>
+</html>

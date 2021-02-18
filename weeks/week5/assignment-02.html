@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="assets/style.css">
+  </head>
+  <body>
+    <nav class="main-nav"><a href="/">🏠 index</a></nav>
+    <h1>Assignment 2: Wonder Cabinets</h1>
+
+    <figure>
+      <!--
+      <figcaption>By LoKiLeCh - Own work, CC BY 3.0, https://commons.wikimedia.org/w/index.php?curid=12879005</figcaption>
+    -->
+      <img src="assets/RitrattoMuseoFerranteImperato.jpg">
+      <figcaption>Fold-out engraving from Ferrante Imperato's Dell'Historia Naturale (Naples 1599), the earliest illustration of a natural history cabinet</figcaption>
+    </figure>
+
+    <main>
+      <p class="brief">
+        <mark>Brief:</mark> For our second lab project, you'll be creating a personal <a href="https://en.wikipedia.org/wiki/Cabinet_of_curiosities" target="_blank">Wonder Cabinet</a> from an object of your choosing.<BR>
+        <mark>Due Date:</mark> Your assignment is due <strong class="underline">Thursday February 25th, *no later* than 8pm Eastern</strong> and must be <a href="mailto:beasleym@newschool.edu">emailed to me</a> by then or it will be considered incomplete.
+      </p>
+      <p>
+        Using the <mark>responsive css and image</mark> strategies we've learned in recent classes as well as <mark>CSS Grid</mark> from this week's <a href="https://vimeo.com/513703910" target="_blank">async demo</a>,
+        you'll be creating a <em>Wonder Cabinet</em> with three distinct perspectives: <mark>Desktop</mark>, <mark>Mobile</mark>, and <mark>Accessible</mark>.
+      </p>
+
+      <h2>How to choose your object</h2>
+      <p>There are no strict requirements for what object you want to include for your Wonder Cabinet. It should be something that you have easy access to, can lift/move, and is class appropriate. <span class="rotate-90">:)</span></p>
+      <p>Do put some consideration into your object though. Think of something that has personal significance, memories attached to, or something distinct to you.</p>
+      <p>It could be a sand dollar you found on a beach, a rock you collected on a hike when you were a child, a gift from a friend that you cherish, your first tooth, your favorite coffee mug, a leaf from a tree you like, a can of your favorite soda, etc...</p>
+
+      <h2>How to document your object</h2>
+      <p>Using the best camera or phone camera you have access to, take 6 photos of the: front, right, back, left, top, and bottom from a reasonable distance:</p>
+      <ul class="documentation">
+        <li style="background-image: url('assets/object/c-front.jpeg')">front</li>
+        <li style="background-image: url('assets/object/c-right.jpeg')">right</li>
+        <li style="background-image: url('assets/object/c-back.jpeg')">back</li>
+        <li style="background-image: url('assets/object/c-left.jpeg')">left</li>
+        <li style="background-image: url('assets/object/c-top.jpeg')">top</li>
+        <li style="background-image: url('assets/object/c-bottom.jpeg')">bottom</li>
+      </ul>
+      <p>and then take 6 more photos from close up in the same fashion:</p>
+      <ul class="documentation">
+        <li style="background-image: url('assets/object/c-close-front.jpeg')">front</li>
+        <li style="background-image: url('assets/object/c-close-right.jpeg')">right</li>
+        <li style="background-image: url('assets/object/c-close-back.jpeg')">back</li>
+        <li style="background-image: url('assets/object/c-close-left.jpeg')">left</li>
+        <li style="background-image: url('assets/object/c-close-top.jpeg')">top</li>
+        <li style="background-image: url('assets/object/c-close-bottom.jpeg')">bottom</li>
+      </ul>
+      <p>We'll then use these 12 photos as follows below.</p>
+
+
+      <h2>Requirements for the three modes:</h2>
+      <h3>Desktop</h3>
+      <div class="req">
+        <p>Create a 2x3 grid of your distant images. You can style your grid and images however you want but it <strong class="underline">must</strong> be <strong class="underline">2x3</strong>.</p>
+      </div>
+
+      <h3>Mobile</h3>
+      <div class="req">
+        <p>Using the <a href="/weeks/week5/responsive-images.html#5" target="_blank">responsive image</a> tools we learned about, change your images to be the closeup versions you took when the width is <mark>500px</mark> or less.</p>
+        <p>In addition, use a <a href="https://tidepool.school/weeks/week4/responsive-css.html#4" target="_blank">media query</a> in your css for when the page is <mark>500px</mark> or less and update your grid to be <strong class="underline">1x6</strong>.</p>
+      </div>
+
+      <h3>Accessible</h3>
+      <div class="req">
+        <p>
+          It's just as important that we think about designing for accessibility as we do designing for mobile. One of most important things we can do when designing and building websites is to
+          add <mark>alt</mark> tags to images so that assistive devices can understand and describe to users what images are of.
+        </p>
+        <p>Add a unique alt tag to every one of your 12 images describing what is visible within particular perspective that image captures. Compose your alt tags thoughtfully.</p>
+        <hr>
+        <span>To work on this third perspective, explore these two resources:</span>
+        <ul>
+          <li><a href="https://alt-text-as-poetry.net/" target="_blank">Alt-Text as Poetry</a></li>
+          <li>Visit the <a href="https://artistsspace.org/" target="_blank">Artists Space</a> website and see how they utilize captions and alt text, in particular the <a href="https://images.artistsspace.org/" target="_blank">images subdomain</a></li>
+        </ul>
+      </div>
+
+      <h2>Putting it all together</h2>
+      <p>Create a new html and css file with the code for your three perspectives, upload to your github, and <a href="mailto:beasleym@newschool.edu">email me</a> the link by the deadline: <strong class="underline">Thursday February 25th, *no later* than 8pm Eastern</strong>.</p>
+      <p>Also <a href="mailto:beasleym@newschool.edu">Email me</a> if you have any questions or trouble!</p>
+
+      <h2>Grading & expectations</h2>
+      <p>You will be graded on whether you followed all the outlined steps:</p>
+      <ul>
+        <li>took 6 distant and 6 close up photos</li>
+        <li>properly changed the photo source with the <mark>picture</mark> tag at the specified width</li>
+        <li>properly updated the grid to be either 2x3 or 1x6 depending on provided instructions</li>
+        <li>your images each have an <mark>alt</mark> tag with a clear and considered description of the contents of the image</li>
+      </ul>
+      <p>Have fun with it, and I look forward to seeing your Wonder Cabinets ! <span class="rotate-90">:~)</span></p>
+    </main>
+  </body>
+</html>

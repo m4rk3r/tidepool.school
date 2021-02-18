@@ -1,0 +1,27 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+picture img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}
+
+@media (max-width: 400px) {
+  picture img {
+    width: 100vw;
+    height: 100vw;
+  }
+}

@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+html {
+  min-height: 100%;
+  font-family: "Lato";
+  font-size: 62.5%;
+}
+
+body {
+  background: rgb(223, 227, 183);
+  font-size: 1.4rem;
+  margin: 1.5rem 3.5rem;
+  line-height: 1.5;
+}
+
+main {
+  max-width: 102.4rem;
+  margin: 0 auto;
+}
+
+.rotate-90 {
+  display: inline-block;
+  padding: 0 1rem;
+  transform: rotateZ(90deg);
+}
+blockquote {
+  background: rgba(255,255,255, 0.4);
+  margin: .5rem 0;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 3.5rem;
+}
+h2 {
+  margin-top: 7.5rem;
+}
+h3 {
+  margin-bottom: 0;
+  text-decoration: underline;
+}
+.req {
+  margin-top: .5rem;
+  border: solid .1rem white;
+  padding: 1rem;
+  margin-bottom: 3rem;
+}
+.req span {
+  font-size: 1.6rem;
+}
+.req ul {
+  width: 75%;
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  padding-left: 3rem;
+}
+.req ul li {
+  margin-bottom: 1rem;
+}
+.req p {
+  margin: 0;
+}
+.req p + p {
+  margin-top: 1rem;
+}
+
+hr {
+  border: none;
+  background: rgb(185, 179, 210);
+  height: .2rem;
+}
+
+mark {
+  background: rgb(132, 213, 140);
+  padding: 0 2px;
+  color: white;
+}
+.underline {
+  text-decoration: underline;
+}
+
+.main-nav {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+}
+.main-nav a {
+  transition: color 125ms ease-in-out;
+  color: blue;
+  font-weight: bold;
+  text-decoration: none;
+  padding: .1rem;
+  font-size: 1.8rem;
+}
+
+a:link, a:visited {
+  color: blue;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all .125s ease-in-out;
+}
+a:hover {
+  color: white;
+  text-shadow: 1px 1px 5px rgba(0, 0, 255, 0.5);
+}
+
+figure {
+  border: solid .2rem white;
+  padding: 1rem;
+  margin: 0;
+  color: rgb(94, 94, 94);
+  position: relative;
+}
+figure:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 2.5rem;
+  /* background: linear-gradient(90deg, rgba(223, 227, 183, 1), rgba(223, 227, 183, 0) 45%, rgba(223, 227, 183, 0) 55%, rgba(223, 227, 183, 1)); */
+}
+figure img {
+  height: 40rem;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+p {
+  font-size: 2rem;
+}
+p.brief {
+  padding-bottom: 1rem;
+  border-bottom: solid 2px black;
+  display: inline-block;
+  margin: 4rem 0 2rem 0;
+}
+
+.documentation {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+.documentation li {
+  width: 15rem;
+  height: 10rem;
+  border: solid .1rem white;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0px 1px 3px black;
+}
+.example {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+.example img {
+  object-fit: cover;
+  height: 10rem;
+  width: 10rem;
+  border: solid .1rem white;
+}
