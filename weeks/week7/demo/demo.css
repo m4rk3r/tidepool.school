@@ -1,0 +1,25 @@
+
+body {
+  margin: 0;
+}
+
+#title-card {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  font-size: 50px;
+}
+
+#scroll-over {
+  position: relative;
+  margin-top: 100vh;
+  font-size: 25px;
+  background: beige;
+  padding: 50px;
+  z-index: 10;
+}
