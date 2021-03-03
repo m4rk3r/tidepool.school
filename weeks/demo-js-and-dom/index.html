@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to JS</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Nanum+Gothic);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      html {
+        font-size: 24px;
+      }
+
+      body { font-family: 'Open Sans';}
+      h1, h2, h3 {
+        font-family: 'Nanum Gothic';
+        font-weight: normal;
+      }
+      .remark-container {
+        background: rgb(237, 238, 229);
+      }
+      .remark-slide-scaler {
+        box-shadow: 0 0 10px #88888857;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .hljs-default .hljs-name { color: #5fa04b; }
+      .hljs-default .hljs-string, .hljs-default .hljs-selector-id, .hljs-default .hljs-selector-class {
+        color: rgb(198, 122, 22);
+      }
+      .hljs-default .hljs-selector-pseudo {
+        color: rgb(30, 115, 203);
+      }
+      .remark-inline-code {
+        background: #F0F0F0;
+        color: #5fa04b;
+        padding: 0 3px;
+      }
+
+      .footnote {
+        position: absolute;
+        bottom: 2%;
+        font-size: 12px;
+        left: 2%;
+        font-style: italic;
+        color: rgb(108, 108, 108);
+      }
+
+      .two-column ul {
+        columns: 2;
+      }
+      .li-spacing li {
+        margin-bottom: 35px;
+      }
+
+      a { text-decoration: none; }
+      a:visited { color: blue;}
+
+      /* for slide examples */
+
+      .fix-again-ugh .remark-code-line:nth-child(2),
+      .fix-multiline .remark-code-line:nth-child(3),
+      .fix-multiline .remark-code-line:nth-child(4) {
+        color: #888888;
+      }
+
+      .tree-img img {
+        display: block;
+        width: 75%;
+        margin: 0 auto;
+      }
+
+      #more {
+        word-break: break-all;
+      }
+
+      .rotate-90 {
+        display: inline-block;
+        margin-left: 10px;
+        transform: rotateZ(90deg);
+      }
+
+      .red {
+        color: red;
+      }
+
+      .borges-poem-2 {
+        font-size: .8rem;
+      }
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: middle center
+
+  # Adding Interactivity:<BR> JavaScript, the DOM, and User Events
+
+---
+class: middle
+
+
+### Revisiting variables
+
+In the first JavaScript intro video we talked about various types of variables we can create:
+```js
+let myText = "hello world"; // strings
+
+let isNight = false; // booleans
+
+let numOfBooks = 10; // numbers
+```
+
+These variables store a single value by a name we come up with.
+
+But what if we wanted to store more than one thing?
+
+The power of programming languages is that it makes it easy to work with lots
+of info without having to write it all out by hand.
+
+---
+class: middle
+
+### Storing multiple values with `arrays`
+
+The way we can store multiple values within a single variable is called an `array`
+
+Arrays are composed with a beginning `[` square bracket, a list of items separated by `,` commas and then a closing
+`]` square bracket:
+
+```js
+let seaCreatures = ['oyster', 'crab', 'whale'];
+
+// to get elements in an array we access them by their `index`
+console.log(seaCreatures[0]);
+console.log(seaCreatures[1]);
+
+// just like other variables, they can store all different types
+let grabBag = [true, 10, 'hiiii'];
+
+
+```
+
+Arrays are `zero indexed` which means the position of the first element is at `0` and go up from there.
+
+<script type="text/javascript">
+  let seaCreatures = ['oyster', 'crab', 'whale'];
+  console.log(seaCreatures[0]);
+  console.log(seaCreatures[1]);
+</script>
+
+---
+class: middle
+
+You can determine how many elements are in an array with the `length` parameter:
+```js
+let waitingList = ['Jess', 'Gene', 'Lannie', 'Daryl'];
+console.log('The waiting list is currently:', waitingList.length);
+// log first person waiting
+console.log('The first person is:', waitingList[0]);
+```
+
+Or get the last item in the array:
+```js
+console.log(waitingList[waitingList.length - 1]);
+```
+...why `waitingList.length - 1`?
+
+Since arrays start at index `0` you need to adjust the length to match the index. There are 4 items in our array:
+```js
+let waitingList = ['Jess', 'Gene', 'Lannie', 'Daryl']; // 4 items
+//                 ^ 0     ^ 1     ^ 2       ^ 3
+```
+
+<script type="text/javascript">
+let waitingList = ['Jess', 'Gene', 'Lannie', 'Daryl'];
+console.log('The waiting list is currently:', waitingList.length);
+console.log('The first person is:', waitingList[0]);
+console.log(waitingList[waitingList.length - 1]);
+</script>
+
+---
+class: middle
+
+We can add or remove items from an array whenever we want:
+```js
+let availablePets = ['cat', 'dog', 'ferret', 'fish'];
+
+// lets add another pet
+availablePets.push('goat');
+
+console.log(availablePets);
+```
+The `array.push()` adds an element to the end of an array. Or we could add to the front
+of the array with `array.unshift()`.
+
+We can remove elements from the array with the companion commands, `array.shift()` or
+`array.pop()`;
+```js
+// remove the first pet
+let nextAvailablePet = availablePets.shift();
+console.log('the next pet is:', nextAvailablePet, availablePets);
+
+// or the last pet
+let cutTheLine = availablePets.pop();
+console.log('ooo cutting:', cutTheLine, availablePets);
+```
+
+<script type="text/javascript">
+let availablePets = ['cat', 'dog', 'ferret', 'fish'];
+availablePets.push('goat');
+console.log(availablePets);
+
+let nextAvailPet = availablePets.shift();
+console.log('the next pet is:', nextAvailPet, availablePets);
+
+// or the last person
+let cutTheLine = availablePets.pop()
+console.log('ooo cutting:', cutTheLine, availablePets);
+</script>
+
+---
+class: middle
+
+As you can see, when you `unshift()`/`shift()` or `push()`/`pop()` changes the array
+itself.
+
+So if you want to keep the array as it is but access an element within it you can
+use `arrayName[index]` or make changes to the array use the above methods..
+
+---
+class: middle
+
+## Objects
+
+An `object` is another way to store variables in a structured way like an `array`.
+But instead of storing values in a set of numerical indices like an array, we
+can store items with `keys` that point to `values`.
+
+```js
+let myFavoriteThings = {
+  color: 'green',
+  flavor: 'umami',
+  sound: 'waterfall',
+  scent: 'geranium',
+  place: 'natural spaces'
+};
+
+// then later
+console.log('My favorite color is ' + myFavoriteThings['color']);
+console.log('My favorite sound is ' + myFavoriteThings.sound);
+```
+To access a value of an object, we use the `key` with dot notation `objectName.key` or with brackets like arrays `objectName['key']`
+
+<script type="text/javascript">
+let myFavoriteThings = {
+  color: 'green',
+  flavor: 'umami',
+  sound: 'waterfall',
+  scent: 'geranium',
+  place: 'natural spaces'
+};
+
+// then later
+console.log(`My favorite color is ${myFavoriteThings['color']}`);
+console.log(`My favorite sound is ${myFavoriteThings.sound}`);
+</script>
+
+---
+class: middle
+
+### combining `arrays` and `objects`
+
+These two new ways of storing info become really useful when combined:
+
+```js
+let myOtherArray = [
+  {name: 'dayrl', color: 'aquamarine'},
+  {name: 'mark', color: 'green'}
+];
+console.log(myOtherArray[1].name);
+```
+
+Our data from Airtable will look a lot like this.. `objects` and `arrays` of `objects`..
+
+<script type="text/javascript">
+let myOtherArray = [
+  {name: 'dayrl', color: 'aquamarine'},
+  {name: 'mark', color: 'green'}
+];
+console.log(myOtherArray[1].name);
+</script>
+
+---
+class: middle
+
+#### Loops
+Now that we have new type of variable that can contain an endless number of values,
+it would be helpful to be able work with each value without having to access them manually.
+
+A `loop` is a way we can run a block of code repeatedly for a set number of times.
+One of the most common ways we loop in programs is called the `for` loop:
+
+```js
+for (let i = 0; i < availablePets.length; i++) {
+  console.log(availablePets[i],  'is position', i, 'in line!');
+}
+```
+
+---
+class: middle
+
+### breaking for loops down
+
+For loops are comprised of three parts. An `iterator` which is a variable we create
+to count each loop or `iteration` we've completed.
+```js
+for (let i = 0;
+```
+So here we create a `variable` called `i` and set it to value `0`
+
+---
+class: middle
+
+Next is a `conditional` that checks for when we want our loop to end:
+```js
+for (let i = 0; i < availablePets.length;
+```
+This says let the loop keep running so long as that our count variable `i` is less
+than the length of our array.
+
+---
+class: middle
+
+And finally we need to increase `i` *after* the code of the loop runs so that we can keep
+track of how many times we've&nbsp;looped:
+```js
+for (let i = 0; i < availablePets.length; i++ ) {
+```
+`i++` is the same as saying `i = i + 1` or `i += 1` e.g. make take `i` and add 1 to it.
+So that the first loop will be 0, second 1, third 2, and on so long as our conditional
+`i < availablePets.length` is true.
+
+---
+class: middle
+
+Putting it all together:
+```js
+for(let i = 0; i < availablePets.length; i++) {
+  console.log(availablePets[i], 'is', i, 'in line for adoption!');
+}
+```
+
+<script type="text/javascript">
+let availablePets = ['cat', 'dog', 'ferret', 'fish'];
+for(let i = 0; i < availablePets.length; i++) {
+  console.log(availablePets[i], 'is', i, 'in line  for adoption!');
+}
+</script>
+
+---
+class: middle
+
+Another useful loop is the `forEach` loop
+
+```js
+function logPets(pet) {
+  console.log(pet);
+}
+
+let availablePets = ['cat', 'dog', 'ferret', 'fish'];
+availablePets.forEach(logPets);
+```
+With `forEach` and other JavaScript methods that require a function, you'll often
+encouter code that uses an `anonymous function`:
+
+```js
+let availablePets = ['cat', 'dog', 'ferret', 'fish'];
+availablePets.forEach(function (pet) {
+  console.log(pet);
+});
+```
+
+<script type="text/javascript">
+function logPets(pet) {
+  console.log(pet);
+}
+
+let availablePets = ['cat', 'dog', 'ferret', 'fish'];
+availablePets.forEach(logPets);
+</script>
+
+---
+class: middle
+
+The `DOM` = `D`ocument `O`bject `M`odel
+
+.tree-img[![DOM tree](assets/tree.png)]
+
+.footnote[diagram from https://dev.to/karaluton/what-exactly-is-the-dom-jhg]
+
+---
+class: middle
+
+[dom demo](demo.html)
+
+---
+class: middle
+background-image: url(assets/domtree.png)
+background-size: 100%
+
+### Plucking elements from the `DOM` tree
+In order to make changes to an element, we first need to select it in javascript.
+
+The way to target elements in javascript is with the `querySelector` method.
+
+---
+class: middle
+
+### Interacting with the DOM: `querySelector`
+
+The main way we can intereact with the DOM is with the `querySelector` method.
+
+As the name suggests, `querySelector` is a tool to _query_ or search our page by a css _selector_.
+
+We want to query or search throughout our whole page, also know as the `document`:
+```js
+let myBlog = document.querySelector('#blog');
+```
+
+```html
+<main id="blog">
+  ...
+</main>
+```
+
+---
+class: middle
+
+`querySelector` only looks for the *first* instance of the selector you searched for,
+so if you have multiple elements with the same class `querySelector` will only find the first one.
+
+
+---
+class: middle
+
+example.html:
+```html
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="example.js" type="text/javascript" defer></script>
+  </head>
+  <body>
+      <main id="blog">hello everyoneee</main>
+  </body>
+</html>
+```
+example.js:
+```js
+let blogElement = document.querySelector('#blog');
+console.log(blogElement);
+```
+<hr>
+<main id="blog">hello everyoneee</main>
+<script type="text/javascript">
+  let blogElement = document.querySelector('#blog');
+  console.log(blogElement);
+</script>
+
+---
+class: middle
+
+### Selecting multiple items with `querySelectorAll`
+
+What if we wanted to grab a reference to all the paragraph tags in our page?
+We could get a reference to each individual one but that would be tedious.
+
+Since `querySelector` only gets the first instance it finds, we can use the `querySelectorAll`
+method to select multiple elements.
+
+---
+class: middle
+
+```js
+let paragraphs = document.querySelectorAll('#main > p');
+console.log(paragraphs);
+```
+
+```html
+<section id="main">
+  <h1>My Blog</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</section>
+```
+
+<hr>
+<section id="main">
+  <h1>My Blog</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</section>
+
+<script>
+  let paragraphs = document.querySelectorAll('#main > p');
+  console.log(paragraphs);
+</script>
+
+<style media="screen">
+  #main {
+    font-size: 70%;
+  }
+</style>
+
+
+---
+class: middle
+
+#### addEventListener()
+The `addEventListener` method tells the browser to listen or watch an element for events
+that we specify and then call a function to run some code once that event occurs.
+
+We add listeners to the reference for a html element that we retreived from `document.querySelector`:
+```html
+<button id="click-me">Click me!</button>
+```
+```js
+function clickMe() {
+  console.log('thanks for the click~');
+}
+
+let button = document.querySelector('#click-me');
+button.addEventListener('click', clickMe);
+//                      ^ event  ^ function to call when event occurs
+```
+<button id="click-me">Click me!</button>
+<script type="text/javascript">
+  function clickMe() {
+    console.log('thanks for the click~');
+  }
+
+  let button = document.querySelector('#click-me');
+  button.addEventListener('click', clickMe);
+</script>
+
+---
+class: middle
+
+Note that when we provide the function we want to be called to the listener, we don't include the `()` parentheses.
+```js
+button.addEventListener('click', clickMe);
+```
+When we use `clickMe()` with the parentheses on functions, the function is called at that moment.
+
+```js
+//  wrong ! : ((
+button.addEventListener('click', clickMe());
+```
+
+But since we want our function to be called later on when the event occurs, we only need to pass the
+`reference` or name of the function, and not the `clickMe()` full invocation of it.
+
+---
+class: middle
+
+There are all [kinds of events](https://developer.mozilla.org/en-US/docs/Web/API/Element#events) we can respond to, for instance `mouseover`:
+```js
+  function hoverElement(event) {
+    console.log(event);
+  }
+
+  let poem = document.querySelector('.borges-poem');
+  poem.addEventListener('mouseover', hoverElement);
+```
+
+```html
+<div class="borges-poem">
+  <p>
+    I, who have felt the horror of <span>mirrors</span><BR>
+    Not only in front of the <span>impenetrable crystal</span><BR>
+    Where there ends and begins, uninhabitable,<BR>
+    An impossible space of <span>reflections</span>,
+  </p>
+  <p>
+    But of gazing even on water that <span>mimics</span><BR>
+    The other blue in its depth of sky,<BR>
+    That at times <span>gleams back</span> the illusory flight<BR>
+    Of the inverted bird, or that ripples,
+  </p>
+</div>
+```
+
+.footnote[poem via http://www.cabinetmagazine.org/issues/14/borges.php]
+
+---
+class: middle
+
+<div class="borges-poem">
+  <p>
+    I, who have felt the horror of <span>mirrors</span><BR>
+    Not only in front of the <span>impenetrable crystal</span><BR>
+    Where there ends and begins, uninhabitable,<BR>
+    An impossible space of <span>reflections</span>,
+  </p>
+  <p>
+    But of gazing even on water that <span>mimics</span><BR>
+    The other blue in its depth of sky,<BR>
+    That at times <span>gleams back</span> the illusory flight<BR>
+    Of the inverted bird, or that ripples,
+  </p>
+</div>
+
+<script type="text/javascript">
+function hoverElement(event) {
+  console.log(event);
+}
+
+let poem = document.querySelector('.borges-poem');
+poem.addEventListener('mouseover', hoverElement);
+</script>
+
+---
+class: middle
+
+As you can see, our event has a bunch of info, but one thing of interest is the `target` or the thing triggering the event.
+
+Let's log the target to the console:
+```js
+function hoverElement(event) {
+  console.log(event.target.tagName);
+}
+
+let poem = document.querySelector('.borges-poem');
+poem.addEventListener('mouseover', hoverElement);
+```
+<hr>
+
+<div class="borges-poem-2">
+  <p>
+    I, who have felt the horror of <span>mirrors</span><BR>
+    Not only in front of the <span>impenetrable crystal</span><BR>
+    Where there ends and begins, uninhabitable,<BR>
+    An impossible space of <span>reflections</span>,
+  </p>
+  <p>
+    But of gazing even on water that <span>mimics</span><BR>
+    The other blue in its depth of sky,<BR>
+    That at times <span>gleams back</span> the illusory flight<BR>
+    Of the inverted bird, or that ripples,
+  </p>
+</div>
+
+<script type="text/javascript">
+function hoverElement2(event) {
+  console.log(event.target.tagName);
+}
+
+let poem = document.querySelector('.borges-poem-2');
+poem.addEventListener('mouseover', hoverElement2);
+</script>
+
+---
+class: middle
+
+We could add a `conditional` that checks whether we're hovering over a span element:
+
+```js
+function hoverElement(event) {
+  if (event.target.tagName == 'SPAN') {
+    event.target.classList.add('yellow');
+  }
+}
+
+let poem = document.querySelector('.borges-poem');
+poem.addEventListener('mouseover', hoverElement);
+```
+
+Let's also add some css:
+```css
+span {
+  transition: background .5s ease-in-out;
+  cursor: pointer;
+}
+
+span.yellow {
+  background: yellow;
+}
+```
+
+---
+class: middle
+
+<div class="borges-poem-3">
+  <p>
+    I, who have felt the horror of <span>mirrors</span><BR>
+    Not only in front of the <span>impenetrable crystal</span><BR>
+    Where there ends and begins, uninhabitable,<BR>
+    An impossible space of <span>reflections</span>,
+  </p>
+  <p>
+    But of gazing even on water that <span>mimics</span><BR>
+    The other blue in its depth of sky,<BR>
+    That at times <span>gleams back</span> the illusory flight<BR>
+    Of the inverted bird, or that ripples,
+  </p>
+</div>
+<script type="text/javascript">
+function hoverElement3(event) {
+  if (event.target.tagName == 'SPAN') {
+    event.target.classList.add('yellow');
+  }
+}
+
+let poem = document.querySelector('.borges-poem-3');
+poem.addEventListener('mouseover', hoverElement3);
+</script>
+
+<style media="screen">
+.borges-poem-3 span {
+  transition: background .5s ease-in-out;
+  cursor: pointer;
+}
+
+.yellow {
+  background: yellow;
+}
+
+</style>
+
+---
+class: middle
+
+One of the most common uses for javascript is to make changes to the `DOM`.
+
+We can create, remove, or modify any dom references.
+
+---
+class: middle
+
+In the first JS intro video we learned about `classList` and changing the classes on an element.
+We can also directly modify our elements by using the inline `style` attribute
+
+```js
+let message = document.querySelector('.message');
+message.addEventListener('click', function () {
+  message.style.display = 'none';
+  //     ^ setting the style here is the same as
+  //       doing <span style="display:none">
+  //       but from javascript : ))
+
+  // we could also use message.style = "display: none";
+  // but using the property is a bit more direct
+
+  // Also note, css properties with hyphens like background-color
+  // get converted into bumpy case when used with javascript
+  // message.style.backgroundColor = 'red';
+});
+```
+
+```html
+<span class="message">Click to hide me</span>
+```
+
+<span class="message">Click to hide me</span>
+
+<script type="text/javascript">
+let message = document.querySelector('.message');
+message.addEventListener('click', function () {
+  message.style.display = 'none';
+  //     ^ setting the style here is the same as
+  //       doing <span style="display:none">
+  //       but from javascript : ))
+  //       we could also use message.style = "display: none";
+  //       but using the property is a bit more direct
+});
+</script>
+
+<style media="screen">
+  .message {
+    border: solid 1px #000;
+    padding: 15px;
+    font-size: 12px;
+  }
+</style>
+
+---
+class: middle
+
+Adding elements with `createElement` and `appendChild`
+
+```js
+let cave = document.querySelector('#cave');
+cave.addEventListener('click', function () {
+  let echo = document.createElement('div');
+  echo.innerHTML = '<em>echo</em>';
+  cave.appendChild(echo);
+});
+```
+
+```css
+#cave {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40rem;
+  height: 42.5rem;
+  background: grey;
+  align-items: center;
+  border-radius: 50% 50% 25% 25%;
+  box-shadow: inset 0px 0px 75px #333;
+}
+```
+
+```html
+<div id="cave">
+    <button>echo</button>
+</div>
+```
+
+---
+class: middle
+
+<div id="cave">
+    <button>echo</button>
+</div>
+
+<style media="screen">
+#cave {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #333;
+  width: 400px;
+  height: 425px;
+  border-radius: 50% 50% 25% 25%;
+  box-shadow: inset 0px 0px 100px #FFF;
+  color: white;
+  margin: 0 auto;
+}
+</style>
+
+<script type="text/javascript">
+let cave = document.querySelector('#cave');
+cave.addEventListener('click', function () {
+  let echo = document.createElement('div');
+  echo.innerHTML = '<em>echo</em>';
+  cave.appendChild(echo);
+
+});
+</script>
+
+---
+class: middle
+
+We can also remove elements by using the `remove` method
+
+```js
+let message = document.querySelector('.message-2');
+message.addEventListener('click', function () {
+  message.remove();
+});
+```
+
+```html
+<span class="message-2">Click to hide me</span>
+```
+
+<span class="message-2">Click to hide me</span>
+
+<script type="text/javascript">
+let message = document.querySelector('.message-2');
+message.addEventListener('click', function () {
+  message.remove();
+});
+</script>
+
+<style media="screen">
+  .message-2 {
+    border: solid 1px #000;
+    padding: 15px;
+    font-size: 12px;
+  }
+</style>
+
+
+---
+class: middle
+
+~ Demo ~
+
+---
+class: middle
+
+```html
+<div id="container">
+  <div class="bubble"></div><div class="bubble"></div>
+  <div class="bubble"></div><div class="bubble"></div>
+</div>
+```
+```css
+.bubble {
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  background: rgb(247, 255, 255, 0.5);
+  border: solid 1px rgba(106, 198, 198, 0.2);
+  border-radius: 50%;
+  box-shadow: inset -3px -3px 8px rgba(106, 198, 198, 0.3);
+  cursor: pointer;
+}
+```
+```js
+  let bubbles = document.querySelectorAll('.bubble');
+  let container = document.querySelector('#container');
+
+  // place our bubbles randomly
+  bubbles.forEach(function (bubble) {
+    bubble.style.left = (100 * Math.random()) + '%';
+    bubble.style.top = (100 * Math.random()) + '%';
+  });
+
+  container.addEventListener('click', function (event) {
+    if (event.target.classList.contains('bubble')) {
+      event.target.remove();
+    }
+  });
+```
+
+---
+class: middle
+
+<div id="container">
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+</div>
+
+<style media="screen">
+.remark-slide-container:nth-child(37) .remark-slide-content {
+  background: linear-gradient(135deg, rgb(251, 255, 254), rgb(242, 261, 249));
+}
+.bubble {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: rgb(247, 255, 255, 0.5);
+  border: solid 1px rgba(106, 198, 198, 0.2);
+  border-radius: 50%;
+  box-shadow: inset -3px -3px 8px rgba(106, 198, 198, 0.3);
+  cursor: pointer;
+}
+</style>
+
+<script type="text/javascript">
+let bubbles = document.querySelectorAll('.bubble');
+let container = document.querySelector('#container');
+
+// place our bubbles randomly
+bubbles.forEach(function (bubble) {
+  bubble.style.left = (90 * Math.random()) + '%';
+  bubble.style.top = (90 * Math.random()) + '%';
+});
+
+container.addEventListener('click', function (event) {
+  if (event.target.classList.contains('bubble')) {
+    event.target.remove();
+  }
+});
+</script>
+
+    </textarea>
+    <script src="/assets/js/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({ ratio: '4:3', navigation: { scroll: false }});
+
+      // run any script tags contained within the active slide
+      slideshow.on('afterShowSlide', (slide) => {
+        var scripts = document.querySelector('.remark-visible').querySelectorAll('script');
+        for (var script of scripts) {
+          setTimeout(() => {
+            eval(script.innerText);
+          }, 100);
+        }
+      });
+
+      var links = document.links;
+
+      for (var i = 0, linksLength = links.length; i < linksLength; i++) {
+         if (links[i].hostname != window.location.hostname) {
+             links[i].target = '_blank';
+         }
+      }
+
+
+    </script>
+  </body>
+</html>
