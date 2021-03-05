@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+html {
+  min-height: 100%;
+  font-size: 62.5%;
+  font-family: "Lato";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@keyframes exclamation {
+  0% { text-decoration-color: rgb(252, 161, 32); }
+  25% { text-decoration-color: rgb(252, 71, 32); }
+  50% { text-decoration-color: rgb(228, 252, 32); }
+  75% { text-decoration-color: rgb(252, 224, 32); }
+  100% { text-decoration-color: rgb(252, 161, 32); }
+}
+
+body {
+  height: 100%;
+  background: linear-gradient(0deg, rgb(213, 231, 244), rgb(169, 209, 238));
+  margin: 0 3rem;
+  font-size: 1.8rem;
+}
+
+mark {
+  background-color: white;
+  color: #2859ba;
+  padding: 0 .5rem;
+}
+
+nav {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+a {
+  transition: color 125ms ease-in-out;
+  color: #2859ba;
+  font-weight: bold;
+  text-decoration: none;
+  padding: .1rem;
+}
+a:hover {
+  color: blue;
+}
+
+b {
+  font-weight: 900;
+  text-decoration: underline;
+  text-decoration-color: rgb(252, 161, 32);
+  animation: exclamation 5s linear infinite;
+}
+
+ol > li {
+  margin-bottom: 2rem;
+}
+
+hr {
+  border: solid .1rem #FFF;
+  border-width: 0 0 .1rem 0;
+  margin: 2rem 0;
+}
+
+.requirements {
+  margin: 0 0 2rem .5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 3rem;
+  max-width: max-content;
+  width: 100%;
+}
+
+.discussion {
+  list-style-type: '~ ';
+}
