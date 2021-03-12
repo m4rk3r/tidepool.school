@@ -9,7 +9,7 @@ setInterval(() => {
 
 const trs = document.querySelectorAll('tr');
 
-const start = moment('2021-03-12 09:00:00');
+const start = moment('2021-03-12 09:05:00');
 const meetingLength = 7;
 
 trs.forEach((tr) => {
