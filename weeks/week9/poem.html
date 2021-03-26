@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      html {
+        height: 100%;
+      }
+      body {
+        min-height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: hsl(150, 50%, 70%);
+        transition: background-color .25s ease-in-out;
+      }
+      #poem {
+        font-size: 60px;
+        font-family: courier;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="poem">
+      <span class="verb">thinking of</span> <span class="noun">a tree</span><BR>
+      &emsp;makes me feel <span class="emotion">sad</span><BR>
+      &emsp;&emsp;so <span class="adjective">tall</span> and so <span class="adjective">wise</span>
+
+    </div>
+  </body>
+  <script type="text/javascript">
+    const parts = {
+      noun: [
+        'a tree',
+        'a rug',
+        'a mushroom',
+        'an airplane'
+      ],
+      emotion: [
+        'whistful',
+        'angry',
+        'sleepy',
+        'content',
+        'sad',
+      ],
+      adjective: [
+        'oblong',
+        'quiet',
+        'full',
+        'crude',
+        'rough'
+      ],
+      verb: [
+        'thinking of',
+        'throwing',
+        'drawing',
+        'burning',
+        'dreaming of',
+      ]
+    };
+
+
+    let poemFragments = {
+      'noun': ["fasd","asdfads","asdf","","a leaf"],
+      'adjective': ["essential"],
+      'verb': ["wow","opening"],
+      'emotion': ["test","test","sorrowful"]
+    };
+
+    const poem = document.querySelector('#poem');
+    poem.addEventListener('mouseover', function (evt) {
+      let itemClass = evt.target.className;
+      if (['noun', 'verb', 'adjective', 'emotion'].includes(itemClass)) {
+        evt.target.innerText = parts[itemClass][Math.floor(Math.random() * parts[itemClass].length)];
+      }
+    });
+
+    setInterval(function () {
+      let elements = document.querySelectorAll('#poem > span');
+      let element = elements[Math.floor(Math.random() * elements.length)];
+      let itemClass = element.className;
+      if (['noun', 'verb', 'adjective', 'emotion'].includes(itemClass)) {
+        element.innerText = poemFragments[itemClass][Math.floor(Math.random() * poemFragments[itemClass].length)];
+      }
+
+      document.body.style.backgroundColor = 'hsl(' + Math.round(Math.random() * 360)+', 50%, 70%)';
+    }, 3000);
+  </script>
+</html>

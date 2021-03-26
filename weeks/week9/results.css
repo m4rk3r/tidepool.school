@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Bitter&display=swap');
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  font-family: 'Bitter';
+  font-weight: 100;
+  font-feature-settings:"kern" 1;
+  font-kerning: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+.instructions {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 2.4rem;
+  position: relative;
+  padding-bottom: 10rem;
+}
+.instructions  {
+  width: 75vw;
+  margin: 0 auto;
+}
+.instructions li {
+  margin-bottom: 1.5rem;
+}
+
+.creator {
+  position: absolute;
+  bottom: 1rem;
+  left: -10vw;
+}
+.executor {
+  position: absolute;
+  bottom: 1rem;
+  right: -10vw;
+}
+
+section .results {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+}
+
+section .results iframe {
+  /* flex-grow: 1; */
+  width: 100%;
+  border: none;
+}
+
+section + section {
+  padding-top: 20rem;
+}

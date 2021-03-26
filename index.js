@@ -181,6 +181,21 @@ io.on('connection', async socket => {
   socket.on('typing', data => {
     socket.broadcast.emit('question', data.text);
   });
+
+  socket.on('poem-input', data => {
+    socket.broadcast.emit('poem-output', data);
+    const [ person, part ] = data.key.split('-');
+    redis.hset(`poem:${part}`, person, data.text);
+  });
+
+  socket.on('get-code', async () => {
+    let poemData = {};
+    const keys = await redis.keys('poem:*');
+    for(k of keys) {
+      poemData[k.split(':')[1]] = await redis.hvals(k);
+    }
+    socket.emit('code', poemData);
+  });
 });
 
 server.listen(4000);
