@@ -62,7 +62,7 @@ bin.addEventListener('keyup', (evt) => {
 });
 
 
-var socket;
+let socket;
 if (window.location.hostname.includes('localhost')) {
  socket = io('http://localhost:4000', { transports: ['websocket']});
 } else {
@@ -94,6 +94,18 @@ socket.on('code', function (code) {
     `;
       codeEle.innerText = codeTemplate;
   }
+});
+
+fetch('/poem-data').then(res => res.json()).then((data) => {
+  Object.keys(data).forEach((k) => {
+    Object.keys(data[k]).forEach((s) => {
+      document.querySelector(`#${s}-${k}`).value = data[k][s];
+    });
+  });
+})
+
+socket.on('connect', () => {
+  socket.emit('get-code');
 });
 
 setInterval(function () {

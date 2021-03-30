@@ -138,6 +138,16 @@ app.post('/remove', async (req, res) => {
   });
 });
 
+app.get('/poem-data', async (req, res) => {
+  let poemData = {};
+  const keys = await redis.keys('poem:*');
+  for(k of keys) {
+    poemData[k.split(':')[1]] = await redis.hgetall(k);
+  }
+  
+  res.json(poemData);
+});
+
 const getCreatures = async (ignore = '') => {
     const keys = await redis.keys('u:*');
     const pipe = redis.pipeline();
