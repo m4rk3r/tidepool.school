@@ -1,0 +1,34 @@
+
+html {
+  min-height: 100%;
+}
+
+body {
+  background-size: 100% 100%;
+  background-repeat: no-no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 15000px;
+  position: relative;
+}
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: beige;
+
+  mask-size: cover;
+  mask-position: center;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-size: cover;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-clip: content-box;
+  -webkit-mask-composite: intersect;
+}

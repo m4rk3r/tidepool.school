@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+html {
+  min-height: 100%;
+  font-family: "Lato";
+  font-size: 62.5%;
+}
+
+body {
+  height: 100%;
+  background: linear-gradient(hsl(10, 81.3%, 93.7%), rgb(255,255,255));
+  font-size: 1.6rem;
+  padding: 1.5rem 3.5rem;
+  line-height: 1.5;
+  max-width: 140rem;
+  margin: 0 auto;
+}
+
+.rotate-90 {
+  display: inline-block;
+  padding: 0 1rem;
+  transform: rotateZ(90deg);
+}
+
+
+h1 {
+  font-size: 3.5rem;
+}
+h2 {
+  margin-top: 3.5rem;
+}
+h3 {
+  margin-bottom: 0;
+  text-decoration: underline;
+}
+.req {
+  margin-top: .5rem;
+  border: solid .1rem white;
+  padding: 1rem;
+  margin-bottom: 3rem;
+}
+.req span {
+  font-size: 1.6rem;
+}
+.req ul {
+  width: 75%;
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  padding-left: 3rem;
+}
+.req ul li {
+  margin-bottom: 1rem;
+}
+.req p {
+  margin: 0;
+}
+.req p + p {
+  margin-top: 1rem;
+}
+
+a:link, a:visited {
+  color: blue;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all .125s ease-in-out;
+}
+a:hover {
+  color: white;
+  text-shadow: 1px 1px 5px rgba(0, 0, 255, 0.5);
+}
+
+p {
+  font-size: 2rem;
+}
+p.brief {
+  padding-bottom: 1rem;
+  border-bottom: solid 2px black;
+  display: inline-block;
+  margin: 4rem 0 2rem 0;
+}
+
+hr {
+  border: none;
+  background: rgb(185, 179, 210);
+  height: .2rem;
+}
+
+mark {
+  background: rgb(132, 213, 140);
+  padding: 0 2px;
+  color: white;
+}
+.underline {
+  text-decoration: underline;
+}
+
+.main-nav {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+}
+.main-nav a {
+  transition: color 125ms ease-in-out;
+  color: blue;
+  font-weight: bold;
+  text-decoration: none;
+  padding: .1rem;
+  font-size: 1.8rem;
+}
+
+
+#examples {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 45rem);
+  grid-column-gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+#examples figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#examples figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#events {
+  columns: 2;
+}
