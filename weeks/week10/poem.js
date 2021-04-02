@@ -1,13 +1,14 @@
 
 let poemFragments = {
-  noun: [],
-  verb: [],
-  adjective: [],
-  emotion: [],
+  'noun': ["a mountain","Leaf","a grandma","a field","a cup","a horse","an ocean","a walnut","a desert","a cat","a branch","a diaper","socks","a cupcake","a pillow","a coffee","cat","girl","a cherry"],
+  'adjective': ["Tiring","rotund","hideous","breakable","sparkly","smooth","fluffy","fragile","delicious","lovely","hot","strange","smooth","ample","warm","colossal","rough","tiny","dark"],
+  'verb': ["Overthinking","thinking of","bouncing on","sculpting","waiting for","wanting","napping","thinking","hoping for","wanting","dancing","sleeping","frustra","brightening","skipping","looking for","swimming","thinking of","making"],
+  'emotion': ["sorrowful","Anxious","confused","yearning","angry","frustrated","melancholy","overwhelm","anxious","excited ","sleepy","triggered","excited","tired","joyful","disturbed","happy","delighted","upset"]
 };
 
+/*
 let Airtable = require('airtable');
-// https://gist.github.com/m4rk3r/39a07cf6fb87a5b0a5ed60387c3f60ef
+
 var base = new Airtable({apiKey: 'keyzwwUOzmCKuXxbq'}).base('appIQorANZvYFOqnN');
 
 base('Poem fragments').select({}).eachPage(gotPageOfFragments, gotAllFragments);
@@ -33,7 +34,7 @@ function gotAllFragments(err) {
     console.error(err);
     return;
   }
-}
+}*/
 
 
 //
@@ -44,12 +45,16 @@ function gotAllFragments(err) {
 //     evt.target.innerText = parts[itemClass][Math.floor(Math.random() * parts[itemClass].length)];
 //   }
 // });
-//
 
 
+// run this anonymous function at 5 sec (5000 ms) intervals
 setInterval(function () {
+  // select all our spans
   let elements = document.querySelectorAll('#poem > span');
+  // choose one at random
   let element = elements[Math.floor(Math.random() * elements.length)];
+
+  // roughly the same code from our event listener after this...
   let itemClass = element.className;
   if (['noun', 'verb', 'adjective', 'emotion'].includes(itemClass)) {
     element.innerText = poemFragments[itemClass][Math.floor(Math.random() * poemFragments[itemClass].length)];

@@ -415,6 +415,32 @@ mark {
   }
 }
 
+.week-10 {
+  grid-column: 2;
+  grid-row: 10;
+  position: relative;
+
+  .pool {
+    clip-path: url(#c10);
+  }
+
+  .poem-wrapper {
+    position: absolute;
+    top: -600px;
+    left: -200px;
+    transform: scale(0.18, 0.18);
+    z-index: 20;
+
+    iframe {
+      width: 1200px;
+      height: 1200px;
+      border-radius: 50%;
+      border: none;
+    }
+  }
+
+}
+
 @media (max-width: 900px) {
   #pools {
     grid-template-columns: 1fr;
