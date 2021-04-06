@@ -105,6 +105,8 @@ function allPoets() {
   allPoets.forEach(function (poet) {
     poet.style.display = 'list-item';
   });
+
+  document.querySelector('#search').value = '';
 }
 
 document.querySelector('#all').addEventListener('click', allPoets);
