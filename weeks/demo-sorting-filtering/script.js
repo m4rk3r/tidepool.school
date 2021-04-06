@@ -6,7 +6,7 @@ let poetsElement = document.querySelector('#poets');
 let Airtable = require('airtable');
 var base = new Airtable({apiKey: 'keyzwwUOzmCKuXxbq'}).base('apphHPPnjo6UiTDiU');
 
-base('Poets').select({view: "Grid view"}).eachPage(gotPageOfPoets, gotAllPoets);
+base('Poets').select({view: 'Grid view'}).eachPage(gotPageOfPoets, gotAllPoets);
 
 
 function gotPageOfPoets(records, fetchNextPage) {
@@ -28,13 +28,13 @@ function gotAllPoets(err) {
   try {
     displayPoets();
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 
 
 function displayPoets() {
-  poets.forEach(function (poet) {
+  poets.forEach(function (poet, i) {
     let li = document.createElement('li');
     li.innerText = `${poet.fields.Name} (${poet.fields.Date})`;
     li.dataset.name = poet.fields.Name;
@@ -42,6 +42,34 @@ function displayPoets() {
     poetsElement.append(li);
   });
 }
+
+
+function alphabetical() {
+  // empty our poets ul
+  poetsElement.innerHTML = '';
+
+  // sort poets array
+  poets.sort(function (a, b) {
+    let nameA = a.fields.Name;
+    let nameB = b.fields.Name;
+
+    let firstLastA = nameA.split(' ');
+    let firstLastB = nameB.split(' ');
+
+    let lastNameA = firstLastA[firstLastA.length - 1];
+    let lastNameB = firstLastB[firstLastB.length - 1];
+
+    if (lastNameA[0] > lastNameB[0]) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+
+  displayPoets()
+}
+
+document.querySelector('#alpha').addEventListener('click', alphabetical);
 
 
 function recentPoets() {
@@ -58,37 +86,10 @@ function recentPoets() {
 document.querySelector('#recent').addEventListener('click', recentPoets);
 
 
-function sortAlpha() {
-  // delete our ul items
-  poetsElement.innerHTML = '';
-
-  poets.sort(function (a, b) {
-    let nameA = a.fields.Name;
-    let nameB = b.fields.Name;
-
-    let firstLastA = nameA.split(' ');
-    let firstLastB = nameB.split(' ');
-
-    let lastNameA = firstLastA[firstLastA.length - 1];
-    let lastNameB = firstLastB[firstLastB.length - 1];
-
-    if (lastNameA > lastNameB) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
-
-  displayPoets();
-}
-
-document.querySelector('#alpha').addEventListener('click', sortAlpha);
-
-
-function search(event) {
+function search(evt) {
   let allPoets = poetsElement.querySelectorAll('li');
   allPoets.forEach(function (poet) {
-    if (poet.dataset.name.toLowerCase().includes(event.target.value.toLowerCase())) {
+    if (poet.dataset.name.toLowerCase().includes(evt.target.value.toLowerCase())) {
       poet.style.display = 'list-item';
     } else {
       poet.style.display = 'none';
@@ -99,12 +100,11 @@ function search(event) {
 document.querySelector('#search').addEventListener('keyup', search);
 
 
-function showAll() {
+function allPoets() {
   let allPoets = poetsElement.querySelectorAll('li');
   allPoets.forEach(function (poet) {
     poet.style.display = 'list-item';
   });
-  document.querySelector('#search').value = '';
 }
 
-document.querySelector('#all').addEventListener('click', showAll);
+document.querySelector('#all').addEventListener('click', allPoets);
