@@ -34,7 +34,7 @@ function gotAllPoets(err) {
 
 
 function displayPoets() {
-  poets.forEach(function (poet, i) {
+  poets.forEach(function (poet) {
     let li = document.createElement('li');
     li.innerText = `${poet.fields.Name} (${poet.fields.Date})`;
     li.dataset.name = poet.fields.Name;
