@@ -426,20 +426,29 @@ mark {
 
   .poem-wrapper {
     position: absolute;
-    top: -600px;
-    left: -200px;
-    transform: scale(0.18, 0.18);
+    top:  -112.5px;
+    left: 50%;
     z-index: 20;
 
     iframe {
-      width: 1200px;
-      height: 1200px;
+      width: 225px;
+      height: 225px;
       border-radius: 50%;
       border: none;
     }
   }
 
 }
+
+.week-11 {
+  grid-column: 1;
+  grid-row: 11;
+
+  .pool {
+    clip-path: url(#c11);
+  }
+}
+
 
 @media (max-width: 900px) {
   #pools {
