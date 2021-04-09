@@ -1,0 +1,60 @@
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  font-size: 1.6rem;
+  display: grid;
+  grid-template-rows: min-content auto min-content;
+}
+
+#tags {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-bottom: dashed .1rem grey;
+}
+
+#produce {
+  position: relative;
+}
+
+#info {
+  display: none;
+  position: absolute;
+  width: 50%;
+  left: 25%;
+  height: 50%;
+  top: 25%;
+  background: white;
+  z-index: 10;
+  border: solid .5rem blue;
+  padding: 3rem;
+}
+
+#info.show {
+  display: block;
+}
+
+#produce img {
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#months {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-top: dashed .1rem grey;
+}
+
+.current {
+  box-shadow: .2rem .2rem .5rem purple;
+}
