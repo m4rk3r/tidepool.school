@@ -93,13 +93,14 @@ function closeInfo() {
 
 function displayProduce() {
   let ourTags = []; // pass 2
+  let currMonth = new Date().getMonth(); // pass 3
 
 
   months.forEach(function (item, i) {
     let month = document.createElement('button');
     month.innerText = item;
     month.dataset.month = item;
-    if (i == new Date().getMonth()) {
+    if (i == currMonth) {
       month.classList.add('current');
     }
     month.addEventListener('click', filterByMonth);

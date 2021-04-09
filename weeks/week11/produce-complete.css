@@ -20,15 +20,15 @@ body {
 
 #produce {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #info {
   display: none;
-  position: absolute;
   width: 50%;
-  left: 25%;
   height: 50%;
-  top: 25%;
   background: white;
   z-index: 10;
   border: solid .5rem blue;

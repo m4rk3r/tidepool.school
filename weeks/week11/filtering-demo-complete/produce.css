@@ -18,21 +18,30 @@ body {
   border-bottom: dashed .1rem grey;
 }
 
+@media (max-width: 1024px) {
+  #tags {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: .5rem;
+  }
+}
+
 #produce {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #info {
   display: none;
   position: absolute;
   width: 50%;
-  left: 25%;
   height: 50%;
-  top: 25%;
   background: white;
   z-index: 10;
-  border: solid .5rem blue;
   padding: 3rem;
+  box-shadow: .3rem .3rem 1rem grey;
 }
 
 #info.show {
@@ -54,6 +63,15 @@ body {
   padding: 1.5rem;
   border-top: dashed .1rem grey;
 }
+
+@media (max-width: 1024px) {
+  #months {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: .5rem;
+  }
+}
+
 
 .current {
   box-shadow: .2rem .2rem .5rem purple;
