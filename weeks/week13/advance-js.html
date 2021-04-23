@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to JS</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Nanum+Gothic);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      html {
+        font-size: 24px;
+      }
+
+      body { font-family: 'Open Sans';}
+      h1, h2, h3 {
+        font-family: 'Nanum Gothic';
+        font-weight: normal;
+      }
+      .remark-container {
+        background: rgb(237, 238, 229);
+      }
+      .remark-slide-scaler {
+        box-shadow: 0 0 10px #88888857;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .hljs-default .hljs-name { color: #5fa04b; }
+      .hljs-default .hljs-string, .hljs-default .hljs-selector-id, .hljs-default .hljs-selector-class {
+        color: rgb(198, 122, 22);
+      }
+      .hljs-default .hljs-selector-pseudo {
+        color: rgb(30, 115, 203);
+      }
+      .remark-inline-code {
+        background: #F0F0F0;
+        color: #5fa04b;
+        padding: 0 3px;
+      }
+
+      .footnote {
+        position: absolute;
+        bottom: 2%;
+        font-size: 12px;
+        left: 2%;
+        font-style: italic;
+        color: rgb(108, 108, 108);
+      }
+
+      .two-column ul {
+        columns: 2;
+      }
+      .three-column ul {
+        columns: 3;
+      }
+      .li-spacing li {
+        margin-bottom: 35px;
+      }
+
+      a { text-decoration: none; }
+      a:visited { color: blue;}
+
+      /* for slide examples */
+
+      .fix-again-ugh .remark-code-line:nth-child(2),
+      .fix-multiline .remark-code-line:nth-child(3),
+      .fix-multiline .remark-code-line:nth-child(4) {
+        color: #888888;
+      }
+
+      .tree-img img {
+        display: block;
+        width: 75%;
+        margin: 0 auto;
+      }
+
+      #more {
+        word-break: break-all;
+      }
+
+      .rotate-90 {
+        display: inline-block;
+        margin-left: 10px;
+        transform: rotateZ(90deg);
+      }
+
+      .red {
+        color: red;
+      }
+
+      .completed {
+        text-decoration: line-through;
+      }
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: middle center
+
+# ~ Web APIs & Advanced JS ~
+
+---
+class: middle
+
+## Advanced JS: Web APIs
+
+An `API` or Application Programming Interface is a way to refer to and utilize an external resource that you interact with using&nbsp;code.
+
+---
+class: middle
+
+There are a [bunch special APIs](https://developer.mozilla.org/en-US/docs/Web/API) that browsers support, some of the more interesting ones:
+- Geolocation
+- Notification
+- Fetch
+- localStorage & sessionStorage
+
+
+---
+class: middle
+
+## Geolocation API
+
+The [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API) requests the
+latitude and longitude coordinates of the user's location. This will vary in quality based on the device.
+
+
+Most of these Web APIs require special permission from the user in browser to enable them.
+
+The geolocation API is accessed with: `navigator.geolocation`
+
+
+---
+class: middle
+
+Let's create a simple example:
+
+```html
+<button id="request-location">Show Location</button>
+<div id="location"></div>
+```
+
+```js
+let bin = document.querySelector('#location');
+
+function showLocation(pos) {
+  bin.innerHTML = `Your location is: ${pos.coords.latitude}, ${pos.coords.longitude}`
+}
+
+function showError(error) {
+    bin.innerHTML = error.message;
+}
+
+let button = document.querySelector('#request-location');
+button.addEventListener('click', function () {
+  navigator.geolocation.getCurrentPosition(showLocation, showError);
+});
+```
+
+<button id="request-location">Show Location</button>
+<div id="location"></div>
+
+<script type="text/javascript">
+let bin = document.querySelector('#location');
+
+function showLocation(pos) {
+  bin.innerHTML = `Your location is: ${pos.coords.latitude}, ${pos.coords.longitude}`
+}
+
+function showError(error) {
+    bin.innerHTML = error.message;
+}
+
+let button = document.querySelector('#request-location');
+button.addEventListener('click', function () {
+  navigator.geolocation.getCurrentPosition(showLocation, showError);
+});
+</script>
+
+---
+class: middle
+
+## Notification API
+
+The [Notifications API](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API) is a simple tool to add popup messages
+at the operating system level, outside the web page context.
+
+---
+class:middle
+
+## User dependent actions
+
+A new concept we need to introduce in order to work with some of these APIs is called a `Promise`.
+
+`Promises` are a bit of an advanced concept, but you'll start to see them more often the further along you go with javascript.
+
+They solve a simple problem that can help explain what they are. With the notification API we need
+to ask the user for permission to show them, which could take an unknown amount of time to answer.. what if
+they've left the room or are multi-tasking.
+
+`Promises` offer a way to handle the execution of some code without `blocking` or preventing the rest of your javascript from
+running.
+
+---
+class: middle
+
+Since `Promises` don't block the execution of code while we wait for them to resolve, we need a way to do something
+once they do finally finish.
+
+For now, let's just focus on this second part. The Notifications API returns a `promise` when requesting the user for permission.
+We use the special `.then()` property that allows us to attach a function that will be called as soon as the `promise` is resolved.
+
+
+---
+class: middle
+
+```html
+<button id="notify">Request Permission</button>
+```
+```js
+function permissionResponse(response) {
+  console.log('The user answered', response);
+}
+
+function getPermission() {
+  // this returns a promise
+  Notification.requestPermission().then(permissionResponse);
+  console.log('requested permission... waiting!');
+}
+documnet.querySelector('#notify').addEventListener('click', getPermission);
+```
+Above we have a function `getPermission` that uses the Web Notification API to ask the user permission to display notifications.
+Since it uses `Promises` our code won't stop and hang at this point, waiting for the user's response.
+Instead, it'll keep going while we wait, and print the following `console.log`.
+
+<button id="promise-test">Request Permission</button>
+
+<script type="text/javascript">
+  function permissionResponse(response) {
+    console.log('The user answered:', response);
+  }
+
+  function getPermission() {
+    Notification.requestPermission().then(permissionResponse);
+    console.log('requested permission... waiting!');
+  }
+
+  document.querySelector('#promise-test').addEventListener('click', function ()  {
+    getPermission();
+  })
+</script>
+
+---
+class: middle
+
+Now let's put it together for a full example:
+```html
+<button id="request-permission">Send Notification</button>
+```
+```js
+function sendNotification() {
+  new Notification('New Notification', {body: 'This is an example notification', icon: '😁'});
+}
+
+function getPermission() {
+  console.log('requesting permission..');
+  Notification.requestPermission().then(sendNotification);
+}
+
+let btn = document.querySelector('#request-permission');
+btn.addEventListener('click', getPermission);
+```
+
+<button id="request-permission">Send Notification</button>
+<script type="text/javascript">
+function sendNotification() {
+  new Notification('New Notification', {body: 'This is an example notification'});
+}
+
+function getPermission() {
+  console.log('requesting permission..');
+  Notification.requestPermission().then(sendNotification);
+}
+let btn = document.querySelector('#request-permission');
+btn.addEventListener('click', getPermission);
+</script>
+
+---
+class: middle
+
+## Fetch
+
+`fetch` is a useful way to load external websites from within javascript.
+
+---
+class: middle
+
+A common use for an API is a website you can load to receive data.
+For instance a weather API would be a website you could load with the city
+you're in to return forecast data.
+
+Data returned from APIs are often formatted in `JSON` (pronounced j-son or jason) or javascript (js) object notation. JSON is simply
+a way to represent a bunch of info in a structured way.
+
+Let's use [this sunrise/sunset api](https://sunrise-sunset.org/api) based on a provided location as an example.
+
+---
+class: middle
+
+Since we already know how to get the latitude and longitude coordinates for a user,
+lets look at how we can use `fetch` to call this sunset api, supplying that info.
+
+Like the Notifications API, fetch returns a promise, since loading something from
+the web can take an unknown amount of time, just like a user response.
+
+---
+class: middle two-column
+
+## A quick aside about url parameters
+
+We want to load the sunset api with our specific location to learn what time sunset is.
+One common way to attach info to our request is to use `query strings`.
+
+`https://api.sunrise-sunset.org/json?lat=36.72&lng=-4.42`
+
+You've likely seen them before at the end of urls. The `query string` is everything after the `?`
+formatted `<parameter>=<value>` with `&` chaining them together.
+
+In our api example above `?lat=36.72&lng=-4.42` splits up to be:
+- `lat` = `36.72`
+- `lng` = `-4.42`
+
+Code running on the server for a website can receive these parameters and respond
+accordingly.
+
+---
+class: middle
+
+So, now we know how to supply the coordinates to the api, let's try calling it with `fetch`:
+
+```js
+fetch('https://api.sunrise-sunset.org/json?lat=40.74573&lng=-73.9244437')
+  .then(function (res) {
+    console.log(res);
+  });
+```
+The above code calls the `fetch()` which returns a `promise` that will *resolve*
+once the website loads and returns a response. We are chaining on the `.then()`
+to receive this response and log it to the console.
+
+It's condensed to be succinct, but this could also be written:
+```js
+function handleRequest(req) {
+  console.log(req);
+}
+let getApi = fetch('https://api.sunrise-sunset.org/json?lat=40.74573&lng=-73.9244437');
+getApi.then(handleRequest);
+```
+
+<script type="text/javascript">
+fetch('https://api.sunrise-sunset.org/json?lat=40.74573&lng=-73.9244437')
+  .then(function (res) {
+    console.log(res);
+  });
+</script>
+
+---
+class: middle
+
+The response from `fetch`, if it was successful, is a *http&nbsp;response* and not yet the
+usable `JSON` sunset data:
+
+```js
+Response { type: "cors", url: "https://api.sunrise-sunset.org/json?lat=40.74573&lng=-73.9244437", redirected: false, status: 200, ok: true, statusText: "OK", headers: Headers, body: ReadableStream, bodyUsed: false }
+```
+
+To unpack this and see the actual data, we need to get the `JSON` from the response with `.json()`:
+
+```js
+function handleRequest(req) {
+  // unpack json
+  req.json().then(function (data) {
+    console.log(data);
+  });
+}
+```
+The `json()` method also conveniently returns a `promise` so we can once again use `.then()` to attach callback
+that will receive the `JSON` data once it has been extracted.
+
+---
+class: middle
+
+So putting it all together:
+
+```js
+function logSunsetData(data) {
+  console.log(data);
+}
+
+function handleRequest(res) {
+  res.json().then(logSunsetData);
+}
+
+let apiFetch = fetch('https://api.sunrise-sunset.org/json?lat=40.74573&lng=-73.9244437');
+apiFetch.then(handleRequest);
+```
+
+Or you will often seen this written more concisely:
+```js
+fetch('https://api.sunrise-sunset.org/json?lat=40.74573&lng=-73.9244437')
+  .then(function (res) {
+    return res.json();
+  })
+  .then(function (data) {
+    console.log(data);
+  });
+```
+<script type="text/javascript">
+fetch('https://api.sunrise-sunset.org/json?lat=40.74573&lng=-73.9244437')
+  .then(function (res) {
+    return res.json();
+  })
+  .then(function (data) {
+    console.log(data);
+  });
+</script>
+
+---
+
+class: middle
+
+Now that we know how to both request the user's coordinates and get the sunset data
+for them, we can create a widget that will group it all together.
+
+One last detail is that the sunset api returns the date in GMT. Luckily, we know
+how to easily convert this to a local date:
+
+```js
+let sunset = '11:40:29 PM'; // nyc aka gmt-4 so 7:40 pm
+let today = new Date();
+let sunsetToday = new Date(`${today.toDateString()} ${sunset} GMT`);
+console.log(sunsetToday.toLocaleTimeString());
+```
+
+<script type="text/javascript">
+let sunset = '11:40:29 PM'; // nyc aka gmt-4 so 7:40 pm
+let today = new Date();
+let sunsetToday = new Date(`${today.toDateString()} ${sunset} GMT`);
+console.log(sunsetToday.toLocaleTimeString());
+</script>
+
+---
+class: middle
+
+```html
+<button id="show-sunset">When is sunset?</button>
+<div id="sunset-display"></div>
+```
+
+```js
+let sunsetDisplay = document.querySelector('#sunset-display');
+
+function displaySunset(data) {
+  let sunset = data.results.sunset;
+  let today = new Date();
+  let sunsetToday = new Date(`${today.toDateString()} ${sunset} GMT`);
+  sunsetDisplay.innerHTML = `Sunset will occur at ${sunsetToday.toLocaleTimeString()}`;
+}
+
+function receiveCoordinates(position) {
+  const latitude  = position.coords.latitude;
+  const longitude = position.coords.longitude;
+
+  fetch(`https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude}`)
+    .then(function (response) {
+      response.json().then(displaySunset);
+    });
+}
+
+function showError(err) {
+  sunsetDisplay.innerHTML = err.message;
+}
+
+document.querySelector('#show-sunset').addEventListener('click', function () {
+  navigator.geolocation.getCurrentPosition(receiveCoordinates, showError);
+});
+```
+
+---
+class: middle center
+
+<button id="show-sunset">When is sunset?</button>
+<div id="sunset-display"></div>
+
+<script type="text/javascript">
+let sunsetDisplay = document.querySelector('#sunset-display');
+
+function displaySunset(data) {
+  let sunset = data.results.sunset;
+  let today = new Date();
+  let sunsetToday = new Date(`${today.toDateString()} ${sunset} GMT`);
+  sunsetDisplay.innerHTML = `Sunset will occur at ${sunsetToday.toLocaleTimeString()}`;
+}
+
+function receiveCoordinates(position) {
+  const latitude  = position.coords.latitude;
+  const longitude = position.coords.longitude;
+
+  fetch(`https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude}`)
+    .then(function (response) {
+      // get json data
+      response.json().then(displaySunset);
+    });
+}
+
+function showError(err) {
+  sunsetDisplay.innerHTML = err.message;
+}
+
+document.querySelector('#show-sunset').addEventListener('click', function () {
+  navigator.geolocation.getCurrentPosition(receiveCoordinates, showError);
+});
+</script>
+
+---
+class: middle
+
+## localStorage and sessionStorage
+
+Quickly, let's look at two last browser APIs we can utilize.
+
+---
+class: middle two-columns
+
+`localStorage` provides a way to store text and other data with the user's browser. This information
+you save will *persist* or be available after they refresh, close the browser or restart their computer.
+
+In this way, `localStorage` acts like a *database* or repository of information that you can
+set and retrieve later all relative to the user's browser.
+
+A few caveats:
+- localStorate is tied to the browser, so if you set something in one browser it won't be available in another one
+- incognito or other user configured restrictions might block accessf to localStorage
+- user's can clear this data when they clear their browser history
+
+---
+class: middle
+
+`localStorage` is a great way to store any kind of custom settings or options, for instance
+if you allow your user to customize the UI or set any preferences, you can store these
+items in localStorage so that on future visits you can load them and preserve the settings.
+
+---
+class: middle
+
+It is pretty simple to use, you can `set`, `get` and `remove` items in storage:
+```js
+// save the sunset from previous example
+localStorage.setItem('sunsetTime', sunset);
+
+// later or after refresh we could retrieve
+let sunsetTime = localStorage.getItem('sunsetTime');
+console.log(sunsetTime);
+
+// note: items will always be stored as a string
+localStorage.setItem('favNumber', 12);
+// will return "12"
+console.log(localStorage.getItem('favNumber'));
+
+// you can also remove items from storage
+localStorage.removeItem('sunsetTime');
+
+```
+
+<script type="text/javascript">
+// save the sunset from previous example
+localStorage.setItem('sunsetTime', '11:40:20 PM');
+
+// later or after refresh we could retrieve
+let sunsetTime = localStorage.getItem('sunsetTime');
+console.log(sunsetTime);
+
+// note: items will always be stored as a string
+localStorage.setItem('favNumber', 12);
+// will return "12"
+console.log(localStorage.getItem('favNumber'));
+
+// you can also remove items from storage
+localStorage.removeItem('sunsetTime');
+</script>
+
+---
+class: middle
+
+You can also store objects, arrays and other complex items like JSON. The only
+thing you need to do is convert them to a string before storing with `JSON.stringify()`
+
+```js
+localStorage.setItem('sunset', JSON.stringify(sunsetData));
+```
+
+We can see whether we have a stored item by first using `getItem` and then checking
+whether the returned value is `null` or not:
+
+```js
+// we stored our favorite number, but not color ; )
+let favColor = localStorage.getItem('favColor');
+console.log(favColor); // returns null
+
+// or could use with a conditional
+if (favColor) {
+  // customize the background color..?
+}
+```
+
+---
+class: middle
+
+Full example:
+```js
+let myFavoriteThings = { // throwback ; )
+  color: 'green',
+  flavor: 'umami',
+  sound: 'waterfall',
+  scent: 'geranium',
+  place: 'natural spaces'
+};
+
+localStorage.setItem('favoriteThings', JSON.stringify(myFavoriteThings));
+
+// some later date
+let storedFavoriteThings = localStorage.getItem('favoriteThings');
+
+// if the item doesn't exist, it will be `null` so we should check for that
+if (storedFavoriteThings) {
+  // to convert back to an object we can
+  let myFavoriteThings = JSON.parse(storedFavoriteThings);
+  console.log('We have your favorite things', myFavoriteThings);
+}
+```
+To convert back to an array, object, etc we can use `JSON.parse()`
+
+<script type="text/javascript">
+let myFavoriteThings = { // throwback ; )
+  color: 'green',
+  flavor: 'umami',
+  sound: 'waterfall',
+  scent: 'geranium',
+  place: 'natural spaces'
+};
+
+localStorage.setItem('favoriteThings', JSON.stringify(myFavoriteThings));
+
+// some later date
+let storedFavoriteThings = localStorage.getItem('favoriteThings');
+
+// if the item doesn't exist, it will be `null` so we should check for that
+if (storedFavoriteThings) {
+  // to convert back to an object we can
+  let myFavoriteThings = JSON.parse(storedFavoriteThings);
+  console.log('We have your favorite things', myFavoriteThings);
+}
+</script>
+
+---
+class: middle
+
+## sessionStorage
+
+`sessionStorage` is just like localStorage except that it only lasts for the *session*
+aka for however long the tab or browser is open. It's a way to store things that
+need less permanence.
+
+    </textarea>
+    <script src="/assets/js/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({ ratio: '4:3', navigation: { scroll: false }});
+
+      // run any script tags contained within the active slide
+      slideshow.on('afterShowSlide', (slide) => {
+        var scripts = document.querySelector('.remark-visible').querySelectorAll('script');
+        if (scripts.length > 0) {
+          console.clear();
+        }
+        for (var script of scripts) {
+          setTimeout(() => {
+            eval(script.innerText);
+          }, 100);
+        }
+      });
+
+      var links = document.links;
+
+      for (var i = 0, linksLength = links.length; i < linksLength; i++) {
+         if (links[i].hostname != window.location.hostname && !links[i].href.startsWith('javascript')) {
+             links[i].target = '_blank';
+         }
+      }
+    </script>
+  </body>
+</html>

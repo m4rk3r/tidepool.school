@@ -1,0 +1,33 @@
+
+html {
+  min-height: 100%;
+}
+
+body {
+  height: 100%;
+  background: linear-gradient(0deg, rgb(213, 231, 244), rgb(169, 209, 238));
+  background-repeat: no-repeat;
+}
+
+figure {
+  width: 80vw;
+  height: 75vh;
+  margin: 12.5vh auto;
+}
+
+figure iframe {
+  width: 100%;
+  height: 100%;
+}
+
+figure figcaption {
+  text-align: center;
+  margin-top: 5px;
+}
+
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: blue;
+}

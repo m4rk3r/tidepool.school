@@ -409,6 +409,14 @@ mark {
   clip-path: url(#c12);
 }
 
+.week-13 {
+  grid-column: 1;
+  grid-row: 13;
+}
+.week-13 .pool {
+  clip-path: url(#c13);
+}
+
 @media (max-width: 900px) {
   #pools {
     grid-template-columns: 1fr;
