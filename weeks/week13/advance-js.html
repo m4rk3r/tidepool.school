@@ -95,6 +95,359 @@
   </head>
   <body>
     <textarea id="source">
+class: middle
+
+### Manipulating text in javascript~
+
+---
+class: middle
+
+Fist, a quick detour on `arrow functions`.
+
+So far we've learned how to write functions like this:
+```js
+function wakeUp() {
+  console.log('time to wake up 😪');
+}
+```
+
+Another way that we can write functions in a bit more concise way are called `arrow functions`:
+```js
+let wakeUp = () => {
+  console.log('time to wake up 😪');
+}
+```
+
+You'll most often see them used with event listeners or whenever a callback function is needed:
+```js
+element.addEventListener('click', (event) => {
+  console.log('You clicked the element!!');
+});
+```
+
+---
+class: middle
+
+#### strings
+A `string` is just a piece of text wrapped in either `''` single or `""` double quotes. Strings are made
+up of characters (like the `a` in "apple"). These sequences of characters *strung* together comprise a `string` <span class="rotate-90">: )</span>
+
+```js
+let myPoem = 'A long string / stung my head / to recall it';
+
+// Strings are used often in javascript
+document.querySelector('#my-blog');
+                        ^ string here
+```
+
+---
+class: middle
+
+Since `strings` are just a bunch of characters strung together, you can use them
+in a similar way to arrays:
+
+```js
+let myString = 'hello';
+console.log(myString[0]);
+```
+
+<script type="text/javascript">
+let myString = 'hello';
+console.log(myString[0]);
+</script>
+
+---
+class: middle
+
+You can search for the index (position) of a character or word within a string with `indexOf()`:
+```js
+let greeting = 'Hello how are you?';
+//                    ^ how starts at the 6th index position
+let howIndex = greeting.indexOf('how');
+console.log(howIndex);
+```
+<script type="text/javascript">
+let greeting = 'Hello how are you?';
+let howIndex = greeting.indexOf('how');
+console.log(howIndex);
+</script>
+
+If found, this will return the index of the start of the sequence of characters.
+
+---
+class: middle
+
+You can also check whether a string occurs within another string with `includes`:
+
+```css
+.sad { color: blue; }
+.happy { color: green; }
+```
+
+```html
+<input id="feeling" type="text" placeholder="how are you feeling today?">
+```
+```js
+let input = document.querySelector('#feeling');
+
+// let's try using an arrow function
+input.addEventListener('keyup', (event) => {
+  if (event.target.value.includes('sad')) {
+    event.target.classList.remove('happy');
+    event.target.classList.add('sad');
+  } else if (event.target.value.includes('happy')) {
+    event.target.classList.add('happy');
+    event.target.classList.remove('sad');
+  } else {
+    event.target.classList.remove('happy', 'sad');
+  }
+});
+```
+
+<style media="screen">
+  .sad { color: blue; }
+  .happy { color: green; }
+</style>
+
+<input id="feeling" placeholder="how do you feel today?">
+
+<script type="text/javascript">
+let input = document.querySelector('#feeling');
+
+input.addEventListener('keydown', (e) => {
+  e.stopPropagation();
+});
+
+input.addEventListener('keypress', (e) => {
+  e.stopPropagation();
+});
+
+// let's try using an arrow function
+input.addEventListener('keyup', (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+
+  if (event.target.value.includes('sad')) {
+    event.target.classList.remove('happy');
+    event.target.classList.add('sad');
+  } else if (event.target.value.includes('happy')) {
+    event.target.classList.add('happy');
+    event.target.classList.remove('sad');
+  } else {
+    event.target.classList.remove('happy', 'sad');
+  }
+});
+</script>
+
+---
+class: middle
+
+The `slice()` method enables us to return part of a string by specifying the start and end index
+we would like to *slice* by. Slice creates a new string and leaves the source alone.
+
+Slice takes at least one parameter, where to start the slice, and optionally where to end it.
+
+```js
+'hello'.slice(start, end);
+
+// or
+
+myStringVariable.slice(0, 5);
+```
+
+If you don't provide an end index, it will assume the rest of the string.
+
+---
+class: middle
+
+Let's make our greeting informal:
+```js
+let greeting = 'Hello sir, how are you?';
+
+// find the index of how
+let howIndex = greeting.indexOf('how');
+
+// slice the string to be 'how are you?'
+let informal = greeting.slice(howIndex);
+
+// capitalize the first characther ('h' in how)
+// and then return the rest of the string after that character
+informal = informal[0].toUpperCase() + informal.slice(1);
+console.log(informal);
+```
+
+<script type="text/javascript">
+let greeting = 'Hello mam, how are you?';
+
+// find the index of how
+let howIndex = greeting.indexOf('how');
+
+// slice the string to be 'how are you?'
+let informal = greeting.slice(howIndex);
+
+// capitalize the first characther ('h' in how)
+// and then return the rest of the string after that character
+informal = informal[0].toUpperCase() + informal.slice(1);
+console.log(informal);
+</script>
+
+---
+class: middle
+
+You can split up strings by a character with the `split()` method:
+
+```js
+let text = 'Hello class. Hope this is all very clear. If not, then pls ask a question.';
+```
+The `split()` method will split up the string based on the character you provide and return them as an array:
+```js
+// spilt our text by the periods
+let sentences = text.split('.');
+console.log(sentences);
+```
+which results in:
+```js
+["Hello class", " Hope this is all very clear", " If not, then pls ask a question", ""]
+//               ^ spaces after the period will be included
+```
+
+<script type="text/javascript">
+let text = 'Hello class. Hope this is all very clear. If not, then pls ask a question.';
+let sentences = text.split('.');
+console.log(sentences);
+</script>
+
+---
+class: middle
+
+We can recombine an array of strings with the `join()` method:
+```js
+let emphasis = sentences.join('!!!');
+console.log(emphasis);
+```
+
+<script type="text/javascript">
+let text = 'Hello class. Hope this is all very clear. If not, then pls ask a question.';
+let sentences = text.split('.');
+console.log(sentences.join('!!!'));
+</script>
+
+---
+class: middle
+
+We could break out a sentence into individual paragraph elements using javascript's
+ `document.createElement()` method and append them to a container element with `append()`:
+```html
+<div id="poem"></div>
+```
+
+```js
+let poemString = 'Rain in winter— / unhappy pine tree / longs for snow';
+let poemLines = poemString.split('/');
+let poemContainer = document.querySelector('#poem');
+
+poemLines.forEach((line) => {
+  // create a new paragraph element
+  let line = document.createElement('p');
+  // set the contents of the paragraph to our line at index i
+  line.innerText = line;
+  poemContainer.append(line);
+});
+
+```
+<div id="poem" style="font-size: 16px;"></div>
+<script type="text/javascript">
+let poemString = 'Rain in winter— / unhappy pine tree / longs for snow';
+let poem = poemString.split('/');
+let poemContainer = document.querySelector('#poem');
+
+poemContainer.innerHTML = '';
+
+for(let i = 0; i < poem.length; i++) {
+  // create a new paragraph element
+  let line = document.createElement('p');
+  // set the contents of the paragraph to our line at index i
+  line.innerHTML = poem[i];
+  poemContainer.append(line);
+}
+</script>
+
+---
+class: middle
+
+We often end up needing to combine strings and variables to generate new strings.
+
+One way to achieve this is through `concatination` or adding things together:
+```js
+let weather = 'windy' // or get this from a weather service
+let info = 'Today the weather is ' + weather + '. Have a good day!';
+console.log(info)
+```
+
+<script type="text/javascript">
+let weather = 'windy' // or get this from a weather service
+let info = 'Today the weather is ' + weather + '. Have a good day!';
+console.log(info)
+</script>
+
+---
+class: middle
+
+A simpler way to combine strings and variables is with<BR> `template strings`. Template strings are
+a special kind of string definition using \` `backticks` instead of quotes " or ':
+```js
+let weather = 'rainy';
+let gear = 'umbrella';
+let info = `Today is ${weather}, hope you brought your ${gear}`;
+console.log(info);
+```
+With template strings, we can substitute in any variables within the string with the
+special `${ myVariable }` decleration. Anything within the `${` and `}` will be inserted
+in that position into the string.
+
+<script type="text/javascript">
+let weather = 'rainy';
+let gear = 'umbrella';
+let info = `Today is ${weather}, hope you brought your ${gear}!`;
+console.log(info);
+</script>
+
+---
+class: middle
+
+We could move our weather template string to a function and pass in the condition variables
+as arguments to have a flexible weather greeting:
+
+```js
+function weatherNotice(weather, gear) {
+  return `Today is ${weather}, hope you brought your ${gear}!`;
+}
+
+console.log(weatherNotice('rainy', 'umbrella'));
+
+// later that day
+console.log(weatherNotice('sunny', 'sunglasses'));
+
+console.log(weatherNotice('snowy', 'snow pants'));
+```
+
+<script type="text/javascript">
+function weatherNotice(weather, gear) {
+  return `Today is ${weather}, hope you brought your ${gear}!`;
+}
+
+console.log(weatherNotice('rainy', 'umbrella'));
+
+// later that day
+console.log(weatherNotice('sunny', 'sunglasses'));
+</script>
+
+---
+class: middle
+
+[There are a ton of things you can do with strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+---
 class: middle center
 
 # ~ Web APIs & Advanced JS ~
@@ -112,9 +465,9 @@ class: middle
 There are a [bunch special APIs](https://developer.mozilla.org/en-US/docs/Web/API) that browsers support, some of the more interesting ones:
 - Geolocation
 - Notification
+- Clipboard
 - Fetch
 - localStorage & sessionStorage
-
 
 ---
 class: middle
@@ -288,6 +641,52 @@ btn.addEventListener('click', getPermission);
 ---
 class: middle
 
+## Clipboard API
+
+Since javascript runs in our browser, it has access to a lot of things our browser is provided access to from
+our computers, like the clipboard.
+
+Let's say we wanted to create a simple button that would convert any text in your clipboard to uppercase.
+
+With the [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard) we can use the two methods to do this, called read (to access) and write (to update).
+
+---
+class: middle
+
+Good morning everyone!
+
+```html
+<button id="scream">Click this to scream</button>
+```
+
+```js
+let screamButton = document.querySelector('#scream');
+
+screamButton.addEventListener('click', (event) => {
+
+  navigator.clipboard.readText().then((text) => {
+    navigator.clipboard.writeText(text.toUpperCase());
+  });
+
+});
+```
+<button id="scream">Click this to scream</button>
+<BR>
+<input placeholder="paste here" style="width: 50%; padding: 5px;">
+
+<script type="text/javascript">
+let screamButton = document.querySelector('#scream');
+screamButton.addEventListener('click', (event) => {
+  navigator.clipboard.readText().then((text) => {
+    navigator.clipboard.writeText(text.toUpperCase());
+  });
+});
+</script>
+
+
+---
+class: middle
+
 ## Fetch
 
 `fetch` is a useful way to load external websites from within javascript.
@@ -432,8 +831,8 @@ class: middle
 Now that we know how to both request the user's coordinates and get the sunset data
 for them, we can create a widget that will group it all together.
 
-One last detail is that the sunset api returns the date in GMT. Luckily, we know
-how to easily convert this to a local date:
+One last detail is that the sunset api returns the date in GMT. We can convert
+that to our computer's local time using the Javascript `Date` method:
 
 ```js
 let sunset = '11:40:29 PM'; // nyc aka gmt-4 so 7:40 pm
@@ -618,7 +1017,7 @@ class: middle
 
 Full example:
 ```js
-let myFavoriteThings = { // throwback ; )
+let myFavoriteThings = {
   color: 'green',
   flavor: 'umami',
   sound: 'waterfall',
