@@ -467,6 +467,15 @@ mark {
   }
 }
 
+.week-14 {
+  grid-column: 2;
+  grid-row: 14;
+
+  .pool {
+    clip-path: url(#c14);
+  }
+}
+
 
 @media (max-width: 900px) {
   #pools {
