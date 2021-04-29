@@ -18,4 +18,4 @@ trs.forEach((tr) => {
     td.innerText = `~ ${start.format("h:mm a")}`;
     start.add(meetingLength, 'minutes');
   }
-})
+});
