@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to JS</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Nanum+Gothic);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      html {
+        font-size: 24px;
+      }
+
+      body { font-family: 'Open Sans';}
+      h1, h2, h3 {
+        font-family: 'Nanum Gothic';
+        font-weight: normal;
+      }
+      .remark-container {
+        background: rgb(237, 238, 229);
+      }
+      .remark-slide-scaler {
+        box-shadow: 0 0 10px #88888857;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .hljs-default .hljs-name { color: #5fa04b; }
+      .hljs-default .hljs-string, .hljs-default .hljs-selector-id, .hljs-default .hljs-selector-class {
+        color: rgb(198, 122, 22);
+      }
+      .hljs-default .hljs-selector-pseudo {
+        color: rgb(30, 115, 203);
+      }
+      .remark-inline-code {
+        background: #F0F0F0;
+        color: #5fa04b;
+        padding: 0 3px;
+      }
+
+      .footnote {
+        position: absolute;
+        bottom: 2%;
+        font-size: 12px;
+        left: 2%;
+        font-style: italic;
+        color: rgb(108, 108, 108);
+      }
+
+      .two-column ul {
+        columns: 2;
+      }
+      .three-column ul {
+        columns: 3;
+      }
+      .li-spacing li {
+        margin-bottom: 35px;
+      }
+
+      a { text-decoration: none; }
+      a:visited { color: blue;}
+
+      /* for slide examples */
+
+      .fix-again-ugh .remark-code-line:nth-child(2),
+      .fix-multiline .remark-code-line:nth-child(3),
+      .fix-multiline .remark-code-line:nth-child(4) {
+        color: #888888;
+      }
+
+      .tree-img img {
+        display: block;
+        width: 75%;
+        margin: 0 auto;
+      }
+
+      #more {
+        word-break: break-all;
+      }
+
+      .rotate-90 {
+        display: inline-block;
+        margin-left: 10px;
+        transform: rotateZ(90deg);
+      }
+
+      .red {
+        color: red;
+      }
+
+      .completed {
+        text-decoration: line-through;
+      }
+
+      .pect-50 img {
+        width: 50%;
+      }
+      .pect-100 img {
+        width: 100%;
+      }
+
+      :root {
+        --width: 300px;
+      }
+      .grid {
+        position: absolute;
+        width: 33.33333%;
+        height: 50%;
+      }
+      .grid img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: .5;
+      }
+
+      .remark-slide-container:last-child h2 {
+        z-index: 10;
+        position: relative;
+        color: blue;
+      }
+      .rise {
+        z-index: 10;
+        position: relative;
+        color: blue;
+      }
+
+      p .grid:nth-child(1) {
+        top: 0;
+        left: calc(var(--width) * 0);
+      }
+      p .grid:nth-child(2) {
+        top: 0;
+        left: calc(var(--width) * 1);
+      }
+      p .grid:nth-child(3) {
+        top: 0;
+        left: calc(var(--width) * 2);
+      }
+
+      p .grid:nth-child(4) {
+        bottom: 0;
+        left: calc(var(--width) * 0);
+      }
+      p .grid:nth-child(5) {
+        bottom: 0;
+        left: calc(var(--width) * 1);
+      }
+      p .grid:nth-child(6) {
+        bottom: 0;
+        left: calc(var(--width) * 2);
+      }
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: middle center
+
+# ~ Digital Impermanance ~
+## putting online, documenting, and archiving your work
+
+---
+class: middle
+
+## Putting your work online
+
+The first step of hosting your work is setting up a `server` online.
+
+Servers are simply computers connected to the internet. When you sign up for a hosting service your essentially
+paying to use a part of a computer, that the company manages, to store and display your files to internet visitors.
+
+There are tons of different hosting services, a few common ones you'll see:
+- [digital ocean](https://www.digitalocean.com)
+- [linode](https://linode.com)
+- [dreamhost](https://dreamhost.com)
+- [nearlyfreespeech](https://nearlyfreespeech.com)
+
+---
+class: middle
+
+Let's look at using [nearlyfreespeech.com](https://nearlyfreespeech.com)
+
+
+---
+class: middle
+
+Now that we have a server set up on [nearlyfreespeech.com](https://nearlyfreespeech.com), let's upload our code to it.
+
+To upload code, we need to use a special tool to transfer our files from our local computer to the server (computer hosted "in the cloud").
+
+One way we can do that is with an SFTP (secure file transfer protocol) client like [Cyberduck](https://cyberduck.io)
+
+---
+class: middle
+
+Now that we have our site with our work set up on [nearlyfreespeech.com](https://nearlyfreespeech.com) the next step is to buy a domain
+name to point to our server. That way we can share our work with others using a URL of our choosing -- called a `domain name`.
+
+After registering this domain name, the last step is to point our URL to our server. The way we do that is by setting the `DNS` (domain name system) address to our server on nearlyfreespeech.
+
+DNS is like a big address book, directing users on the internet how to go from a URL to a server. Whenever you load a URL in
+your browser, it first looks at this DNS address book to find exactly where on the internet the server for that site lives.
+
+This server address is called an `IP address` or Internet Protocol address. They looks like this: `173.255.233.187`
+
+
+---
+class: middle
+
+There are bunches of services that handle domain registration and DNS settings. One that I use often is called [namecheap](https://namecheap.com)
+
+
+---
+class: middle
+
+Now that we've set up a server, registered a domain name, and pointed that domain name to our server address, we should be
+able to see our site!
+
+[poignant.cloud](http://poignant.cloud)
+
+---
+class: middle
+
+## Documenting your work
+
+One of the most important steps in preserving and future proofing your work
+is to add documentation to your javascript, html, and css.
+
+Use comments to note what functions or particularly dense sections of code do. Add comments
+to you html and css to help explain why you are using certain elements or selectors for.
+
+It's easiest to do this as you're coding&mdash; but some documentation at the end
+of the project is better than nothing.
+
+When you return to the project months or years later, it'll be so much easier to
+pick up and fix anything that might have stopped working with documentation.
+
+---
+class: middle
+
+A few of the following strategies might be obvious.. but there are still
+lots of little details that can improve your documentation.
+
+---
+class: middle
+
+### Screenshots
+
+In addition to adding text documentation to your project, you should
+take high quality screenshots of a selection of site views.
+
+A few things to consider when creating screenshots:
++ Do you want to include the browser chrome? This can help date and add
+context to your screenshot.
++ If you're using a Mac, the baked in dropshadow can make it harder to work with the
+  images in the future. (cmd + shit + 4 and then press space)
++ Firefox has a built in [screenshot utility](https://screenshots.firefox.com/) that can take screenshots of elements
+  or a whole page.
++ Give the files a meaningful name. Use a naming scheme aka `PUCD_Final_<n>.png` and store them together so that they're easier
+  to locate in the future.
+---
+class: middle
+
+### screen recordings
+
+Along with screenshots, screen recordings can be really useful to showcase both the design and interactions in a controlled setting.
+
+.pect-50[![Quicktime](assets/screen-rec.png)]
+
+Quicktime has a nice screen recording utility. Practice a few times and then make a recording.
+
+---
+class: middle
+
+If you'd like to display it online, keep the full quality version and use a program like [Handbrake](https://handbrake.fr/) to
+make a lower resolution copy for web publishing.
+
+It can also be useful to make a series of videos demonstrating different aspects of the site instead of one long video.
+
+---
+class: middle center
+
+### link rot and the case for web archiving
+
+.pect-100[![link rot](assets/linkrotted.png)]
+
+---
+class: middle
+
+While things online might seem to provide the sense of endless connectivity and availability, the web
+is a fragile and interdependent system.
+
+One of most fundamental and first things we learned were links. Links to other sites, images, videos, javascript files, apis..
+
+We build our websites often with deep dependencies on other sites and resources online.
+
+---
+class: middle
+
+These resources we rely on are exceedingly susceptible to disappearing:
+
+.pect-100[![Link Rot](assets/linkrot.jpg)]
+
+
+.footnote[Graphic from <a href="https://perma.cc">perma.cc</a>]
+
+---
+class: middle
+
+Sometimes it's easy to recover or fix `link rot`. But other times, like when
+a weather API you relied on for a project shuts down, there isn't much you can do,
+other than find a new API (if you're lucky) and rewrite your code...
+
+That's why it's essential to `archive` your work in addition to documenting it.
+
+Web archives preserve and afford the presentation of your site in the exact way it first functioned
+for long long time*.
+
+.footnote[*In the archives world, we refrain projecting stability eternally... and you should always be critical of a tool or service does.]
+
+---
+class: middle
+
+Beyond link rot, it's also important to web archive your projects to preserve the way you intended them look and function.
+
+When you hand over a site you designed or built to a client, they'll inevitably make changes or alter it in ways
+that might compromise your original vision.
+
+Or browsers might deprecate a technology you utilized, like Flash.
+
+...or you might just want to save a [beautiful accident](https://webrecorder.io/_embed/m4rk3r/cool-old-web/20150313041327/http://www.sewingandembroiderywarehouse.com/embtrb.htm) before it's [fixed or removed.](https://www.sewingincanada.com/troubleshooting/)
+<span class="rotate-90">: )</span>
+
+---
+class: middle center
+
+### How, and who, is Archiving?
+
+---
+class: middle
+
+## The Internet Archive
+
+The Internet Archive is one of the earliest and most thorough web archives. Captuing
+the web since 1996, the publicly accessible [Wayback Machine](https://web.archive.org) is one
+of the best resources for viewing past websites.
+
+The Internet Archive operates a `web crawler` that regularly searches and copies a large portion
+of the web in frequent intervals to capture a fairly detailed snapshot of the web.
+
+This requires Petabytes (that's 1 petabyte = 1,000,000 gigabytes)
+
+Even with all that storage, they are only able to capture a shallow archive. It
+would be impossible to make a exact copy of the web every hour..
+
+---
+class: middle center
+
+Let's quickly browse the [Wayback Machine](https://web.archive.org)
+
+---
+class: middle
+
+Other web archives:
++ [Portugese Web Archive](https://arquivo.pt/?l=en)
++ [Icelandic Web Archive](https://vefsafn.is/index.php?page=english)
++ [UK Web Archive](https://www.webarchive.org.uk/)
++ [and many more](https://en.wikipedia.org/wiki/List_of_Web_archiving_initiatives)
+
+And preservation projects:
++ [Restorativeland](https://restorativland.org/)
++ [GifCities](https://gifcities.org/)
++ [One Terabyte of the Kilobyte age](https://oneterabyteofkilobyteage.tumblr.com/)
+
+
+---
+class: middle
+
+As great as it is what the Internet Archive and other sites are doing, it won't help us archive our own work...
+
+It's hard to extract archives from the Internet Archive* so they
+are not a reliable way for you to archive your work for personal&nbsp;keeping.
+
+.footnote[<a href="https://github.com/hartator/wayback-machine-downloader">*but not impossible</a>]
+
+---
+class: middle
+
+There are a bunch of great tools for preserving your websites.
+
+Let's cover a few:
++ [archiveweb.page](https://archiveweb.page/)
++ [Conifer](https://conifer.rhizome.org)
+
+And some more advanced/command line tools:
++ [httrack](https://www.httrack.com/)
++ [heritrix](https://github.com/pirate/ArchiveBox/wiki/Web-Archiving-Community)
++ [squidwarc](https://n0tan3rd.github.io/Squidwarc/)
++ [wget](https://www.gnu.org/software/wget/)
++ [and many more...](https://github.com/iipc/awesome-web-archiving)
+
+---
+class: middle
+
+Utilizing all these approaches will cover you on all aspects, from being able to
+show documentation (images, text), showcase functionality (video) and maintain a restageable version
+of your site for a long time to come (web archive).
+
+Speaking from experience, the hardest part of creating thorough documentation of
+a project is *recognizing the need* at the time when everything is fresh in your
+head and working as intended. There are a lot of projects I wish I could
+go back and fix, but they are unfortunately lost to time.
+
+This Pitchfork piece called [A Strange Visitor](https://webrecorder.io/_embed/m4rk3r/personal-work/20170425015744/http://pitchfork.com/features/cover-story/reader/aphex-twin/) that I worked on is a simple example.
+By the time I realized (years later) I should archive this project, it was too late.
+The subscription for the fonts ran out, which were loading via adobe typekit.
+
+---
+class: middle center
+
+## In conclusion: archive archive archive~
+
+.rise[and have a great summer, stay safe & be well <span class="rotate-90">: )</span>]
+
+.grid[![release](assets/release.gif)]
+.grid[![release](assets/release2.gif)]
+.grid[![release](assets/release3.gif)]
+.grid[![release](assets/release.webp)]
+.grid[![release](assets/release2.webp)]
+.grid[![release](assets/release3.webp)]
+
+
+    </textarea>
+    <script src="../../assets/js/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({ ratio: '4:3', navigation: { scroll: false }});
+
+      // run any script tags contained within the active slide
+      slideshow.on('afterShowSlide', (slide) => {
+        var scripts = document.querySelector('.remark-visible').querySelectorAll('script');
+        if (scripts.length > 0) {
+          console.clear();
+        }
+        for (var script of scripts) {
+          setTimeout(() => {
+            eval(script.innerText);
+          }, 100);
+        }
+      });
+
+      var links = document.links;
+
+      for (var i = 0, linksLength = links.length; i < linksLength; i++) {
+         if (links[i].hostname != window.location.hostname && !links[i].href.startsWith('javascript')) {
+             links[i].target = '_blank';
+         }
+      }
+    </script>
+  </body>
+</html>

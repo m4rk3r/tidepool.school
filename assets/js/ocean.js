@@ -12,7 +12,7 @@ let x; let y;
 let placed;
 const buffer = 12;
 const ocean = document.querySelector('#ocean');
-const s = document.querySelector('#signup').getBoundingClientRect();
+//const s = document.querySelector('#signup').getBoundingClientRect();
 let drawing = true;
 
 preTags.forEach(function (tag) {
@@ -31,8 +31,8 @@ preTags.forEach(function (tag) {
       const bcr = tag.getBoundingClientRect();
       const xPos = window.innerWidth * x/100 + bcr.width/2;
       const yPos = window.innerHeight * y/100 + bcr.height;
-      const inSignup = (xPos > s.x && xPos < s.x + s.width && yPos > s.y && yPos < s.y + s.height);
-      return fit || inSignup;
+      //const inSignup = (xPos > s.x && xPos < s.x + s.width && yPos > s.y && yPos < s.y + s.height);
+      return fit;// || inSignup;
     }
 
     if (positions.find(spacing) === undefined) {
@@ -89,20 +89,20 @@ const creatureIcons = {
   shrimp: '🦐',
 };
 const creatureEvent = {
-  whale: '🌊',
-  dolphin: '💦',
-  fish: '<span class="airbubble"></span>',
-  tropical_fish: '<span class="airbubble"></span>',
-  duck: '💧',
-  blowfish: '<span class="airbubble"></span>',
-  shark: '🌊',
-  octopus: '💧',
-  turtle: '💧',
-  shell: '<span class="airbubble"></span>',
-  crab: '<span class="airbubble"></span>',
-  squid: '💦',
-  penguin: '🌊',
-  shrimp: '<span class="airbubble"></span>'
+  whale: '🌼',
+  dolphin: '🌺',
+  fish: '🌸', //'<span class="airbubble"></span>',
+  tropical_fish: '💮',
+  duck: '🏵',
+  blowfish: '🌼',
+  shark: '🌺',
+  octopus: '🌸',
+  turtle: '💮',
+  shell: '🏵',
+  crab: '🌹',
+  squid: '🌷',
+  penguin: '🌻',
+  shrimp: '🌼'
 };
 const creatures = Object.keys(creatureIcons);
 let nickname = window.localStorage.getItem('tidepool-nickname') || '';
